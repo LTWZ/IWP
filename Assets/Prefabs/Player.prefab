@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 1565772291979943488}
   - component: {fileID: 1270479302205288321}
   - component: {fileID: 4911976472782355572}
+  - component: {fileID: 3801587330817731383}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -163,6 +164,7 @@ MonoBehaviour:
   rb: {fileID: 2409052710821016829}
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
+  PM: {fileID: 0}
 --- !u!61 &2409052710821016801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -233,6 +235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95ea129ce4e634a449d3a35feec34542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxMana: 9999
+  currMana: 0
 --- !u!114 &4911976472782355572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,6 +249,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1dd4e43d6890f4daf7b5202cefc077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &3801587330817731383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409052710821016828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70994cf5ce1239d49ac1144686ac4307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hp: 0
+  speed: 0
+  mana: 0
+  Skill_1_Image: {fileID: 0}
+  cooldown1: 5
+  ability1: 0
+  Skill_2_Image: {fileID: 0}
+  cooldown2: 5
+  ability2: 0
+  Skill_3_Image: {fileID: 0}
+  cooldown3: 5
+  ability3: 0
+  Skill_4_Image: {fileID: 0}
+  cooldown4: 5
+  ability4: 0
 --- !u!1 &7585777571270661954
 GameObject:
   m_ObjectHideFlags: 0
