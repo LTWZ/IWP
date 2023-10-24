@@ -33,15 +33,15 @@ public class PlayerHealth : MonoBehaviour
         HB_slider.value = currHealth;
         HB_slider.maxValue = maxHealth;
 
-        // testing
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            currHealth -= 20;
-        }
-        else if(Input.GetKeyDown(KeyCode.L))
-        {
-            currHealth += 20;
-        }
+        //// testing
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    currHealth -= 20;
+        //}
+        //else if(Input.GetKeyDown(KeyCode.L))
+        //{
+        //    currHealth += 20;
+        //}
 
     }
 }

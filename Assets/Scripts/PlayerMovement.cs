@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movement_speed;
+    private static PlayerMovement instance;
+
+    [SerializeField] MouseController mouseController;
+    [SerializeField] float movement_speed;
     private SpriteRenderer sr;
-    public Animator animator;
-    private Vector2 inputvalues; //chanbge name ltr
+    [SerializeField] Animator animator;
+    [SerializeField] Rigidbody2D rb;
+    [SerializeField] Transform HandPivotParent;
+    [SerializeField] Transform HandPivot;
+    private Vector2 moveDir;
+    public PlayerMana PM;
 
+    private void Awake()
+    {
+        instance = this;
+    }
 
-    public Rigidbody2D rb;
-    public Vector2 moveDir;
-
+    public static PlayerMovement GetInstance()
+    {
+        return instance;
+    }
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
@@ -23,12 +35,23 @@ public class PlayerMovement : MonoBehaviour
     {
         // To process inputs
         ProcessInputs();
-
+        UpdatePivot();
         animator.SetFloat("Horizontal_movement", moveDir.x);
         animator.SetFloat("Vertical_movement", moveDir.y);
         animator.SetFloat("Speed", moveDir.sqrMagnitude);
     }
 
+    public Vector3 GetMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    }
+
+    void UpdatePivot()
+    {
+        Vector3 dir = mouseController.GetDirection().normalized;
+        float rotZ = (-Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg) + 90f;
+        HandPivotParent.rotation = Quaternion.Euler(0, 0, rotZ);
+    }
 
     void FixedUpdate()
     {
@@ -41,10 +64,18 @@ public class PlayerMovement : MonoBehaviour
         float moveXaxis = Input.GetAxisRaw("Horizontal");
         float moveYaxis = Input.GetAxisRaw("Vertical");
 
-        inputvalues = new Vector2(moveXaxis, moveYaxis);
         moveDir = new Vector2(moveXaxis, moveYaxis); //to do
     }
 
+    public Transform GetHandPivotParent()
+    {
+        return HandPivotParent;
+    }
+
+    public Transform GetHandPivot()
+    {
+        return HandPivot;
+    }
     void Move()
     {
         rb.MovePosition(rb.position + moveDir * movement_speed * Time.deltaTime);
