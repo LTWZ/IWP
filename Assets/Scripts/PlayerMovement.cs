@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform HandPivotParent;
     [SerializeField] Transform HandPivot;
     private Vector2 moveDir;
-    public PlayerMana PM;
+    public Test1 Player;
 
     private void Awake()
     {

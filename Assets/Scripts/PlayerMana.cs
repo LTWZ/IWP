@@ -10,7 +10,7 @@ public class PlayerMana : MonoBehaviour
     private GameObject Mana_slider_GO;
     private TextMeshProUGUI Mana_valuetext;
 
-    public int maxMana = 9999;
+    public int maxMana = 100;
     public int currMana;
 
     // Start is called before the first frame update

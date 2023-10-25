@@ -6,13 +6,18 @@ public class PlayerEntity : MonoBehaviour
 {
     [SerializeField] protected int Hp;
     [SerializeField] protected int speed;
-    [SerializeField] protected int mana;
+    [SerializeField] protected int Mana;
+
 
     private void Awake()
     {
         if (PlayerManager.GetInstance() != null)
         {
             Hp = PlayerManager.GetInstance().LoadHP();
+        }
+        if (PlayerManager.GetInstance() != null)
+        {
+            Mana = PlayerManager.GetInstance().LoadMana();
         }
     }
 
@@ -32,6 +37,16 @@ public class PlayerEntity : MonoBehaviour
     }
 
     public virtual void Skill4()
+    {
+
+    }
+
+    public virtual void UpdateHP()
+    {
+
+    }
+
+    public virtual void UpdateMana()
     {
 
     }

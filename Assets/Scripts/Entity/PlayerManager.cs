@@ -23,7 +23,9 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
+
     private int playerHp;
+    private int playerMana;
 
     public void UpdateHP(int hp)
     {
@@ -33,5 +35,15 @@ public class PlayerManager : MonoBehaviour
     public int LoadHP()
     {
         return playerHp;
+    }
+
+    public void UpdateMana(int mana)
+    {
+        playerMana = mana;
+    }
+
+    public int LoadMana()
+    {
+        return playerMana;
     }
 }

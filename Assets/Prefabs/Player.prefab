@@ -164,7 +164,7 @@ MonoBehaviour:
   rb: {fileID: 2409052710821016829}
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
-  PM: {fileID: 0}
+  Player: {fileID: 3801587330817731383}
 --- !u!61 &2409052710821016801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -263,7 +263,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 0
   speed: 0
-  mana: 0
+  Mana: 0
+  Player: {fileID: 0}
   Skill_1_Image: {fileID: 0}
   cooldown1: 5
   ability1: 0
@@ -276,6 +277,8 @@ MonoBehaviour:
   Skill_4_Image: {fileID: 0}
   cooldown4: 5
   ability4: 0
+  maxMana: 100
+  currMana: 0
 --- !u!1 &7585777571270661954
 GameObject:
   m_ObjectHideFlags: 0
