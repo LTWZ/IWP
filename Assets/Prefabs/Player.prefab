@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 3801587330817731383}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -264,7 +264,6 @@ MonoBehaviour:
   Hp: 0
   speed: 0
   Mana: 0
-  Player: {fileID: 0}
   Skill_1_Image: {fileID: 0}
   cooldown1: 5
   ability1: 0

@@ -75,9 +75,17 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability1) && isCooldown1 == false)
         {
-            isCooldown1 = true;
-            UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
-            currMana -= 5;
+            if (PlayerMovement.GetInstance().Player.currMana >= 5)
+            {
+                isCooldown1 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
+                currMana -= 5;
+            }
+            else if (PlayerMovement.GetInstance().Player.currMana <= 5)
+            {
+
+            }
+
         }
     }
 
@@ -85,9 +93,17 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability2) && isCooldown2 == false)
         {
-            isCooldown2 = true;
-            UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
-            currMana -= 5;
+            if (PlayerMovement.GetInstance().Player.currMana >= 10)
+            {
+                isCooldown2 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
+                currMana -= 10;
+            }
+            else if (PlayerMovement.GetInstance().Player.currMana <= 10)
+            {
+
+            }
+
         }
     }
 
@@ -95,9 +111,16 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability3) && isCooldown3 == false)
         {
-            isCooldown3 = true;
-            UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
-            currMana -= 5;
+            if (PlayerMovement.GetInstance().Player.currMana >= 15)
+            {
+                isCooldown3 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
+                currMana -= 15;
+            }
+            else if (PlayerMovement.GetInstance().Player.currMana <= 15)
+            {
+
+            }
         }
     }
 
@@ -105,9 +128,16 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability4) && isCooldown4 == false)
         {
-            isCooldown4 = true;
-            UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
-            currMana -= 5;
+            if (PlayerMovement.GetInstance().Player.currMana >= 20)
+            {
+                isCooldown4 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
+                currMana -= 5;
+            }
+            else if (PlayerMovement.GetInstance().Player.currMana <= 20)
+            {
+
+            }
         }
     }
 
@@ -118,15 +148,15 @@ public class Test1 : PlayerEntity
         HB_slider.value = currHealth;
         HB_slider.maxValue = maxHealth;
 
-        // testing
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            currHealth -= 20;
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            currHealth += 20;
-        }
+        //// testing
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    currHealth -= 20;
+        //}
+        //else if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    currHealth += 20;
+        //}
     }
     public override void UpdateMana()
     {
@@ -134,6 +164,16 @@ public class Test1 : PlayerEntity
 
         Mana_slider.value = currMana;
         Mana_slider.maxValue = maxMana;
+
+        // testing
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            currMana -= 20;
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            currMana += 20;
+        }
     }
 
     void DisableCooldown(skillType whatSkill)

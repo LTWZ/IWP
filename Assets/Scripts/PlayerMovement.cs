@@ -33,6 +33,13 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (DialogueManager.isActive == true)
+        {
+            animator.SetFloat("Horizontal_movement", 0);
+            animator.SetFloat("Vertical_movement", 0);
+            animator.SetFloat("Speed", 0);
+            return;
+        }
         // To process inputs
         ProcessInputs();
         UpdatePivot();

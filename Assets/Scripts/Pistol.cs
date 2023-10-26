@@ -29,6 +29,9 @@ public class Pistol : Weapons
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
             PlayerMovement.GetInstance().Player.currMana -= 2;
         }
-        else if (PlayerMovement.GetInstance().Player.currMana < 2);
+        else if (PlayerMovement.GetInstance().Player.currMana < 2)
+        {
+
+        }
     }
 }

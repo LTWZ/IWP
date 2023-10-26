@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HealthBar
   - ManaBar
+  - NPC1
   layers:
   - Default
   - TransparentFX
