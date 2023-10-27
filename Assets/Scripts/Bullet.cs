@@ -27,8 +27,15 @@ public class Bullet : MonoBehaviour
         
     }
 
-    void OnTriggerEnter()
+    void OnTriggerEnter2D(Collider2D collider)
     {
+        // this is hardcoded btw, thr value. U find a way to get it. Idk how u gonna set atatck value
+        // my suggestion is to refer to the player dmg value, or the gun value. But u prob need a way to reference to those
+        if (collider.GetComponent<EnemyEntity>())
+            collider.GetComponent<EnemyEntity>().ChangeHealth(-2);
 
+        
+        Debug.Log("Hit");
+        Destroy(gameObject);
     }
 }

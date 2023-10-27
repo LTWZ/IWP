@@ -7,18 +7,12 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] protected int Hp;
     [SerializeField] protected int speed;
     [SerializeField] protected int Mana;
+    protected int currentHP;
 
-
+ 
     private void Awake()
     {
-        if (PlayerManager.GetInstance() != null)
-        {
-            Hp = PlayerManager.GetInstance().LoadHP();
-        }
-        if (PlayerManager.GetInstance() != null)
-        {
-            Mana = PlayerManager.GetInstance().LoadMana();
-        }
+        currentHP = Hp;
     }
 
     public virtual void Skill1()
@@ -43,11 +37,51 @@ public class PlayerEntity : MonoBehaviour
 
     public virtual void UpdateHP()
     {
-
+        
     }
 
     public virtual void UpdateMana()
     {
 
+    }
+
+    /// <summary>
+    /// Change the health of the playerEntity. Use negative value to represent reducing health and positive to represent adding health.
+    /// </summary>
+    public void ChangeHealth(int amtChanged)
+    {
+        currentHP += amtChanged;
+
+        if (currentHP > Hp)
+        {
+            currentHP = Hp;
+        }
+
+        if (currentHP <= 0)
+        {
+            // die ofc
+        }
+        UpdateHP();
+
+    }
+
+    // this is an issue u need fix now. OnTriggerEnter dont trigger bcos both ur enemy and ur player has a boxcollider that is not isTrigger
+    // so both cant go into each other, hence not triggering OnTirggerENter. you need to like find a way to implement a dummy isTrigger hitbox.
+    // However, this is dumb cos like. Your hitbox would be bigger than what u look like. also, u need to do it not on the parent unless
+    // u have a sprite as a child, and u add that as the actual collider or something. ur parent have the isTrigger. btw this my method, ask randall first.
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.GetComponent<EnemyEntity>())
+        {
+            Debug.Log("Take dmg");
+            ChangeHealth(-collision.GetComponent<EnemyEntity>().GetAttackValue());
+            UpdateHP();
+            
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        // update on timer here
     }
 }

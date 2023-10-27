@@ -30,19 +30,13 @@ public class Test1 : PlayerEntity
     bool isCooldown4 = false;
     public KeyCode ability4;
 
-    [Header("HP Code")]
-    private Slider HB_slider;
-    private GameObject HB_slider_GO;
-    private TextMeshProUGUI HB_valuetext;
-    private int maxHealth = 100;
-    private int currHealth;
-
     [Header("Mana Code")]
     private Slider Mana_slider;
     private GameObject Mana_slider_GO;
-    private TextMeshProUGUI Mana_valuetext;
+    [SerializeField] TextMeshProUGUI Mana_valuetext;
     public int maxMana = 100;
-    public int currMana;
+    private int currMana;
+    [SerializeField] Healthbar healthbar;
 
     private void Start()
     {
@@ -51,14 +45,19 @@ public class Test1 : PlayerEntity
         Skill_3_Image.fillAmount = 0;
         Skill_4_Image.fillAmount = 0;
         UIManager.GetInstance().onCooldown += DisableCooldown;
-        currHealth = maxHealth;
-        HB_slider_GO = GameObject.FindGameObjectWithTag("HealthBar");
-        HB_slider = HB_slider_GO.GetComponentInChildren<Slider>();
-        HB_valuetext = HB_slider.gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1];
         currMana = maxMana;
         Mana_slider_GO = GameObject.FindGameObjectWithTag("ManaBar");
         Mana_slider = Mana_slider_GO.GetComponentInChildren<Slider>();
-        Mana_valuetext = Mana_slider.gameObject.GetComponentsInChildren<TextMeshProUGUI>()[1];
+    }
+
+    public int GetCurrMana()
+    {
+        return currMana;
+    }
+
+    public void SetCurrMana(int currMana)
+    {
+        this.currMana = currMana;
     }
 
     public void Update()
@@ -132,7 +131,7 @@ public class Test1 : PlayerEntity
             {
                 isCooldown4 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
-                currMana -= 5;
+                currMana -= 20;
             }
             else if (PlayerMovement.GetInstance().Player.currMana <= 20)
             {
@@ -143,20 +142,13 @@ public class Test1 : PlayerEntity
 
     public override void UpdateHP()
     {
-        HB_valuetext.text = currHealth.ToString() + "/" + maxHealth.ToString();
+        if (healthbar)
+        {
+            healthbar.SetMinandMax(0, Hp);
+            healthbar.UpdateContent(currentHP);
+        }
 
-        HB_slider.value = currHealth;
-        HB_slider.maxValue = maxHealth;
 
-        //// testing
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    currHealth -= 20;
-        //}
-        //else if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    currHealth += 20;
-        //}
     }
     public override void UpdateMana()
     {

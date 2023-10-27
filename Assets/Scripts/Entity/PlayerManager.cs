@@ -22,28 +22,4 @@ public class PlayerManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
-
-
-    private int playerHp;
-    private int playerMana;
-
-    public void UpdateHP(int hp)
-    {
-        playerHp = hp;
-    }
-
-    public int LoadHP()
-    {
-        return playerHp;
-    }
-
-    public void UpdateMana(int mana)
-    {
-        playerMana = mana;
-    }
-
-    public int LoadMana()
-    {
-        return playerMana;
-    }
 }

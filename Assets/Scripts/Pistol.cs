@@ -23,13 +23,13 @@ public class Pistol : Weapons
     protected override void Shoot()
     {
         //FINISH UP LOGIC TMR
-        if (PlayerMovement.GetInstance().Player.currMana >= 2)
+        if (PlayerMovement.GetInstance().Player.GetCurrMana() >= 2)
         {
             Rigidbody2D bullet = Instantiate(bullet_prefab, GetEmitterPivot().position, Quaternion.identity).GetComponent<Rigidbody2D>();
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
-            PlayerMovement.GetInstance().Player.currMana -= 2;
+            PlayerMovement.GetInstance().Player.SetCurrMana(PlayerMovement.GetInstance().Player.GetCurrMana() - 2);
         }
-        else if (PlayerMovement.GetInstance().Player.currMana < 2)
+        else if (PlayerMovement.GetInstance().Player.GetCurrMana() < 2)
         {
 
         }
