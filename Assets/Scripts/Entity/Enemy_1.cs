@@ -10,6 +10,7 @@ public class Enemy_1 : EnemyEntity
 
     public float enemyspeed = 200f;
     public float nextWaypointDistance = 3f;
+    public float stopDistance = 5f;
 
     public Transform enemyGFX;
 
@@ -74,7 +75,14 @@ public class Enemy_1 : EnemyEntity
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * speed * Time.deltaTime;
 
-        rb.AddForce(force);
+        if (Vector2.Distance(rb.position, target.position) <= stopDistance)
+        {
+            rb.velocity = Vector2.zero; // Stop the enemy
+        }
+        else
+        {
+            rb.AddForce(force);
+        }
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
 
