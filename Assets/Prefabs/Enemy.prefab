@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5533371936605269143}
   - component: {fileID: 8225316711400044834}
   - component: {fileID: 3720959562324107190}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: EnemyHB
   m_TagString: HealthBar
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ GameObject:
   - component: {fileID: 1833934055178016782}
   - component: {fileID: 1576301036133865707}
   - component: {fileID: 6317769753590331405}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,7 +218,7 @@ GameObject:
   - component: {fileID: 8917584003309916645}
   - component: {fileID: 3241681460819507679}
   - component: {fileID: 8957700877062251114}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HP_Values
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -353,7 +353,7 @@ GameObject:
   - component: {fileID: 5951797545621654871}
   - component: {fileID: 4040373405382412864}
   - component: {fileID: 684656879386324767}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -429,7 +429,7 @@ GameObject:
   - component: {fileID: 6029409745674102986}
   - component: {fileID: 3748141810245009842}
   - component: {fileID: 1894173860428166700}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HB_Border
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +504,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2736386331234582754}
   - component: {fileID: 8536774181406558462}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemySprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -587,7 +587,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1029229933858188298}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: HPBarPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -627,7 +627,7 @@ GameObject:
   - component: {fileID: 8114382815566988475}
   - component: {fileID: 8114382815566988476}
   - component: {fileID: 8114382815566988479}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -693,14 +693,13 @@ MonoBehaviour:
   speed: 5
   healthbar: {fileID: 0}
   attackValue: 1
-  patrolSpeed: 5
-  chaseSpeed: 5
-  detectionDistance: 5
-  returnToPatrolDistance: 8
-  patrolPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  target: {fileID: 0}
+  enemyspeed: 200
+  nextWaypointDistance: 3
+  stopDistance: 0.5
+  rootDuration: 5
+  enemyGFX: {fileID: 0}
+  IsEnemyRooted: 0
 --- !u!50 &8114382815566988479
 Rigidbody2D:
   serializedVersion: 4

@@ -36,6 +36,9 @@ public class Bullet : MonoBehaviour
 
         
         Debug.Log("Hit");
-        Destroy(gameObject);
+        if (collider.gameObject.tag != "Player")
+        {
+            Destroy(gameObject);
+        }
     }
 }

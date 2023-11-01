@@ -31,7 +31,6 @@ public class MouseController : MonoBehaviour
 
         Direction = PlayerMovement.GetInstance().GetMousePosition() - PlayerMovement.GetInstance().transform.position;
         Direction.z = 0;
-
     }
 
     private void UpdateInteraction()

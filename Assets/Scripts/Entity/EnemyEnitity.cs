@@ -7,6 +7,8 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] protected int Hp;
     [SerializeField] protected float speed;
     protected int currHealth;
+    protected float currSpeed;
+    protected float slowdownFactor;
     [SerializeField] Healthbar healthbar;
     [SerializeField] protected int attackValue;
 
@@ -43,6 +45,21 @@ public class EnemyEntity : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Apply the speed modifier according to the value inputted. e.g. 0.1 means 10% of the original speed. 2.0 means 200% of the original speed.
+    /// </summary>
+    public void ApplySpeedModifier(float speedChanged)
+    {
+        currSpeed = speed * speedChanged;
+    }
+
+    //public void ApplySlowdown(float factor)
+    //{
+    //    // Adjust the enemy's movement speed based on the factor
+    //    slowdownFactor = factor;
+    //}
+
+
     protected virtual void Update()
     {
         if (healthbar) {
@@ -51,6 +68,12 @@ public class EnemyEntity : MonoBehaviour
         }
         UpdateHPEnemy();
     }
+
+    //void FixedUpdate()
+    //{
+    //    // Adjust the enemy's speed based on the slowdownFactor
+    //    currSpeed = speed * slowdownFactor;
+    //}
 
     public virtual void Skill1()
     {

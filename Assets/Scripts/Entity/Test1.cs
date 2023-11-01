@@ -11,12 +11,14 @@ public class Test1 : PlayerEntity
     public float cooldown1 = 5;
     bool isCooldown1 = false;
     public KeyCode ability1;
+    public GameObject beamPrefab;
 
     [Header("Ability 2")]
     public Image Skill_2_Image;
     public float cooldown2 = 5;
     bool isCooldown2 = false;
     public KeyCode ability2;
+    public GameObject aoePrefab;
 
     [Header("Ability 3")]
     public Image Skill_3_Image;
@@ -29,6 +31,9 @@ public class Test1 : PlayerEntity
     public float cooldown4 = 5;
     bool isCooldown4 = false;
     public KeyCode ability4;
+    public GameObject beamPrefab2;
+    public float beamSpeed; // Adjust the speed of the beam
+    public float beamLifetime; // Adjust the maximum lifetime of the beam
 
     [Header("Mana Code")]
     private Slider Mana_slider;
@@ -76,6 +81,13 @@ public class Test1 : PlayerEntity
         {
             if (PlayerMovement.GetInstance().Player.currMana >= 5)
             {
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameObject beam = Instantiate(beamPrefab, transform.position, Quaternion.identity);
+                Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+                beam.GetComponent<Rigidbody2D>().velocity = direction * beamSpeed;
+
+                // Destroy the beam after a certain amount of time
+                Destroy(beam, beamLifetime);
                 isCooldown1 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
                 currMana -= 5;
@@ -110,15 +122,32 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability3) && isCooldown3 == false)
         {
-            if (PlayerMovement.GetInstance().Player.currMana >= 15)
+            if (Input.GetKeyDown(ability3) && isCooldown3 == false)
             {
-                isCooldown3 = true;
-                UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
-                currMana -= 15;
-            }
-            else if (PlayerMovement.GetInstance().Player.currMana <= 15)
-            {
+                if (PlayerMovement.GetInstance().Player.currMana >= 15)
+                {
+                    // Get the mouse position in world coordinates
+                    Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+                    // Instantiate the AoE Prefab at the mouse position
+                    GameObject aoeObject = Instantiate(aoePrefab, mousePos, Quaternion.identity);
+
+                    // Set any additional properties (e.g., damage, explosion time) here
+                    AreaOfEffect aoeScript = aoeObject.GetComponent<AreaOfEffect>();
+                    aoeScript.damage = 15;
+                    aoeScript.explosionTime = 2.0f;
+
+                    // Add a debuff to enemies within the AoE
+                    aoeScript.ApplyDebuff(0.5f);
+
+                    isCooldown3 = true;
+                    UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
+                    currMana -= 15;
+                }
+                else if (PlayerMovement.GetInstance().Player.currMana <= 15)
+                {
+                    // Not enough mana, handle accordingly
+                }
             }
         }
     }
@@ -129,6 +158,22 @@ public class Test1 : PlayerEntity
         {
             if (PlayerMovement.GetInstance().Player.currMana >= 20)
             {
+                //where the beam spawns
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 directionVector = mousePos - (Vector2)gameObject.transform.position;
+                Vector2 posToSpawnIn = (mousePos + (Vector2)gameObject.transform.position) / 2;
+
+                GameObject beam = Instantiate(beamPrefab2, Vector3.zero, Quaternion.identity);
+                float widthOfBeam = beam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
+                float lengthofBeam = directionVector.magnitude * 100;
+                float offSetScale = lengthofBeam / widthOfBeam;
+                //pls dont change the original scale of the beam object
+                beam.transform.localScale = new Vector2(offSetScale, beam.transform.localScale.y);
+                Vector2 dir = directionVector.normalized;
+                // Calculate the angle in degrees from the Vector2
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                beam.transform.eulerAngles = new Vector3(0, 0, angle);
+                beam.transform.position = posToSpawnIn;
                 isCooldown4 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
                 currMana -= 20;
