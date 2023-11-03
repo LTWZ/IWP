@@ -11,11 +11,10 @@ public class Beam : MonoBehaviour
     {
         // Check if the collided object is an enemy
         if (collider.GetComponent<EnemyEntity>())
-            collider.GetComponent<EnemyEntity>().ChangeHealth(-1);
+            collider.GetComponent<EnemyEntity>().ChangeHealth(-damage);
 
         if (collider.gameObject.tag != "Player")
         {
-            Debug.Log(collider.gameObject);
             Destroy(gameObject);
         }
 

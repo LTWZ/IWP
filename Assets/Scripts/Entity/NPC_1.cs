@@ -5,12 +5,30 @@ using UnityEngine;
 public class NPC_1 : MonoBehaviour
 {
     public DialogueTrigger trigger;
+    private bool inTriggerZone = false;
 
-    private void OnCollisionStay2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") == true && Input.GetKeyDown(KeyCode.F))
+        if (collision.CompareTag("Player"))
+        {
+            inTriggerZone = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            inTriggerZone = false;
+        }
+    }
+
+    private void Update()
+    {
+        if (inTriggerZone && Input.GetKeyDown(KeyCode.F))
         {
             trigger.StartDialogue();
         }
     }
 }
+

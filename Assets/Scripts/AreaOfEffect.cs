@@ -29,7 +29,7 @@ public class AreaOfEffect : MonoBehaviour
         {
             Detonate();
         }
-        Debug.Log(enemyLayer.value);
+        //Debug.Log(enemyLayer.value);
     }
 
     void Detonate()

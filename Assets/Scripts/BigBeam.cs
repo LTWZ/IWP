@@ -7,6 +7,7 @@ public class BigBeam : MonoBehaviour
 
     //private bool hitenemy = false;
     public Enemy_1 enemy;
+    private int damage = 10;
     [SerializeField] float duration = 1;
 
     private void OnEnable()
@@ -17,7 +18,7 @@ public class BigBeam : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.GetComponent<EnemyEntity>())
-            collider.GetComponent<EnemyEntity>().ChangeHealth(-10);
+            collider.GetComponent<EnemyEntity>().ChangeHealth(-damage);
     }
 
     IEnumerator beamPersist()

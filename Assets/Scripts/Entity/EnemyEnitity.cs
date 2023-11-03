@@ -32,10 +32,7 @@ public class EnemyEntity : MonoBehaviour
     {
         currHealth += amtChanged;
 
-        if (currHealth > Hp)
-        {
-            currHealth = Hp;
-        }
+        currHealth = Mathf.Clamp(currHealth, 0, Hp);
         // btw since u have reference to hp/maxhp. if u want u can go ahead and add more functionality like if they below certain
         // hp, they trigger something.
 
