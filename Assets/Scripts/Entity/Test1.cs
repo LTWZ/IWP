@@ -25,6 +25,7 @@ public class Test1 : PlayerEntity
     public float cooldown3 = 5;
     bool isCooldown3 = false;
     public KeyCode ability3;
+    public GameObject BHPrefab;
 
     [Header("Ability 4")]
     public Image Skill_4_Image;
@@ -113,6 +114,18 @@ public class Test1 : PlayerEntity
                 isCooldown2 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
                 currMana -= 10;
+                // Instantiate the black hole at the player's position
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                GameObject blackHole = Instantiate(BHPrefab, mousePos, Quaternion.identity);
+
+                // Add a script to control the black hole's behavior
+                BlackHoleScript blackHoleScript = blackHole.GetComponent<BlackHoleScript>();
+                if (blackHoleScript != null)
+                {
+                    // Customize the black hole's behavior (e.g., damage, pull force)
+                    blackHoleScript.SetDamageOverTime(1); // Adjust the damage as needed
+                    blackHoleScript.SetPullForce(10); // Adjust the pull force as needed
+                }
             }
             else if (PlayerMovement.GetInstance().Player.currMana <= 10)
             {

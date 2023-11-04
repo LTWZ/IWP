@@ -460,11 +460,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5951797545621654871, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5951797545621654871, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6089674752642209455, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_Layer
@@ -512,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988472, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988472, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_TagString
@@ -70133,6 +70133,10 @@ PrefabInstance:
       propertyPath: beam
       value: 
       objectReference: {fileID: 2635694883127984476, guid: 9445c08d98a9a824a93f8c56ba88412c, type: 3}
+    - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
+      propertyPath: BHPrefab
+      value: 
+      objectReference: {fileID: 5931775721796409052, guid: 5d5b8ba842eb3a949b9b59a1ad9a7b1b, type: 3}
     - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
       propertyPath: ability1
       value: 49
