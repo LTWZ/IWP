@@ -7,6 +7,7 @@ public class Enemy_1 : EnemyEntity
 {
 
     public Transform target;
+    public GameObject player;
 
     public float nextWaypointDistance = 3f;
     public float stopDistance = 0.5f;
@@ -72,7 +73,14 @@ public class Enemy_1 : EnemyEntity
 
     void FixedUpdate()
     {
+        if (Vector3.Distance(player.transform.position, transform.position) < 15)
+        {
+            EnemyMove();
+        }
+    }
 
+    public void EnemyMove()
+    {
         if (IsEnemyRooted == true)
         {
             rb.velocity = Vector2.zero;
@@ -132,7 +140,6 @@ public class Enemy_1 : EnemyEntity
         {
             enemyGFX.localScale = new Vector3(-1f, 1f, 1f);
         }
-
     }
 
 

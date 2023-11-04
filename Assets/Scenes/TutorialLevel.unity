@@ -571,6 +571,10 @@ PrefabInstance:
       value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988476, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1132036878}
+    - target: {fileID: 8114382815566988476, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1793799857}
@@ -632,11 +636,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988477, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 32.54
+      value: 16.66
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988477, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.41
+      value: -0.74
       objectReference: {fileID: 0}
     - target: {fileID: 8114382815566988477, guid: 67456f9ec18fede4a92d751f22c23300, type: 3}
       propertyPath: m_LocalPosition.z
@@ -70146,9 +70150,17 @@ PrefabInstance:
       value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
+      propertyPath: beamtemp
+      value: 
+      objectReference: {fileID: 2676994559499624895, guid: f156a96ca5bcb4647b3c309422b82c86, type: 3}
+    - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
       propertyPath: currMana
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
+      propertyPath: tempbeam
+      value: 
+      objectReference: {fileID: 2676994559499624895, guid: f156a96ca5bcb4647b3c309422b82c86, type: 3}
     - target: {fileID: 3801587330817731383, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
       propertyPath: aoePrefab
       value: 

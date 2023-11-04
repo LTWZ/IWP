@@ -32,8 +32,11 @@ public class Test1 : PlayerEntity
     bool isCooldown4 = false;
     public KeyCode ability4;
     public GameObject beamPrefab2;
+    public GameObject beamtemp;
     public float beamSpeed; // Adjust the speed of the beam
-    public float beamLifetime; // Adjust the maximum lifetime of the beam
+    public float beamLifetime;
+    public float beamoktimer = 0;
+    public bool beamok = false;// Adjust the maximum lifetime of the beam
 
     [Header("Mana Code")]
     private Slider Mana_slider;
@@ -73,6 +76,7 @@ public class Test1 : PlayerEntity
         Skill4();
         UpdateHP();
         UpdateMana();
+
     }
 
     public override void Skill1()
@@ -156,8 +160,62 @@ public class Test1 : PlayerEntity
     {
         if (Input.GetKeyDown(ability4) && isCooldown4 == false)
         {
+
             if (PlayerMovement.GetInstance().Player.currMana >= 20)
             {
+
+                //where the beam spawns
+                Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Vector2 directionVector = mousePos - (Vector2)gameObject.transform.position;
+                Vector2 posToSpawnIn = (mousePos + (Vector2)gameObject.transform.position) / 2;
+
+                GameObject tempbeam = Instantiate(beamtemp, Vector3.zero, Quaternion.identity);
+                float widthOfBeam = tempbeam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
+                float lengthofBeam = directionVector.magnitude * 100;
+                float offSetScale = lengthofBeam / widthOfBeam;
+                //pls dont change the original scale of the beam object
+                tempbeam.transform.localScale = new Vector2(offSetScale, tempbeam.transform.localScale.y);
+                Vector2 dir = directionVector.normalized;
+                // Calculate the angle in degrees from the Vector2
+                float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                tempbeam.transform.eulerAngles = new Vector3(0, 0, angle);
+                tempbeam.transform.position = posToSpawnIn;
+                isCooldown4 = true;
+                beamok = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
+                currMana -= 20;
+                //if (beamok == true)
+                //{
+                //    GameObject beam = Instantiate(beamPrefab2, Vector3.zero, Quaternion.identity);
+                //    float widthOfBeam = beam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
+                //    float lengthofBeam = directionVector.magnitude * 100;
+                //    float offSetScale = lengthofBeam / widthOfBeam;
+                //    //pls dont change the original scale of the beam object
+                //    beam.transform.localScale = new Vector2(offSetScale, beam.transform.localScale.y);
+                //    Vector2 dir = directionVector.normalized;
+                //    // Calculate the angle in degrees from the Vector2
+                //    float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+                //    beam.transform.eulerAngles = new Vector3(0, 0, angle);
+                //    beam.transform.position = posToSpawnIn;
+                //    beamok = false;
+                //}
+
+
+            }
+            else if (PlayerMovement.GetInstance().Player.currMana <= 20)
+            {
+
+            }
+        }
+        //u can continue
+        if (beamok == true)
+        {
+            beamoktimer += Time.deltaTime;
+            if(beamoktimer >= 1)
+            {
+                beamoktimer = 0;
+                //Destroy(tempbeam);
+
                 //where the beam spawns
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 directionVector = mousePos - (Vector2)gameObject.transform.position;
@@ -174,14 +232,9 @@ public class Test1 : PlayerEntity
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 beam.transform.eulerAngles = new Vector3(0, 0, angle);
                 beam.transform.position = posToSpawnIn;
-                isCooldown4 = true;
-                UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
-                currMana -= 20;
+                beamok = false;
             }
-            else if (PlayerMovement.GetInstance().Player.currMana <= 20)
-            {
 
-            }
         }
     }
 

@@ -7,7 +7,7 @@ public class BigBeam : MonoBehaviour
 
     //private bool hitenemy = false;
     public Enemy_1 enemy;
-    private int damage = 10;
+    public int damage = 10; // was private
     [SerializeField] float duration = 1;
 
     private void OnEnable()
