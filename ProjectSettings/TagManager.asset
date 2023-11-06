@@ -8,6 +8,7 @@ TagManager:
   - ManaBar
   - NPC1
   - Enemy
+  - Skill
   layers:
   - Default
   - TransparentFX

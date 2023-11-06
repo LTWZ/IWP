@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2905477457947265933}
   m_Layer: 0
   m_Name: BlackHole
-  m_TagString: Untagged
+  m_TagString: Skill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -168,6 +168,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4e73eefddaa4a48b433ade57b21a0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pullForce: 10
+  pullForce: 0.001
   damageOverTime: 5
   radius: 5
+  lifetime: 3

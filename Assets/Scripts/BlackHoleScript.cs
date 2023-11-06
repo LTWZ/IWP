@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BlackHoleScript : MonoBehaviour
 {
-    public float pullForce = 1000f; // Force to pull objects towards the black hole
+    public float pullForce = 1f; // Force to pull objects towards the black hole
     public int damageOverTime = 1; // Integer damage applied per second
     private int timerRate = 1;
     public float radius = 5f; // Radius of effect
@@ -44,25 +44,31 @@ public class BlackHoleScript : MonoBehaviour
                 continue; // Skip the player
             }
 
-            Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
-
-            if (rb != null)
+            if (collider.CompareTag("Enemy"))
             {
-                // Calculate force direction
-                Vector2 direction = (transform.position - rb.transform.position).normalized;
-                rb.AddForce(direction * pullForce);
-                rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50f);
-            }
+                // Handle the enemy logic here
+                Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
 
-            if (DOTElapsed > timerRate)
-            {
-                EnemyEntity enemy = collider.GetComponent<EnemyEntity>();
-                if (enemy != null)
+                if (rb != null)
                 {
-                    enemy.ChangeHealth(-damageOverTime);
-                    Debug.Log("enemy hit by BH");
+                    // Calculate force direction
+                    Vector2 direction = (transform.position - rb.transform.position).normalized;
+                    rb.AddForce(direction * pullForce);
+                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50f);
+                }
+
+                if (DOTElapsed > timerRate)
+                {
+                    EnemyEntity enemy = collider.GetComponent<EnemyEntity>();
+                    if (enemy != null)
+                    {
+                        enemy.ChangeHealth(-damageOverTime);
+                        Debug.Log("enemy hit by BH");
+                    }
                 }
             }
+
+
         }
 
         if (DOTElapsed > timerRate)
