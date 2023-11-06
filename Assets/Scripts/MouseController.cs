@@ -13,11 +13,24 @@ public class MouseController : MonoBehaviour
     private Vector3 Direction;
     public event Action Fire;
     private float InteractionRange = 10f; // change it to increase/decrease interaction range
-
+    public delegate void OnNumsInput(int nums);
+    public OnNumsInput onNumsInput;
     // Start is called before the first frame update
     void Start()
     {
         
+    }
+
+    private int GetInputNums()
+    {
+        for (int i = 0; i < 10; i++)
+        {
+            if (Input.GetKeyDown((KeyCode)(48 + i)))
+            {
+                return i;
+            }
+        }
+        return -1;
     }
 
     // Update is called once per frame
@@ -26,13 +39,30 @@ public class MouseController : MonoBehaviour
         if (Input.GetMouseButton(0))
             Fire?.Invoke();
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.R))
             UpdateInteraction();
+
+        if (Input.GetKeyDown(KeyCode.G))
+            DropWeapon();
+
+        if (Input.GetKeyDown(KeyCode.E))
+
+
+        onNumsInput?.Invoke(GetInputNums());
 
         Direction = PlayerMovement.GetInstance().GetMousePosition() - PlayerMovement.GetInstance().transform.position;
         Direction.z = 0;
     }
 
+    private void DropWeapon()
+    {
+        WeaponManager weaponManager = WeaponManager.GetInstance();
+
+        if (weaponManager.GetCurrentWeapon() == null)
+            return;
+
+        weaponManager.DropWeapon(weaponManager.GetCurrentWeapon());
+    }
     private void UpdateInteraction()
     {
         Vector2 pos = PlayerMovement.GetInstance().transform.position;

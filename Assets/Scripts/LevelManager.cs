@@ -59,6 +59,7 @@ public class LevelManager : MonoBehaviour
         }
         else
         {
+            // else if(levelNames.Length < 2)
             Debug.Log("No more available levels.");
             // Handle the case when there are no more levels to load.
         }

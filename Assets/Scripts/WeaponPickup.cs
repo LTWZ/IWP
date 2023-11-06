@@ -34,4 +34,9 @@ public class WeaponPickup : MonoBehaviour, IInteract
         AddToWeaponList();
         Destroy(gameObject);
     }
+
+    public void SetWeaponsSO(WeaponsSO weaponsSO)
+    {
+        this.weaponsSO = weaponsSO;
+    }
 }

@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsSO: {fileID: 0}
-  sp: {fileID: 0}
+  sp: {fileID: 9204490004372695284}
 --- !u!61 &8734836561799498569
 BoxCollider2D:
   m_ObjectHideFlags: 0

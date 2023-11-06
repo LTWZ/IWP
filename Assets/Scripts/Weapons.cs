@@ -38,4 +38,9 @@ public class Weapons : MonoBehaviour
     {
         return EmitterPivot;
     }
+
+    public WeaponsSO GetWeaponsSO()
+    {
+        return weapons_data;
+    }
 }
