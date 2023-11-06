@@ -45,10 +45,12 @@ public class MouseController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.G))
             DropWeapon();
 
+        if (Input.GetKeyDown(KeyCode.Q))
+            onNumsInput?.Invoke(0);
         if (Input.GetKeyDown(KeyCode.E))
+            onNumsInput?.Invoke(1);
 
-
-        onNumsInput?.Invoke(GetInputNums());
+        //onNumsInput?.Invoke(GetInputNums());
 
         Direction = PlayerMovement.GetInstance().GetMousePosition() - PlayerMovement.GetInstance().transform.position;
         Direction.z = 0;
