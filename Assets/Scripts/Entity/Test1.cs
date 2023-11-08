@@ -37,7 +37,9 @@ public class Test1 : PlayerEntity
     public float beamSpeed; // Adjust the speed of the beam
     public float beamLifetime;
     public float beamoktimer = 0;
-    public bool beamok = false;// Adjust the maximum lifetime of the beam
+    public bool beamok = false;
+    public float finishcastingtimer = 0;
+    public bool finishcasting = false;// Adjust the maximum lifetime of the beam
 
     [Header("Mana Code")]
     private Slider Mana_slider;
@@ -176,7 +178,7 @@ public class Test1 : PlayerEntity
 
             if (PlayerMovement.GetInstance().Player.currMana >= 20)
             {
-
+                PlayerMovement.GetInstance().isMovementEnabled = false;
                 //where the beam spawns
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 Vector2 directionVector = mousePos - (Vector2)gameObject.transform.position;
@@ -193,6 +195,7 @@ public class Test1 : PlayerEntity
                 float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
                 tempbeam.transform.eulerAngles = new Vector3(0, 0, angle);
                 tempbeam.transform.position = posToSpawnIn;
+                finishcasting = true;
                 isCooldown4 = true;
                 beamok = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
@@ -215,10 +218,24 @@ public class Test1 : PlayerEntity
 
 
             }
+
             else if (PlayerMovement.GetInstance().Player.currMana <= 20)
             {
 
             }
+
+
+        }
+        if (finishcasting == true)
+        {
+            finishcastingtimer += Time.deltaTime;
+            if (finishcastingtimer >= 1)
+            {
+                finishcastingtimer = 0;
+                PlayerMovement.GetInstance().isMovementEnabled = true;
+                finishcasting = false;
+            }
+
         }
         //u can continue
         if (beamok == true)

@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform HandPivot;
     private Vector2 moveDir;
     public Test1 Player;
+    public bool isMovementEnabled = true;
 
     private void Awake()
     {
@@ -33,6 +34,14 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isMovementEnabled == false)
+        {
+            animator.SetFloat("Horizontal_movement", 0);
+            animator.SetFloat("Vertical_movement", 0);
+            animator.SetFloat("Speed", 0);
+            return;
+        }
+
         if (DialogueManager.isActive == true)
         {
             animator.SetFloat("Horizontal_movement", 0);

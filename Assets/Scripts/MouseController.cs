@@ -46,9 +46,9 @@ public class MouseController : MonoBehaviour
             DropWeapon();
 
         if (Input.GetKeyDown(KeyCode.Q))
-            onNumsInput?.Invoke(0);
-        if (Input.GetKeyDown(KeyCode.E))
             onNumsInput?.Invoke(1);
+        if (Input.GetKeyDown(KeyCode.E))
+            onNumsInput?.Invoke(2);
 
         //onNumsInput?.Invoke(GetInputNums());
 
