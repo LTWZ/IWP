@@ -7,28 +7,24 @@ using TMPro;
 public class Test1 : PlayerEntity
 {
     [Header("Ability 1")]
-    public Image Skill_1_Image;
     public float cooldown1 = 5;
     bool isCooldown1 = false;
     public KeyCode ability1;
     public GameObject beamPrefab;
 
     [Header("Ability 2")]
-    public Image Skill_2_Image;
     public float cooldown2 = 5;
     bool isCooldown2 = false;
     public KeyCode ability2;
     public GameObject aoePrefab;
 
     [Header("Ability 3")]
-    public Image Skill_3_Image;
     public float cooldown3 = 5;
     bool isCooldown3 = false;
     public KeyCode ability3;
     public GameObject BHPrefab;
 
     [Header("Ability 4")]
-    public Image Skill_4_Image;
     public float cooldown4 = 5;
     bool isCooldown4 = false;
     public KeyCode ability4;
@@ -41,24 +37,10 @@ public class Test1 : PlayerEntity
     public float finishcastingtimer = 0;
     public bool finishcasting = false;// Adjust the maximum lifetime of the beam
 
-    [Header("Mana Code")]
-    private Slider Mana_slider;
-    private GameObject Mana_slider_GO;
-    [SerializeField] TextMeshProUGUI Mana_valuetext;
-    public int maxMana = 100;
-    private int currMana;
-    [SerializeField] Healthbar healthbar;
-
     private void Start()
     {
-        Skill_1_Image.fillAmount = 0;
-        Skill_2_Image.fillAmount = 0;
-        Skill_3_Image.fillAmount = 0;
-        Skill_4_Image.fillAmount = 0;
+        GetUIManager();
         UIManager.GetInstance().onCooldown += DisableCooldown;
-        currMana = maxMana;
-        Mana_slider_GO = GameObject.FindGameObjectWithTag("ManaBar");
-        Mana_slider = Mana_slider_GO.GetComponentInChildren<Slider>();
     }
 
     public int GetCurrMana()
@@ -66,10 +48,10 @@ public class Test1 : PlayerEntity
         return currMana;
     }
 
-    public void SetCurrMana(int currMana)
-    {
-        this.currMana = currMana;
-    }
+    //public void SetCurrMana(int currMana)
+    //{
+    //    this.currMana = currMana;
+    //}
 
     public void Update()
     {
@@ -97,7 +79,7 @@ public class Test1 : PlayerEntity
                 Destroy(beam, beamLifetime);
                 isCooldown1 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
-                currMana -= 5;
+                ChangeMana(-5);
             }
             else if (PlayerMovement.GetInstance().Player.currMana <= 5)
             {
@@ -115,7 +97,7 @@ public class Test1 : PlayerEntity
             {
                 isCooldown2 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
-                currMana -= 10;
+                ChangeMana(-10);
                 // Instantiate the black hole at the player's position
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject blackHole = Instantiate(BHPrefab, mousePos, Quaternion.identity);
@@ -161,7 +143,7 @@ public class Test1 : PlayerEntity
 
                     isCooldown3 = true;
                     UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
-                    currMana -= 15;
+                    ChangeMana(-15);
                 }
                 else if (PlayerMovement.GetInstance().Player.currMana <= 15)
                 {
@@ -199,7 +181,7 @@ public class Test1 : PlayerEntity
                 isCooldown4 = true;
                 beamok = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
-                currMana -= 20;
+                ChangeMana(-20);
                 //if (beamok == true)
                 //{
                 //    GameObject beam = Instantiate(beamPrefab2, Vector3.zero, Quaternion.identity);
@@ -270,29 +252,18 @@ public class Test1 : PlayerEntity
 
     public override void UpdateHP()
     {
-        if (healthbar)
-        {
-            healthbar.SetMinandMax(0, Hp);
-            healthbar.UpdateContent(currentHP);
-        }
-
 
     }
     public override void UpdateMana()
     {
-        Mana_valuetext.text = currMana.ToString() + "/" + maxMana.ToString();
-
-        Mana_slider.value = currMana;
-        Mana_slider.maxValue = maxMana;
-
         // testing
         if (Input.GetKeyDown(KeyCode.K))
         {
-            currMana -= 20;
+            ChangeMana(-20);
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            currMana += 20;
+            ChangeMana(20);
         }
     }
 

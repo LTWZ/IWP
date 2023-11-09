@@ -27,7 +27,7 @@ public class Pistol : Weapons
         {
             Rigidbody2D bullet = Instantiate(bullet_prefab, GetEmitterPivot().position, Quaternion.identity).GetComponent<Rigidbody2D>();
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
-            PlayerMovement.GetInstance().Player.SetCurrMana(PlayerMovement.GetInstance().Player.GetCurrMana() - 2);
+            PlayerMovement.GetInstance().Player.ChangeMana(-2);
         }
         else if (PlayerMovement.GetInstance().Player.GetCurrMana() < 2)
         {

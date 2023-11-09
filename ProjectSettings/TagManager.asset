@@ -9,6 +9,7 @@ TagManager:
   - NPC1
   - Enemy
   - Skill
+  - CinemachineCamera
   layers:
   - Default
   - TransparentFX

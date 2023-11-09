@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 973969910, guid: d91dadf12f3634f40a03223d05ed3e72, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 4911976472782355572}
   - component: {fileID: 3801587330817731383}
   m_Layer: 0
-  m_Name: Player
+  m_Name: Rogue
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -243,6 +243,7 @@ MonoBehaviour:
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
   Player: {fileID: 3801587330817731383}
+  isMovementEnabled: 1
 --- !u!61 &2409052710821016801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -327,12 +328,18 @@ MonoBehaviour:
   Skill_3_Image: {fileID: 0}
   cooldown3: 5
   ability3: 0
+  BHPrefab: {fileID: 0}
   Skill_4_Image: {fileID: 0}
   cooldown4: 5
   ability4: 0
   beamPrefab2: {fileID: 2676994559499624895, guid: 04e5e610b4950b2478de11260e21f428, type: 3}
+  beamtemp: {fileID: 0}
   beamSpeed: 3
   beamLifetime: 2
+  beamoktimer: 0
+  beamok: 0
+  finishcastingtimer: 0
+  finishcasting: 0
   Mana_valuetext: {fileID: 0}
   maxMana: 100
   healthbar: {fileID: 0}

@@ -12,19 +12,6 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] Healthbar healthbar;
     [SerializeField] protected int attackValue;
 
-    private void Awake()
-    {
-        if (EnemyManager.GetInstance() != null)
-        {
-            Hp = EnemyManager.GetInstance().LoadHP();
-        }
-        if (EnemyManager.GetInstance() != null)
-        {
-            speed = EnemyManager.GetInstance().LoadSpeed();
-        }
-    }
-
-
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
     /// </summary>
@@ -57,6 +44,10 @@ public class EnemyEntity : MonoBehaviour
     //    slowdownFactor = factor;
     //}
 
+    public virtual void SetTarget()
+    {
+
+    }
 
     protected virtual void Update()
     {

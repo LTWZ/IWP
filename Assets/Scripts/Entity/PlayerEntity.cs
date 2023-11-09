@@ -9,10 +9,25 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] protected int Mana;
     protected int currentHP;
 
- 
+    [Header("Mana Code")]
+    [SerializeField] protected int maxMana = 100;
+    protected int currMana;
+    private UIManager uiManager;
+
     private void Awake()
     {
         currentHP = Hp;
+        currMana = Mana;
+    }
+
+    public void GetUIManager()
+    {
+        if (UIManager.GetInstance() != null)
+        {
+            uiManager = UIManager.GetInstance();
+            uiManager.UpdateHealthDisplay(currentHP, Hp);
+            uiManager.UpdateManaDisplay(currMana, maxMana);
+        }
     }
 
     public virtual void Skill1()
@@ -61,8 +76,25 @@ public class PlayerEntity : MonoBehaviour
         {
             // die ofc
         }
-        UpdateHP();
 
+        uiManager.UpdateHealthDisplay(currentHP, Hp);
+    }
+
+    public void ChangeMana(int amtChanged)
+    {
+        currMana += amtChanged;
+
+        if (currentHP > Hp)
+        {
+            currentHP = Hp;
+        }
+
+        if (currentHP <= 0)
+        {
+            // die ofc
+        }
+
+        uiManager.UpdateManaDisplay(currMana, Mana);
     }
 
     // this is an issue u need fix now. OnTriggerEnter dont trigger bcos both ur enemy and ur player has a boxcollider that is not isTrigger

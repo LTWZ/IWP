@@ -15,7 +15,7 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] WeaponStorage[] weaponStorages;
     [SerializeField] GameObject weaponDisplayPrefab;
     private static WeaponManager instance;
-    [SerializeField] MouseController mouseController;
+    private MouseController mouseController;
     private List<Weapons> WeaponList;
     private Weapons CurrentWeapons;
 
@@ -48,15 +48,23 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
-        instance = this;
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
     }
-    // Start is called before the first frame update
-    void Start()
+
+    private void Start()
     {
+        PlayerManager.GetInstance().onPlayerChange += ChangeMouseControllerReference;
         WeaponList = new();
-        mouseController.onNumsInput += OnWeaponSwap;
-        mouseController.Fire += FireCurrentWeapon;
     }
+
     void OnWeaponSwap(int num)
     {
         int actualVal = num - 1;
@@ -77,11 +85,6 @@ public class WeaponManager : MonoBehaviour
     public static WeaponManager GetInstance()
     {
         return instance;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 
     private void FireCurrentWeapon()
@@ -112,5 +115,15 @@ public class WeaponManager : MonoBehaviour
     public Weapons GetCurrentWeapon()
     {
         return CurrentWeapons;
+    }
+
+    /// <summary>
+    /// Change which mouseController is it refering to. Refers to the PlayerManager
+    /// </summary>
+    void ChangeMouseControllerReference()
+    {
+        mouseController = PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<MouseController>();
+        mouseController.onNumsInput += OnWeaponSwap;
+        mouseController.Fire += FireCurrentWeapon;
     }
 }

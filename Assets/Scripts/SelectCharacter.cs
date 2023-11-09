@@ -2,33 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SelectCharacter : MonoBehaviour
 {
-    public GameObject warriorPrefab; // Assign your player prefabs in the Inspector.
-    public GameObject wizardPrefab;
-    public GameObject roguePrefab;
+    [SerializeField] Button selectWizardButton;
+    [SerializeField] Button selectRogueButton;
+    [SerializeField] Button selectWarriorButton;
+    PlayerManager pm;
 
-    public void ChooseWarrior()
+    private void Start()
     {
-        PlayerPrefs.SetString("SelectedClass", "Warrior");
-        LoadNextScene();
+        selectWizardButton.onClick.AddListener(delegate { SelectClass(PlayerType.WIZARD); });
+        selectRogueButton.onClick.AddListener(delegate { SelectClass(PlayerType.ROGUE); });
+        //selectWarriorButton.onClick.AddListener(delegate { SelectClass(PlayerType.WARRIOR); });
+        pm = PlayerManager.GetInstance();
     }
 
-    public void ChooseMage()
+    void SelectClass(PlayerType whichPlayerType)
     {
-        PlayerPrefs.SetString("SelectedClass", "Wizard");
-        LoadNextScene();
-    }
-
-    public void ChooseRogue()
-    {
-        PlayerPrefs.SetString("SelectedClass", "Rogue");
-        LoadNextScene();
-    }
-
-    private void LoadNextScene()
-    {
+        PlayerManager.GetInstance().SetPlayerType(whichPlayerType);
         SceneManager.LoadScene("TutorialLevel"); // Load the next scene (change "Gameplay" to your scene name).
     }
 }

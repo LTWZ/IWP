@@ -10,6 +10,8 @@ public class EnemyManager : MonoBehaviour
         return instance;
     }
 
+    private GameObject playerReference;
+
     private void Awake()
     {
         if (instance != null)
@@ -23,27 +25,22 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-
-    private int EnemyHp;
-    private float EnemySpeed;
-
-    public void UpdateHP(int hp)
+    private void Start()
     {
-        EnemyHp = hp;
+        PlayerManager.GetInstance().onPlayerChange += ChangePlayerReference;
     }
 
-    public int LoadHP()
+    void ChangePlayerReference()
     {
-        return EnemyHp;
+        playerReference = PlayerManager.GetInstance().GetCurrentPlayer();
     }
 
-    public void UpdateSpeed(int speed)
+    /// <summary>
+    /// Get the player reference for any enemy that spawn to refer to
+    /// </summary>
+    /// <returns></returns>
+    public GameObject GetPlayerReference()
     {
-        EnemySpeed = speed;
-    }
-
-    public float LoadSpeed()
-    {
-        return EnemySpeed;
+        return playerReference;
     }
 }

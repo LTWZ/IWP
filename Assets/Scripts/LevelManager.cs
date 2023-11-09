@@ -38,8 +38,6 @@ public class LevelManager : MonoBehaviour
     // Call this function when the player completes a level
     public void LoadRandomLevel()
     {
-        string[] levelNames = { "Level1", "Level2", "Level3", "Level4", "Level5" };
-
         if (levelNames.Length > 0)
         {
             // Randomly select a level from the list

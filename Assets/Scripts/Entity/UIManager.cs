@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -16,10 +17,26 @@ public class UIManager : MonoBehaviour
         instance = this;
     }
 
+    private void Start()
+    {
+        Debug.Log("RAN");
+        Debug.Log(healthbarValueText.text);
+        skill1.fillAmount = 0;
+        skill2.fillAmount = 0;
+        skill3.fillAmount = 0;
+        skill4.fillAmount = 0;
+    }
+
     [SerializeField] Image skill1;
     [SerializeField] Image skill2;
     [SerializeField] Image skill3;
     [SerializeField] Image skill4;
+    [SerializeField] Slider healthbarSlider;
+    [SerializeField] TextMeshProUGUI healthbarValueText;
+    [SerializeField] Slider manaSlider;
+    [SerializeField] TextMeshProUGUI manaValueText;
+
+
     public delegate void OnCooldown(skillType whichSkill);
     public OnCooldown onCooldown;
 
@@ -56,6 +73,24 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
         onCooldown?.Invoke(theskillType);
+    }
+
+    public void UpdateHealthDisplay(int currHp, int maxHp)
+    {
+        healthbarSlider.value = (float)currHp / maxHp;
+        healthbarValueText.text = currHp.ToString() + "/" + maxHp.ToString();
+        Debug.Log(healthbarValueText.text);
+    }
+
+    public void UpdateManaDisplay(int currMana, int maxMana)
+    {
+        manaSlider.value = (float)currMana / maxMana;
+        manaValueText.text = currMana.ToString() + "/" + maxMana.ToString();
+    }
+
+    private void Update()
+    {
+        Debug.Log(healthbarValueText.text);
     }
 }
 

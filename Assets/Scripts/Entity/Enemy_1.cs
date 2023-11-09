@@ -6,8 +6,7 @@ using TMPro;
 public class Enemy_1 : EnemyEntity
 {
 
-    public Transform target;
-    public GameObject player;
+    private GameObject targetPlayer;
 
     public float nextWaypointDistance = 3f;
     public float stopDistance = 0.5f;
@@ -30,6 +29,7 @@ public class Enemy_1 : EnemyEntity
 
     private void Start()
     {
+        SetTarget();
         currHealth = Hp;
         currSpeed = speed;
         seeker = GetComponent<Seeker>();
@@ -43,7 +43,7 @@ public class Enemy_1 : EnemyEntity
     {
         if (seeker.IsDone())
         {
-            seeker.StartPath(rb.position, target.position, OnPathComplete);
+            seeker.StartPath(rb.position, targetPlayer.transform.position, OnPathComplete);
         }
     }
 
@@ -54,6 +54,11 @@ public class Enemy_1 : EnemyEntity
             path = p;
             currentWaypoint = 0;
         }
+    }
+
+    public override void SetTarget()
+    {
+        targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -73,7 +78,7 @@ public class Enemy_1 : EnemyEntity
 
     void FixedUpdate()
     {
-        if (Vector3.Distance(player.transform.position, transform.position) < 15)
+        if (Vector3.Distance(targetPlayer.transform.position, transform.position) < 15)
         {
             EnemyMove();
         }
@@ -116,7 +121,7 @@ public class Enemy_1 : EnemyEntity
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * currSpeed * Time.deltaTime;
 
-        if (Vector2.Distance(rb.position, target.position) <= stopDistance)
+        if (Vector2.Distance(rb.position, targetPlayer.transform.position) <= stopDistance)
         {
             rb.velocity = Vector2.zero; // Stop the enemy
         }

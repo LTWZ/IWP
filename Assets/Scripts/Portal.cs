@@ -31,17 +31,7 @@ public class Portal : MonoBehaviour
 
     private void LoadRandomLevel()
     {
-        GameManager gameManager = GameManager.Instance;
-        if (gameManager.availableLevels.Count > 0)
-        {
-            int randomIndex = Random.Range(0, gameManager.availableLevels.Count);
-            string randomLevelName = gameManager.availableLevels[randomIndex];
-            gameManager.availableLevels.RemoveAt(randomIndex);
-            SceneManager.LoadScene(randomLevelName);
-        }
-        else
-        {
-            Debug.Log("No more available levels.");
-        }
+        LevelManager levelManager = LevelManager.GetInstance();
+        levelManager.LoadRandomLevel();
     }
 }
