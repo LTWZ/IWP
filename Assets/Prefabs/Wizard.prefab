@@ -317,6 +317,8 @@ MonoBehaviour:
   Hp: 100
   speed: 0
   Mana: 100
+  maxMana: 100
+  abitiliesSet: {fileID: 11400000, guid: 3adc940fb3feb4d419bc7743428b02cc, type: 2}
   cooldown1: 1
   ability1: 49
   beamPrefab: {fileID: 2635694883127984476, guid: 9445c08d98a9a824a93f8c56ba88412c, type: 3}
@@ -336,9 +338,6 @@ MonoBehaviour:
   beamok: 0
   finishcastingtimer: 0
   finishcasting: 0
-  Mana_valuetext: {fileID: 0}
-  maxMana: 100
-  healthbar: {fileID: 0}
 --- !u!1 &7585777571270661954
 GameObject:
   m_ObjectHideFlags: 0

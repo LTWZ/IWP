@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4a4295ca1090a4c94f1f47af571350, type: 3}
   m_Name: Skill 1
   m_EditorClassIdentifier: 
-  abilitySprite: {fileID: 21300000, guid: 17b6e3b0ed0605c4498d788b26e21b4a, type: 3}
+  abilitySprite: {fileID: 0}
   cooldown: 1
   manaCost: 5

@@ -25,6 +25,7 @@ public class UIManager : MonoBehaviour
         skill2.fillAmount = 0;
         skill3.fillAmount = 0;
         skill4.fillAmount = 0;
+        LoadSkillImages();
     }
 
     [SerializeField] Image skill1;
@@ -36,10 +37,26 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider manaSlider;
     [SerializeField] TextMeshProUGUI manaValueText;
 
-
     public delegate void OnCooldown(skillType whichSkill);
     public OnCooldown onCooldown;
 
+    public void LoadSkillImages()
+    {
+        PlayerManager playerManager = PlayerManager.GetInstance();
+        if (playerManager != null)
+        {
+
+            PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+            Debug.Log(player);
+            Debug.Log(playerManager.GetCurrentPlayer());
+            Debug.Log(playerManager);
+
+            skill1.sprite = player.GetAbilitiesSet().ability1.abilitySprite;
+            skill2.sprite = player.GetAbilitiesSet().ability2.abilitySprite;
+            skill3.sprite = player.GetAbilitiesSet().ability3.abilitySprite;
+            skill4.sprite = player.GetAbilitiesSet().ability4.abilitySprite;
+        }
+    }
     public void UpdateCooldownStuff(float timer, skillType whichSkill)
     {
         Image imageSkill = null;
@@ -90,6 +107,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
+
         Debug.Log(healthbarValueText.text);
     }
 }

@@ -14,10 +14,16 @@ public class PlayerEntity : MonoBehaviour
     protected int currMana;
     private UIManager uiManager;
 
+    [SerializeField] AbitiliesSet abitiliesSet;
     private void Awake()
     {
         currentHP = Hp;
         currMana = Mana;
+    }
+
+    public AbitiliesSet GetAbilitiesSet()
+    {
+        return abitiliesSet;
     }
 
     public void GetUIManager()
