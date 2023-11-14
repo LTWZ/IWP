@@ -108,7 +108,7 @@ public class UIManager : MonoBehaviour
     private void Update()
     {
 
-        Debug.Log(healthbarValueText.text);
+        //Debug.Log(healthbarValueText.text);
     }
 }
 

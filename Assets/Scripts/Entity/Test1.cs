@@ -257,14 +257,14 @@ public class Test1 : PlayerEntity
     public override void UpdateMana()
     {
         // testing
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            ChangeMana(-20);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
-            ChangeMana(20);
-        }
+        //if (Input.GetKeyDown(KeyCode.K))
+        //{
+        //    ChangeMana(-20);
+        //}
+        //else if (Input.GetKeyDown(KeyCode.L))
+        //{
+        //    ChangeMana(20);
+        //}
     }
 
     void DisableCooldown(skillType whatSkill)

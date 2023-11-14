@@ -2,6 +2,8 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using NavMeshPlus;
+using UnityEngine.AI;
 
 public class Enemy_1 : EnemyEntity
 {
@@ -27,6 +29,7 @@ public class Enemy_1 : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+
     private void Start()
     {
         SetTarget();
@@ -37,6 +40,7 @@ public class Enemy_1 : EnemyEntity
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
+
 
 
     void UpdatePath()
@@ -152,6 +156,7 @@ public class Enemy_1 : EnemyEntity
     {
         if (currHealth <= 0)
         {
+            RoomManager.GetInstance().EnemyDefeated();
             Destroy(gameObject);
         }
     }

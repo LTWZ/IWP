@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyEntity : MonoBehaviour
 {
@@ -11,10 +12,13 @@ public class EnemyEntity : MonoBehaviour
     protected float slowdownFactor;
     [SerializeField] Healthbar healthbar;
     [SerializeField] protected int attackValue;
+    [SerializeField] NavMeshAgent navMeshAgent;
 
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
     /// </summary>
+    /// 
+
     public void ChangeHealth(int amtChanged)
     {
         currHealth += amtChanged;
@@ -56,6 +60,7 @@ public class EnemyEntity : MonoBehaviour
             healthbar.UpdateContent(currHealth);
         }
         UpdateHPEnemy();
+        navMeshAgent.updateRotation = false;
     }
 
     //void FixedUpdate()
