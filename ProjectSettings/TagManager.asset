@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - Skill
   - CinemachineCamera
+  - RoomManager
   layers:
   - Default
   - TransparentFX

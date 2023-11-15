@@ -8,12 +8,14 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab;  // The prefab of the enemy to spawn
     public int numberOfEnemiesToSpawn = 5;  // Number of enemies to spawn
     public float spawnInterval = 2f;  // Time interval between spawns
-
-    void Start()
+    private Coroutine coroutine;
+    void Update()
     {
-        StartCoroutine(SpawnEnemies());
+        if (RoomManager.GetInstance().hasPlayerEntered == true && coroutine == null)
+        {
+            coroutine = StartCoroutine(SpawnEnemies());
+        }
     }
-
     IEnumerator SpawnEnemies()
     {
         for (int i = 0; i < numberOfEnemiesToSpawn; i++)

@@ -6,6 +6,7 @@ public class RoomManager : MonoBehaviour
 {
     public int totalEnemies;
     private int defeatedEnemies;
+    public bool hasPlayerEntered = false;
 
     public static RoomManager instance;
 
@@ -54,9 +55,10 @@ public class RoomManager : MonoBehaviour
     // Called when the player enters the room
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player") && defeatedEnemies != totalEnemies)
+        if (collider.CompareTag("Player")) //&& defeatedEnemies != totalEnemies)
         {
             CloseExit();
+            hasPlayerEntered = true;
         }
     }
 
