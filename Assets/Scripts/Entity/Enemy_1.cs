@@ -16,6 +16,8 @@ public class Enemy_1 : EnemyEntity
     private float rootTimer = 0f;
 
     public Transform enemyGFX;
+    private float attackTimer = 0f;
+    public float attackCooldown = 2f;
 
     Path path;
     int currentWaypoint = 0;
@@ -37,6 +39,7 @@ public class Enemy_1 : EnemyEntity
         currSpeed = speed;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -158,6 +161,28 @@ public class Enemy_1 : EnemyEntity
         {
             RoomManager.GetInstance().EnemyDefeated();
             Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject == targetPlayer)
+        {
+            if (Time.time >= attackTimer)
+            {
+                Debug.Log("Take dmg");
+                targetPlayer.GetComponent<PlayerEntity>().ChangeHealth(-attackValue);
+                //ChangeHealth(-collision.GetComponent<EnemyEntity>().GetAttackValue());
+       
+
+                // Set the next allowed attack time
+                attackTimer = Time.time + attackCooldown;
+            }
+            else
+            {
+                // Optionally, you can provide feedback that the enemy is on cooldown
+                Debug.Log("Enemy is on cooldown");
+            }
         }
     }
 }

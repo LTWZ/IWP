@@ -55,13 +55,20 @@ public class Test1 : PlayerEntity
 
     public void Update()
     {
-        Skill1();
-        Skill2();
-        Skill3();
-        Skill4();
         UpdateHP();
         UpdateMana();
+        if (DialogueManager.isActive == false)
+        {
+            Skill1();
+            Skill2();
+            Skill3();
+            Skill4();
 
+        }
+        else if (DialogueManager.isActive == true)
+        {
+
+        }
     }
 
     public override void Skill1()
@@ -256,15 +263,14 @@ public class Test1 : PlayerEntity
     }
     public override void UpdateMana()
     {
-        // testing
-        //if (Input.GetKeyDown(KeyCode.K))
-        //{
-        //    ChangeMana(-20);
-        //}
-        //else if (Input.GetKeyDown(KeyCode.L))
-        //{
-        //    ChangeMana(20);
-        //}
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            ChangeMana(-20);
+        }
+        else if (Input.GetKeyDown(KeyCode.L))
+        {
+            ChangeMana(20);
+        }
     }
 
     void DisableCooldown(skillType whatSkill)

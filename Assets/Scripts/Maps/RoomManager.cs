@@ -7,6 +7,8 @@ public class RoomManager : MonoBehaviour
     public int totalEnemies;
     private int defeatedEnemies;
     public bool hasPlayerEntered = false;
+    public bool allEnemiesDefeated = false;
+    private BoxCollider2D currentBoxcollider;
 
     public static RoomManager instance;
 
@@ -22,7 +24,8 @@ public class RoomManager : MonoBehaviour
 
     private void Start()
     {
-        OpenExit();
+        currentBoxcollider = GetComponent<BoxCollider2D>();
+        OpenExit(); // Start with the exit open
     }
 
     // Called when an enemy in the room is defeated
@@ -33,62 +36,51 @@ public class RoomManager : MonoBehaviour
         // Check if all enemies are defeated
         if (defeatedEnemies == totalEnemies)
         {
-            // All enemies defeated, allow the player to leave
+            // All enemies defeated, allow the player to leave permanently
             OpenExit();
+            allEnemiesDefeated = true;
+            if (allEnemiesDefeated == true)
+            {
+                currentBoxcollider.enabled = false;
+            }
         }
     }
 
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.K))
-    //    {
-    //        DisableTilemapCollider.GetInstance().EnableTMCollider();
-    //        TilemapManager.GetInstance().EnableTilemap();
-    //    }
-    //    else if (Input.GetKeyDown(KeyCode.L))
-    //    {
-    //        DisableTilemapCollider.GetInstance().DisableTMCollider();
-    //        TilemapManager.GetInstance().DisableTilemap();
-    //    }
-    //}
 
     // Called when the player enters the room
     private void OnTriggerEnter2D(Collider2D collider)
-    {
-        if (collider.CompareTag("Player")) //&& defeatedEnemies != totalEnemies)
-        {
-            CloseExit();
-            hasPlayerEntered = true;
-        }
-    }
-
-    // Called when the player exits the room
-    private void OnTriggerExit2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
         {
             if (defeatedEnemies == totalEnemies)
             {
-                OpenExit();
+                CloseExit(); // Close the exit only if enemies are not all defeated
             }
-            else
-            {
 
-            }
+            hasPlayerEntered = true;
         }
     }
 
-    // Close the exit or trigger other relevant actions
-    public void CloseExit()
-    {
-        DisableTilemapCollider.GetInstance().EnableTMCollider();
-        TilemapManager.GetInstance().EnableTilemap();
-    }
+    //// Called when the player exits the room
+    //private void OnTriggerExit2D(Collider2D collider)
+    //{
+    //    if (collider.CompareTag("Player") && allEnemiesDefeated == true)
+    //    {
+    //        OpenExit(); // Open the exit when the player exits
+    //    }
+    //}
 
-    // Open the exit or trigger other relevant actions
+    // Open the exit and trigger other relevant actions
     public void OpenExit()
     {
         DisableTilemapCollider.GetInstance().DisableTMCollider();
         TilemapManager.GetInstance().DisableTilemap();
+    }
+
+    // Close the exit and trigger other relevant actions
+    public void CloseExit()
+    {
+        DisableTilemapCollider.GetInstance().EnableTMCollider();
+        TilemapManager.GetInstance().EnableTilemap();
     }
 }

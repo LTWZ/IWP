@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class EnemySpawner : MonoBehaviour
 {
     public GameObject enemyPrefab;  // The prefab of the enemy to spawn
     public int numberOfEnemiesToSpawn = 5;  // Number of enemies to spawn
-    public float spawnInterval = 2f;  // Time interval between spawns
+    public float spawnInterval = 2f;
+    public float spawnRadius = 5f; // Time interval between spawns
     private Coroutine coroutine;
     void Update()
     {
@@ -31,6 +30,10 @@ public class EnemySpawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-        Instantiate(enemyPrefab, transform.position, Quaternion.identity);
+        // Generate a random position within the specified radius
+        Vector2 randomSpawnPosition = (Random.insideUnitCircle * spawnRadius) + (Vector2)transform.position;
+
+        // Instantiate the enemy at the random position
+        Instantiate(enemyPrefab, randomSpawnPosition, Quaternion.identity);
     }
 }
