@@ -39,7 +39,7 @@ public class Enemy_1 : EnemyEntity
         currSpeed = speed;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
+        //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -85,6 +85,7 @@ public class Enemy_1 : EnemyEntity
 
     void FixedUpdate()
     {
+        targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
         if (Vector3.Distance(targetPlayer.transform.position, transform.position) < 15)
         {
             EnemyMove();
