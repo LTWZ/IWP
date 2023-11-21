@@ -160,7 +160,7 @@ public class Enemy_1 : EnemyEntity
     {
         if (currHealth <= 0)
         {
-            RoomManager.GetInstance().EnemyDefeated();
+            //RoomManager.GetInstance().EnemyDefeated();
             Destroy(gameObject);
         }
     }
