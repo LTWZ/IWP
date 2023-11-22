@@ -80,6 +80,8 @@ public class Test1 : PlayerEntity
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject beam = Instantiate(beamPrefab, transform.position, Quaternion.identity);
                 Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
+                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+                beam.transform.rotation = Quaternion.Euler(0, 0, angle);
                 beam.GetComponent<Rigidbody2D>().velocity = direction * beamSpeed;
 
                 // Destroy the beam after a certain amount of time

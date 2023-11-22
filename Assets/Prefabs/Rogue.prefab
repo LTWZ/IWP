@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 2409052710821016801}
   - component: {fileID: 2409052710821016806}
   - component: {fileID: 4911976472782355572}
-  - component: {fileID: 3801587330817731383}
+  - component: {fileID: 245297895226298507}
   m_Layer: 0
   m_Name: Rogue
   m_TagString: Player
@@ -242,7 +242,7 @@ MonoBehaviour:
   rb: {fileID: 2409052710821016829}
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
-  Player: {fileID: 3801587330817731383}
+  Player: {fileID: 0}
   isMovementEnabled: 1
 --- !u!61 &2409052710821016801
 BoxCollider2D:
@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1dd4e43d6890f4daf7b5202cefc077, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3801587330817731383
+--- !u!114 &245297895226298507
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -311,29 +311,29 @@ MonoBehaviour:
   m_GameObject: {fileID: 2409052710821016828}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70994cf5ce1239d49ac1144686ac4307, type: 3}
+  m_Script: {fileID: 11500000, guid: cd79086593498ff45be899b03d05811b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 100
-  speed: 0
+  speed: 5
   Mana: 100
   maxMana: 100
-  abitiliesSet: {fileID: 11400000, guid: 3adc940fb3feb4d419bc7743428b02cc, type: 2}
+  abitiliesSet: {fileID: 11400000, guid: 19a0f7e0248b5d04bbca1d1f0d490723, type: 2}
   cooldown1: 5
-  ability1: 0
-  beamPrefab: {fileID: 2635694883127984476, guid: 9445c08d98a9a824a93f8c56ba88412c, type: 3}
+  ability1: 49
+  beamPrefab: {fileID: 0}
   cooldown2: 5
-  ability2: 0
+  ability2: 50
   aoePrefab: {fileID: 0}
   cooldown3: 5
-  ability3: 0
+  ability3: 51
   BHPrefab: {fileID: 0}
   cooldown4: 5
-  ability4: 0
-  beamPrefab2: {fileID: 2676994559499624895, guid: 04e5e610b4950b2478de11260e21f428, type: 3}
+  ability4: 52
+  beamPrefab2: {fileID: 0}
   beamtemp: {fileID: 0}
-  beamSpeed: 3
-  beamLifetime: 2
+  beamSpeed: 0
+  beamLifetime: 0
   beamoktimer: 0
   beamok: 0
   finishcastingtimer: 0
