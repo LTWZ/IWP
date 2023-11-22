@@ -23,13 +23,13 @@ public class AK : Weapons
     protected override void Shoot()
     {
         //FINISH UP LOGIC TMR
-        if (PlayerMovement.GetInstance().Player.GetCurrMana() >= 3)
+        if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 3)
         {
             Rigidbody2D bullet = Instantiate(bullet_prefab, GetEmitterPivot().position, Quaternion.identity).GetComponent<Rigidbody2D>();
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
-            PlayerMovement.GetInstance().Player.ChangeMana(-3);
+            PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeMana(-3);
         }
-        else if (PlayerMovement.GetInstance().Player.GetCurrMana() < 3)
+        else if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() < 3)
         {
 
         }

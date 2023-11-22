@@ -43,11 +43,6 @@ public class Test1 : PlayerEntity
         UIManager.GetInstance().onCooldown += DisableCooldown;
     }
 
-    public int GetCurrMana()
-    {
-        return currMana;
-    }
-
     //public void SetCurrMana(int currMana)
     //{
     //    this.currMana = currMana;

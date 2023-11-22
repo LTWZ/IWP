@@ -63,9 +63,37 @@ public class LevelManager : MonoBehaviour
         }
     }
 
+    // New function to load a specific level by name
+    public void LoadSpecificLevel(string levelName)
+    {
+        if (availableLevels.Contains(levelName))
+        {
+            Debug.Log("Loading specific level: " + levelName);
+            SceneManager.LoadScene(levelName);
+        }
+        else
+        {
+            Debug.Log("Level not available: " + levelName);
+        }
+    }
+
     // Call this function to load the boss level
     public void LoadBossLevel()
     {
         SceneManager.LoadScene("BossLevel");
+    }
+
+    public void LoadWizardTutorialLevel()
+    {
+        SceneManager.LoadScene("WizardTutorial");
+    }
+
+    public void LoadRogueTutorialLevel()
+    {
+        SceneManager.LoadScene("RogueTutorial");
+    }
+    public void LoadFighterTutorialLevel()
+    {
+        SceneManager.LoadScene("FighterTutorial");
     }
 }

@@ -21,6 +21,11 @@ public class PlayerEntity : MonoBehaviour
         currMana = Mana;
     }
 
+    public int GetCurrMana()
+    {
+        return currMana;
+    }
+
     public AbitiliesSet GetAbilitiesSet()
     {
         return abitiliesSet;

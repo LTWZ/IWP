@@ -319,25 +319,15 @@ MonoBehaviour:
   Mana: 100
   maxMana: 100
   abitiliesSet: {fileID: 11400000, guid: 19a0f7e0248b5d04bbca1d1f0d490723, type: 2}
-  cooldown1: 5
+  cooldown1: 1
   ability1: 49
-  beamPrefab: {fileID: 0}
-  cooldown2: 5
+  teleportRange: 10
+  cooldown2: 1
   ability2: 50
-  aoePrefab: {fileID: 0}
-  cooldown3: 5
+  cooldown3: 1
   ability3: 51
-  BHPrefab: {fileID: 0}
-  cooldown4: 5
+  cooldown4: 1
   ability4: 52
-  beamPrefab2: {fileID: 0}
-  beamtemp: {fileID: 0}
-  beamSpeed: 0
-  beamLifetime: 0
-  beamoktimer: 0
-  beamok: 0
-  finishcastingtimer: 0
-  finishcasting: 0
 --- !u!1 &7585777571270661954
 GameObject:
   m_ObjectHideFlags: 0

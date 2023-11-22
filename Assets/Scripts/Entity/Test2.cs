@@ -8,7 +8,8 @@ public class Test2 : PlayerEntity
     public float cooldown1 = 5;
     bool isCooldown1 = false;
     public KeyCode ability1;
-    public float teleportRange = 10f;
+    public float teleportRange = 5f;
+    public float teleportDistanceMultiplier = 5f;
 
     [Header("Ability 2")]
     public float cooldown2 = 5;
@@ -29,11 +30,6 @@ public class Test2 : PlayerEntity
     {
         GetUIManager();
         UIManager.GetInstance().onCooldown += DisableCooldown;
-    }
-
-    public int GetCurrMana()
-    {
-        return currMana;
     }
 
     public void Update()
@@ -62,15 +58,32 @@ public class Test2 : PlayerEntity
     void TeleportToMousePosition()
     {
         // Get the mouse position in world coordinates
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePosition.y = 0.5f; // Adjust the height as needed
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        /*mousePosition.y = 0.5f;*/ // Adjust the height as needed
 
         // Calculate the direction and distance to the mouse position
-        Vector3 teleportDirection = mousePosition - transform.position;
-        float teleportDistance = Mathf.Min(teleportRange, teleportDirection.magnitude);
+        Vector2 teleportDirection = (mousePos - (Vector2)transform.position);
+        float teleportDistance = teleportDirection.magnitude;
+        teleportDistance = Mathf.Clamp(teleportDistance, 0f, 5f);
+        Debug.Log(teleportDistance);
 
-        // Teleport the character to the mouse position within the teleport range
-        transform.position = transform.position + teleportDirection.normalized * teleportDistance;
+        if (Input.GetKeyDown(ability1) && isCooldown1 == false)
+        {
+            if (currMana >= 5)
+            {
+                // Teleport the character to the mouse position within the teleport range
+                transform.position = (Vector3)((Vector2)transform.position + teleportDirection.normalized * teleportDistance);
+                isCooldown1 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
+                ChangeMana(-5);
+            }
+            else if (currMana <= 5)
+            {
+
+            }
+
+        }
+
     }
 
     public override void Skill2()
