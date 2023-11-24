@@ -13,6 +13,10 @@ public class PlayerEntity : MonoBehaviour
     [SerializeField] protected int maxMana = 100;
     protected int currMana;
     private UIManager uiManager;
+    public bool canUseskill1 = false;
+    public bool canUseskill2 = false;
+    public bool canUseskill3 = false;
+    public bool canUseskill4 = false;
 
     [SerializeField] AbitiliesSet abitiliesSet;
     private void Awake()

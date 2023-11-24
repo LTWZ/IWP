@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Test1 : PlayerEntity
 {
@@ -52,18 +53,54 @@ public class Test1 : PlayerEntity
     {
         UpdateHP();
         UpdateMana();
-        if (DialogueManager.isActive == false)
+
+        // Check if the current scene is a tutorial scene
+        bool isTutorialScene = IsTutorialScene();
+
+        // If the scene is not a tutorial scene and the dialogue is not active, allow abilities
+        if (!isTutorialScene && !DialogueManager.isActive)
         {
             Skill1();
             Skill2();
             Skill3();
             Skill4();
-
         }
-        else if (DialogueManager.isActive == true)
+        else
         {
+            if (canUseskill1 == true)
+            {
+                Skill1();
+            }
+            else
+            {
 
+            }
+            // Optionally handle the case when the scene is a tutorial or dialogue is active
         }
+
+
+
+
+    }
+
+    // Method to check if the current scene is a tutorial scene
+    private bool IsTutorialScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Check by scene name
+        if (currentScene.name == "TutorialLevel" || currentScene.name == "WizardTutorial" || currentScene.name == "RogueTutorial" || currentScene.name == "FighterTutorial")
+        {
+            return true;
+        }
+
+        // Alternatively, check by scene build index
+        // if (currentScene.buildIndex == yourTutorialSceneBuildIndex)
+        // {
+        //     return true;
+        // }
+
+        return false;
     }
 
     public override void Skill1()
@@ -83,7 +120,15 @@ public class Test1 : PlayerEntity
                 Destroy(beam, beamLifetime);
                 isCooldown1 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
-                ChangeMana(-5);
+                if (canUseskill1 == true)
+                {
+
+                }
+                else
+                {
+                    ChangeMana(-5);
+                }
+
             }
             else if (PlayerMovement.GetInstance().Player.currMana <= 5)
             {

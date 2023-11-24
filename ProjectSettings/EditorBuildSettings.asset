@@ -29,4 +29,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BossLevel.unity
     guid: b85b33ff5d9c53141b3c35375bcb9aac
+  - enabled: 1
+    path: Assets/Scenes/WizardTutorial.unity
+    guid: bbbaad70f43c3f94fbf9c5bcfeecaf4d
+  - enabled: 1
+    path: Assets/Scenes/RogueTutorial.unity
+    guid: 1c099edeebd1f4a4dad3384622bf38cc
+  - enabled: 1
+    path: Assets/Scenes/FighterTutorial.unity
+    guid: 885159e07e7989e40b35893c88f42941
   m_configObjects: {}

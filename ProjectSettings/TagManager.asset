@@ -11,6 +11,10 @@ TagManager:
   - Skill
   - CinemachineCamera
   - RoomManager
+  - Skill1Tutorial
+  - Skill2Tutorial
+  - Skill3Tutorial
+  - Skill4Tutorial
   layers:
   - Default
   - TransparentFX

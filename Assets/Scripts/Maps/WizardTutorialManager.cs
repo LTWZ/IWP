@@ -1,41 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class WizardTutorialManager : MonoBehaviour
 {
-    private BoxCollider2D currentBoxcollider;
-    private void Start()
-    {
-        currentBoxcollider = GetComponent<BoxCollider2D>(); // Start with the exit open
-    }
+    public int expectedLayer = 8; // Set the expected layer for this room
+    public TilemapManager tilemapManager;
+    public DisableTilemapCollider disableTilemapCollider;
 
-    // Called when the player enters the room
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.CompareTag("Player") && collider.gameObject.layer == expectedLayer)
         {
-            if (collider.gameObject.layer == LayerMask.NameToLayer("Wizard"))
-            {
-                OpenExit();
-            }
-            else
-            {
-
-            }
+            OpenRoom();
         }
     }
 
-    public void OpenExit()
+    private void OnTriggerExit2D(Collider2D collider)
     {
-        DisableTilemapCollider.GetInstance().DisableTMCollider();
-        TilemapManager.GetInstance().DisableTilemap();
+        if (collider.CompareTag("Player") && collider.gameObject.layer == expectedLayer)
+        {
+            CloseRoom();
+        }
     }
 
-    // Close the exit and trigger other relevant actions
-    public void CloseExit()
+    private void OpenRoom()
     {
-        DisableTilemapCollider.GetInstance().EnableTMCollider();
-        TilemapManager.GetInstance().EnableTilemap();
+        // Disable the collider and tilemap
+        if (disableTilemapCollider != null)
+        {
+            disableTilemapCollider.DisableTMCollider();
+        }
+
+        if (tilemapManager != null)
+        {
+            tilemapManager.DisableTilemap();
+        }
+    }
+
+    private void CloseRoom()
+    {
+        // Disable the collider and tilemap
+        if (disableTilemapCollider != null)
+        {
+            disableTilemapCollider.EnableTMCollider();
+        }
+
+        if (tilemapManager != null)
+        {
+            tilemapManager.EnableTilemap();
+        }
     }
 }
