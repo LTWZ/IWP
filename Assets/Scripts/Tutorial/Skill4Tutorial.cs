@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class Skill4Tutorial : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Test1 Player;
+    public bool canUseSkill4 = false;
+
+    public static Skill4Tutorial instance;
+
+    public static Skill4Tutorial GetInstance()
     {
-        
+        return instance;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        
+        instance = this;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            PlayerMovement.GetInstance().Player.canUseskill4 = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Player"))
+        {
+            PlayerMovement.GetInstance().Player.canUseskill4 = false;
+        }
     }
 }

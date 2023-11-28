@@ -13,6 +13,7 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] Healthbar healthbar;
     [SerializeField] protected int attackValue;
     [SerializeField] NavMeshAgent navMeshAgent;
+    private Room roomReference;
 
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
@@ -30,6 +31,7 @@ public class EnemyEntity : MonoBehaviour
 
         if (currHealth <= 0)
         {
+            roomReference.ReduceEnemy();
             // die ofc
         }
     }
@@ -60,7 +62,7 @@ public class EnemyEntity : MonoBehaviour
             healthbar.UpdateContent(currHealth);
         }
         UpdateHPEnemy();
-        navMeshAgent.updateRotation = false;
+        //navMeshAgent.updateRotation = false;
     }
 
     //void FixedUpdate()
@@ -105,5 +107,13 @@ public class EnemyEntity : MonoBehaviour
     public int GetAttackValue()
     {
         return attackValue;
+    }
+
+    /// <summary>
+    /// Set the room reference to whatever room that created this is.
+    /// </summary>
+    public void SetRoomReference(Room theRoomReference)
+    {
+        roomReference = theRoomReference;
     }
 }

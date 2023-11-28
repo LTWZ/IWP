@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Beam : MonoBehaviour
 {
-    public int damage = 1;
+    public int damage = 10;
     public Enemy_1 enemy;
 
     void OnTriggerEnter2D(Collider2D collider)

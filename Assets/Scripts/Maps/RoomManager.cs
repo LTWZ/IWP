@@ -4,11 +4,23 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public int totalEnemies;
-    private int defeatedEnemies;
-    public bool hasPlayerEntered = false;
-    public bool allEnemiesDefeated = false;
-    private BoxCollider2D currentBoxcollider;
+    [System.Serializable]
+    public class EnemyType
+    {
+        public string enemyName;
+        public GameObject enemyPrefab;
+    }
+
+    [System.Serializable]
+    public class Room
+    {
+        public string roomName;
+        public List<Transform> spawnPoints;
+        public List<EnemyType> enemyTypes;
+        public GameObject door; // Reference to the door associated with the room
+    }
+
+    public List<Room> rooms = new List<Room>();
 
     public static RoomManager instance;
 
@@ -22,65 +34,81 @@ public class RoomManager : MonoBehaviour
         instance = this;
     }
 
-    private void Start()
+    void Start()
     {
-        currentBoxcollider = GetComponent<BoxCollider2D>();
-        OpenExit(); // Start with the exit open
+        // Example: Spawn enemies in the first room
+        SpawnEnemies("Room1");
     }
 
-    // Called when an enemy in the room is defeated
-    public void EnemyDefeated()
+    public void SpawnEnemies(string roomName)
     {
-        defeatedEnemies++;
+        Room room = GetRoomByName(roomName);
 
-        // Check if all enemies are defeated
-        if (defeatedEnemies == totalEnemies)
+        if (room != null)
         {
-            // All enemies defeated, allow the player to leave permanently
-            OpenExit();
-            allEnemiesDefeated = true;
-            if (allEnemiesDefeated == true)
+            foreach (Transform spawnPoint in room.spawnPoints)
             {
-                currentBoxcollider.enabled = false;
+                EnemyType enemyType = room.enemyTypes[Random.Range(0, room.enemyTypes.Count)];
+                Instantiate(enemyType.enemyPrefab, spawnPoint.position, Quaternion.identity);
             }
+        }
+        else
+        {
+            Debug.LogWarning("Room not found: " + roomName);
         }
     }
 
-
-    // Called when the player enters the room
-    private void OnTriggerEnter2D(Collider2D collider)
+    private Room GetRoomByName(string roomName)
     {
-        if (collider.CompareTag("Player"))
-        {
-            if (defeatedEnemies == totalEnemies)
-            {
-                CloseExit(); // Close the exit only if enemies are not all defeated
-            }
+        return rooms.Find(room => room.roomName == roomName);
+    }
 
-            hasPlayerEntered = true;
+    public void EnemyDefeated(string roomName)
+    {
+        Room room = GetRoomByName(roomName);
+
+        if (room != null)
+        {
+            // Check if all enemies are defeated in the room
+            if (AllEnemiesDefeated(room))
+            {
+                OpenDoor(room);
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Room not found: " + roomName);
         }
     }
 
-    //// Called when the player exits the room
-    //private void OnTriggerExit2D(Collider2D collider)
-    //{
-    //    if (collider.CompareTag("Player") && allEnemiesDefeated == true)
-    //    {
-    //        OpenExit(); // Open the exit when the player exits
-    //    }
-    //}
-
-    // Open the exit and trigger other relevant actions
-    public void OpenExit()
+    private bool AllEnemiesDefeated(Room room)
     {
-        DisableTilemapCollider.GetInstance().DisableTMCollider();
-        TilemapManager.GetInstance().DisableTilemap();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy"); // Adjust the tag as needed
+
+        foreach (Transform spawnPoint in room.spawnPoints)
+        {
+            foreach (GameObject enemy in enemies)
+            {
+                if (enemy.transform.position == spawnPoint.position)
+                {
+                    return false; // At least one enemy is still alive in the room
+                }
+            }
+        }
+
+        return true; // All enemies are defeated in the room
     }
 
-    // Close the exit and trigger other relevant actions
-    public void CloseExit()
+    private void OpenDoor(Room room)
     {
-        DisableTilemapCollider.GetInstance().EnableTMCollider();
-        TilemapManager.GetInstance().EnableTilemap();
+        if (room.door != null)
+        {
+            // Add logic to open the door (e.g., set the door to active)
+            room.door.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("Door not found for room: " + room.roomName);
+        }
     }
 }

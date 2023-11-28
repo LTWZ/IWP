@@ -6,6 +6,18 @@ public class Skill1Tutorial : MonoBehaviour
 {
     public Test1 Player;
     public bool canUseSkill1 = false;
+    public static Skill1Tutorial instance;
+
+    public static Skill1Tutorial GetInstance()
+    {
+        return instance;
+    }
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.CompareTag("Player"))
@@ -21,4 +33,5 @@ public class Skill1Tutorial : MonoBehaviour
             PlayerMovement.GetInstance().Player.canUseskill1 = false;
         }
     }
+
 }

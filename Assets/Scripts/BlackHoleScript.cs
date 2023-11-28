@@ -39,7 +39,7 @@ public class BlackHoleScript : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Player"))
+            if (collider.CompareTag("Player") && collider.CompareTag("Skill2Tutorial"))
             {
                 continue; // Skip the player
             }

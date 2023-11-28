@@ -75,6 +75,31 @@ public class Test1 : PlayerEntity
             {
 
             }
+            if (canUseskill2 == true)
+            {
+                Skill2();
+            }
+            else
+            {
+
+            }
+            if (canUseskill3 == true)
+            {
+                Skill3();
+            }
+            else
+            {
+
+
+            }
+            if (canUseskill4 == true)
+            {
+                Skill4();
+            }
+            else
+            {
+
+            }
             // Optionally handle the case when the scene is a tutorial or dialogue is active
         }
 
@@ -146,7 +171,14 @@ public class Test1 : PlayerEntity
             {
                 isCooldown2 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
-                ChangeMana(-10);
+                if (canUseskill2 == true)
+                {
+
+                }
+                else
+                {
+                    ChangeMana(-10);
+                }
                 // Instantiate the black hole at the player's position
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject blackHole = Instantiate(BHPrefab, mousePos, Quaternion.identity);
@@ -192,7 +224,14 @@ public class Test1 : PlayerEntity
 
                     isCooldown3 = true;
                     UIManager.GetInstance().UpdateCooldownStuff(cooldown3, skillType.SKILL3);
-                    ChangeMana(-15);
+                    if (canUseskill3 == true)
+                    {
+
+                    }
+                    else
+                    {
+                        ChangeMana(-15);
+                    }
                 }
                 else if (PlayerMovement.GetInstance().Player.currMana <= 15)
                 {
@@ -230,7 +269,14 @@ public class Test1 : PlayerEntity
                 isCooldown4 = true;
                 beamok = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
-                ChangeMana(-20);
+                if (canUseskill4 == true)
+                {
+
+                }
+                else
+                {
+                    ChangeMana(-20);
+                }
                 //if (beamok == true)
                 //{
                 //    GameObject beam = Instantiate(beamPrefab2, Vector3.zero, Quaternion.identity);
