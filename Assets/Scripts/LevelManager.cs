@@ -1,6 +1,9 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using System;
+using Random = UnityEngine.Random;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -10,6 +13,7 @@ public class LevelManager : MonoBehaviour
 
     private List<string> availableLevels = new List<string>();
 
+    public event Action onSceneLoad;
     // Call this function to initialize the list of available levels
 
     private void Awake()
@@ -52,8 +56,7 @@ public class LevelManager : MonoBehaviour
             // Log information
             Debug.Log("Loading level: " + randomLevelName);
 
-            // Load the selected level
-            SceneManager.LoadScene(randomLevelName);
+            StartCoroutine(LoadScene(randomLevelName));
         }
         else
         {
@@ -64,36 +67,55 @@ public class LevelManager : MonoBehaviour
     }
 
     // New function to load a specific level by name
-    public void LoadSpecificLevel(string levelName)
+    public IEnumerator LoadSpecificLevel(string levelName)
     {
         if (availableLevels.Contains(levelName))
         {
             Debug.Log("Loading specific level: " + levelName);
-            SceneManager.LoadScene(levelName);
+
+
+
         }
         else
         {
             Debug.Log("Level not available: " + levelName);
+            yield return null;
         }
     }
 
     // Call this function to load the boss level
     public void LoadBossLevel()
     {
-        SceneManager.LoadScene("BossLevel");
+        StartCoroutine(LoadScene("BossLevel"));
     }
 
     public void LoadWizardTutorialLevel()
     {
-        SceneManager.LoadScene("WizardTutorial");
+        StartCoroutine(LoadScene("WizardTutorial"));
     }
 
     public void LoadRogueTutorialLevel()
     {
-        SceneManager.LoadScene("RogueTutorial");
+        StartCoroutine(LoadScene("RogueTutorial"));
     }
     public void LoadFighterTutorialLevel()
     {
-        SceneManager.LoadScene("FighterTutorial");
+        StartCoroutine(LoadScene("FighterTutorial"));
+    }
+
+    public void LoadLeve1TempLevel()
+    {
+        StartCoroutine(LoadScene("Level1"));
+    }
+
+    IEnumerator LoadScene(string name)
+    {
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
+
+        while (!asyncLoad.isDone)
+        {
+            yield return null;
+        }
+        onSceneLoad?.Invoke();
     }
 }

@@ -17,7 +17,8 @@ public class WeaponManager : MonoBehaviour
     private static WeaponManager instance;
     private MouseController mouseController;
     private List<Weapons> WeaponList;
-    private Weapons CurrentWeapons;
+    private List<WeaponsSO> WeaponSOList;
+    private WeaponsSO CurrentWeaponsSO;
 
     public WeaponStorage GetWeaponStorage(WeaponsSO weaponsSO)
     {
@@ -39,11 +40,26 @@ public class WeaponManager : MonoBehaviour
 
         WeaponPickup weaponPickup = Instantiate(weaponDisplayPrefab, PlayerMovement.GetInstance().transform.position, Quaternion.identity).GetComponent<WeaponPickup>();
         weaponPickup.SetWeaponsSO(Weapons.GetWeaponsSO());
-
-        WeaponList.Remove(GetCurrentWeapon());
+        WeaponSOList.Remove(GetCurrentWeapon().GetWeaponsSO());
         Destroy(GetCurrentWeapon().gameObject);
+        WeaponList.Remove(GetCurrentWeapon());
 
         OnWeaponSwap(WeaponList.Count);
+    }
+
+    public void LoadWeapon()
+    {
+        WeaponList.Clear();
+
+        for (int i = 0; i < WeaponSOList.Count; i++)
+        {
+            WeaponStorage weaponStorage = GetWeaponStorage(WeaponSOList[i]);
+            GameObject go = Instantiate(weaponStorage.WeaponsPrefab, PlayerMovement.GetInstance().GetHandPivot());
+            Weapons weapons = go.GetComponent<Weapons>();
+            Debug.Log(weapons);
+            AddWeaponsToList(weapons);
+        }
+        SetCurrentWeaponSO(CurrentWeaponsSO);
     }
 
     private void Awake()
@@ -62,7 +78,9 @@ public class WeaponManager : MonoBehaviour
     private void Start()
     {
         PlayerManager.GetInstance().onPlayerChange += ChangeMouseControllerReference;
+        LevelManager.GetInstance().onSceneLoad += LoadWeapon;
         WeaponList = new();
+        WeaponSOList = new();
     }
 
     void OnWeaponSwap(int num)
@@ -76,7 +94,7 @@ public class WeaponManager : MonoBehaviour
                 for (int i = 0; i < WeaponList.Count; i++)
                     WeaponList[i].gameObject.SetActive(false);
 
-                SetCurrentWeapon(WeaponList[actualVal]);
+                SetCurrentWeaponSO(WeaponList[actualVal].GetWeaponsSO());
                 GetCurrentWeapon().gameObject.SetActive(true);
             }
         }
@@ -102,19 +120,34 @@ public class WeaponManager : MonoBehaviour
         OnWeaponSwap(WeaponList.Count);
     }
 
+    public void AddWeaponsSOToList(Weapons weapons)
+    {
+        WeaponSOList.Add(weapons.GetWeaponsSO());
+    }
+
     public Vector3 GetDirection()
     {
         return mouseController.GetDirection();
     }
 
-    public void SetCurrentWeapon(Weapons weapon)
+    public void SetCurrentWeaponSO(WeaponsSO weapon)
     {
-        CurrentWeapons = weapon;
+        CurrentWeaponsSO = weapon;
     }
 
     public Weapons GetCurrentWeapon()
     {
-        return CurrentWeapons;
+        return GetWeapons(CurrentWeaponsSO);
+    }
+
+    public Weapons GetWeapons(WeaponsSO weaponsSO)
+    {
+        for (int i = 0; i < WeaponList.Count; i++)
+        {
+            if (WeaponList[i].GetWeaponsSO() == weaponsSO)
+                return WeaponList[i];
+        }
+        return null;
     }
 
     /// <summary>

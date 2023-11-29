@@ -70,22 +70,33 @@ public class Test1 : PlayerEntity
             if (canUseskill1 == true)
             {
                 Skill1();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
             }
             else
             {
-
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL4);
             }
             if (canUseskill2 == true)
             {
                 Skill2();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
             }
             else
             {
-
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL1);
             }
             if (canUseskill3 == true)
             {
                 Skill3();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
             }
             else
             {
@@ -95,6 +106,9 @@ public class Test1 : PlayerEntity
             if (canUseskill4 == true)
             {
                 Skill4();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
             }
             else
             {
@@ -147,7 +161,7 @@ public class Test1 : PlayerEntity
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
                 if (canUseskill1 == true)
                 {
-
+                    
                 }
                 else
                 {

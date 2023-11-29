@@ -391,7 +391,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbbe315f8607ef04bb3a2fb153bcccd1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 1
+  Hp: 10
   speed: 200
   healthbar: {fileID: 1377802036918368882}
   attackValue: 10
@@ -400,6 +400,7 @@ MonoBehaviour:
   stopDistance: 0.5
   rootDuration: 5
   enemyGFX: {fileID: 7623455674827787871}
+  attackCooldown: 2
   IsEnemyRooted: 0
 --- !u!50 &5769388228970531083
 Rigidbody2D:

@@ -25,7 +25,8 @@ public class WeaponPickup : MonoBehaviour, IInteract
             Weapons weapons = go.GetComponent<Weapons>();
             Debug.Log(weapons);
             WeaponManager.GetInstance().AddWeaponsToList(weapons);
-            WeaponManager.GetInstance().SetCurrentWeapon(weapons);
+            WeaponManager.GetInstance().AddWeaponsSOToList(weapons);
+            WeaponManager.GetInstance().SetCurrentWeaponSO(weapons.GetWeaponsSO());
         }
     }
 

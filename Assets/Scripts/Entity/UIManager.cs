@@ -110,6 +110,58 @@ public class UIManager : MonoBehaviour
 
         //Debug.Log(healthbarValueText.text);
     }
+
+    public void ResetSkillFillAmount(skillType whichSkill)
+    {
+        Image imageSkill = null;
+
+        switch (whichSkill)
+        {
+            case skillType.SKILL1:
+                imageSkill = skill1;
+                break;
+            case skillType.SKILL2:
+                imageSkill = skill2;
+                break;
+            case skillType.SKILL3:
+                imageSkill = skill3;
+                break;
+            case skillType.SKILL4:
+                imageSkill = skill4;
+                break;
+        }
+
+        if (imageSkill != null)
+        {
+            imageSkill.fillAmount = 1;
+        }
+    }
+
+    public void AddBackSkillFillAmount(skillType whichSkill)
+    {
+        Image imageSkill = null;
+
+        switch (whichSkill)
+        {
+            case skillType.SKILL1:
+                imageSkill = skill1;
+                break;
+            case skillType.SKILL2:
+                imageSkill = skill2;
+                break;
+            case skillType.SKILL3:
+                imageSkill = skill3;
+                break;
+            case skillType.SKILL4:
+                imageSkill = skill4;
+                break;
+        }
+
+        if (imageSkill != null)
+        {
+            imageSkill.fillAmount = 0;
+        }
+    }
 }
 
 public enum skillType
