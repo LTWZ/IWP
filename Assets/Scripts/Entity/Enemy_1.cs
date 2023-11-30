@@ -103,7 +103,7 @@ public class Enemy_1 : EnemyEntity
         if (IsEnemyRooted == true)
         {
             rootTimer -= Time.deltaTime;
-            Debug.Log(rootTimer);
+            //Debug.Log(rootTimer);
 
             if (rootTimer <= 0)
             {

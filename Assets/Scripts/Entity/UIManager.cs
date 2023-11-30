@@ -36,6 +36,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI healthbarValueText;
     [SerializeField] Slider manaSlider;
     [SerializeField] TextMeshProUGUI manaValueText;
+    [SerializeField] Image border1;
+    [SerializeField] Image border2;
+    [SerializeField] Image border3;
+    [SerializeField] Image border4;
+
 
     public delegate void OnCooldown(skillType whichSkill);
     public OnCooldown onCooldown;
@@ -162,7 +167,41 @@ public class UIManager : MonoBehaviour
             imageSkill.fillAmount = 0;
         }
     }
+
+    public void ToggleImage(int borderIndex, bool activate)
+    {
+        Image selectedBorder = GetImageByIndex(borderIndex);
+
+        if (selectedBorder != null)
+        {
+            selectedBorder.gameObject.SetActive(activate);
+        }
+        else
+        {
+            Debug.LogWarning("Invalid border index: " + borderIndex);
+        }
+    }
+
+    private Image GetImageByIndex(int index)
+    {
+        switch (index)
+        {
+            case 1:
+                return border1;
+            case 2:
+                return border2;
+            case 3:
+                return border3;
+            case 4:
+                return border4;
+            default:
+                return null;
+        }
+    }
+
 }
+
+
 
 public enum skillType
 {

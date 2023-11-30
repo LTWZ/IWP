@@ -37,6 +37,7 @@ public class Test1 : PlayerEntity
     public bool beamok = false;
     public float finishcastingtimer = 0;
     public bool finishcasting = false;// Adjust the maximum lifetime of the beam
+    public bool isplayerSlowed = false;
 
     private void Start()
     {
@@ -73,12 +74,14 @@ public class Test1 : PlayerEntity
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(1, true);
             }
             else
             {
                 UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL2);
                 UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL3);
                 UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(1, false);
             }
             if (canUseskill2 == true)
             {
@@ -86,10 +89,12 @@ public class Test1 : PlayerEntity
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(2, true);
             }
             else
             {
                 UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ToggleImage(2, false);
             }
             if (canUseskill3 == true)
             {
@@ -97,11 +102,11 @@ public class Test1 : PlayerEntity
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(3, true);
             }
             else
             {
-
-
+                UIManager.GetInstance().ToggleImage(3, false);
             }
             if (canUseskill4 == true)
             {
@@ -109,16 +114,14 @@ public class Test1 : PlayerEntity
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
                 UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ToggleImage(4, true);
             }
             else
             {
-
+                UIManager.GetInstance().ToggleImage(4, false);
             }
             // Optionally handle the case when the scene is a tutorial or dialogue is active
         }
-
-
-
 
     }
 
@@ -357,6 +360,7 @@ public class Test1 : PlayerEntity
             }
 
         }
+
     }
 
     public override void UpdateHP()

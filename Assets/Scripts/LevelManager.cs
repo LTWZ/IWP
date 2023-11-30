@@ -108,6 +108,11 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(LoadScene("Level1"));
     }
 
+    public void LoadTutorialLevel()
+    {
+        StartCoroutine(LoadScene("TutorialLevel"));
+    }
+
     IEnumerator LoadScene(string name)
     {
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);

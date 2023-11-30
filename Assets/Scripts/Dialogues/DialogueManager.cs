@@ -93,4 +93,9 @@ public class DialogueManager : MonoBehaviour
             NextMessage();
         }
     }
+
+    public void StartConversationInArea(Message[] messages, Actor[] actors)
+    {
+        OpenDialogue(messages, actors);
+    }
 }

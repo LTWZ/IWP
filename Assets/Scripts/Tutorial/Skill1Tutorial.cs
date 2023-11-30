@@ -7,6 +7,8 @@ public class Skill1Tutorial : MonoBehaviour
     public Test1 Player;
     public bool canUseSkill1 = false;
     public static Skill1Tutorial instance;
+    public DialogueTrigger trigger;
+    private bool inTriggerZone = false;
 
     public static Skill1Tutorial GetInstance()
     {
@@ -33,5 +35,6 @@ public class Skill1Tutorial : MonoBehaviour
             PlayerMovement.GetInstance().Player.canUseskill1 = false;
         }
     }
+
 
 }

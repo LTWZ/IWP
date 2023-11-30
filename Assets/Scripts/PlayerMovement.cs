@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] MouseController mouseController;
     [SerializeField] float movement_speed;
+    [SerializeField] float currentMovementSpeed;
     private SpriteRenderer sr;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
@@ -16,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDir;
     public Test1 Player;
     public bool isMovementEnabled = true;
+    public float slowDuration = 2f;
+    private float slowTimer = 0f;
 
     private void Awake()
     {
@@ -29,33 +32,58 @@ public class PlayerMovement : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        currentMovementSpeed = movement_speed;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (isMovementEnabled == false)
+        if (!isMovementEnabled || DialogueManager.isActive)
         {
-            animator.SetFloat("Horizontal_movement", 0);
-            animator.SetFloat("Vertical_movement", 0);
-            animator.SetFloat("Speed", 0);
+            StopPlayer();
             return;
         }
 
-        if (DialogueManager.isActive == true)
-        {
-            animator.SetFloat("Horizontal_movement", 0);
-            animator.SetFloat("Vertical_movement", 0);
-            animator.SetFloat("Speed", 0);
-            return;
-        }
         // To process inputs
         ProcessInputs();
         UpdatePivot();
+        UpdateAnimator();
+
+        if (Player.isplayerSlowed == true)
+        {
+            SetMovementSpeed(2);
+            slowDuration -= Time.deltaTime;
+            Debug.Log(slowDuration);
+
+            if (slowDuration <= 0)
+            {
+                Player.isplayerSlowed = false;
+            }
+        }
+        else
+        {
+            SetMovementSpeed(movement_speed);
+        }
+
+    }
+
+    public void SetMovementSpeed(float newSpeed)
+    {
+        currentMovementSpeed = newSpeed;
+    }
+
+    void StopPlayer()
+    {
+        moveDir = Vector2.zero;
+        UpdateAnimator();
+    }
+
+    void UpdateAnimator()
+    {
         animator.SetFloat("Horizontal_movement", moveDir.x);
         animator.SetFloat("Vertical_movement", moveDir.y);
         animator.SetFloat("Speed", moveDir.sqrMagnitude);
     }
+
 
     public Vector3 GetMousePosition()
     {
@@ -94,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Move()
     {
-        rb.MovePosition(rb.position + moveDir * movement_speed * Time.deltaTime);
+        rb.MovePosition(rb.position + moveDir * currentMovementSpeed * Time.deltaTime);
     }
 
 }
