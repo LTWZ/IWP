@@ -5,7 +5,7 @@ using UnityEngine;
 public class Room : MonoBehaviour
 {
     [SerializeField] GameObject[] doorList;
-    [SerializeField] GameObject[] enemyList; //LeroyIs cute
+    [SerializeField] GameObject[] enemyList;
     [SerializeField] int howManyEnemyToSpawn = 1;
     private BoxCollider2D boxCollider;
     private bool activatedRoom;
