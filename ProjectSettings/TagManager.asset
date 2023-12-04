@@ -16,6 +16,7 @@ TagManager:
   - Skill3Tutorial
   - Skill4Tutorial
   - Iceball
+  - Room
   layers:
   - Default
   - TransparentFX
