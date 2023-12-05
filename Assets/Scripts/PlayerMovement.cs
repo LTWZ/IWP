@@ -48,7 +48,7 @@ public class PlayerMovement : MonoBehaviour
         UpdatePivot();
         UpdateAnimator();
 
-        if (Player.isplayerSlowed == true)
+        if (GetComponent<PlayerEntity>().isplayerSlowed == true)
         {
             SetMovementSpeed(2);
             slowDuration -= Time.deltaTime;

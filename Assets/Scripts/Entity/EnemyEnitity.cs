@@ -32,6 +32,14 @@ public class EnemyEntity : MonoBehaviour
         if (currHealth <= 0)
         {
             roomReference.ReduceEnemy();
+            PlayerEntity player = FindObjectOfType<PlayerEntity>();
+
+            if (player != null)
+            {
+                // Gain back a random amount of mana
+                int manaGained = Random.Range(10, 21); // Adjust the range as needed
+                player.ChangeMana(manaGained);
+            }
             // die ofc
         }
     }

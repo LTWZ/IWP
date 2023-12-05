@@ -15,7 +15,7 @@ public class Iceball : MonoBehaviour
         if (collider.GetComponent<PlayerEntity>())
         {
             collider.GetComponent<PlayerEntity>().ChangeHealth(-damage);
-            PlayerMovement.GetInstance().Player.isplayerSlowed = true;
+            collider.GetComponent<PlayerEntity>().isplayerSlowed = true;
             // Destroy the fireball upon collision with the player
             Destroy(gameObject);
         }

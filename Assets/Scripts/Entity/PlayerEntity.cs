@@ -17,6 +17,7 @@ public class PlayerEntity : MonoBehaviour
     public bool canUseskill2 = false;
     public bool canUseskill3 = false;
     public bool canUseskill4 = false;
+    public bool isplayerSlowed = false;
 
     [SerializeField] AbitiliesSet abitiliesSet;
     private void Awake()
@@ -116,7 +117,7 @@ public class PlayerEntity : MonoBehaviour
 
         currMana = Mathf.Clamp(currMana, 0, maxMana);
 
-        uiManager.UpdateManaDisplay(currMana, Mana);
+        uiManager.UpdateManaDisplay(currMana, maxMana);
     }
 
     // this is an issue u need fix now. OnTriggerEnter dont trigger bcos both ur enemy and ur player has a boxcollider that is not isTrigger

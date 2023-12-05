@@ -37,7 +37,6 @@ public class Test1 : PlayerEntity
     public bool beamok = false;
     public float finishcastingtimer = 0;
     public bool finishcasting = false;// Adjust the maximum lifetime of the beam
-    public bool isplayerSlowed = false;
 
     private void Start()
     {

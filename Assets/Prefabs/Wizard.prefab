@@ -316,14 +316,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70994cf5ce1239d49ac1144686ac4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 999
+  Hp: 100
   speed: 0
-  Mana: 999
-  maxMana: 999
+  Mana: 100
+  maxMana: 300
   canUseskill1: 0
   canUseskill2: 0
   canUseskill3: 0
   canUseskill4: 0
+  isplayerSlowed: 0
   abitiliesSet: {fileID: 11400000, guid: 3adc940fb3feb4d419bc7743428b02cc, type: 2}
   cooldown1: 1
   ability1: 49
@@ -344,7 +345,6 @@ MonoBehaviour:
   beamok: 0
   finishcastingtimer: 0
   finishcasting: 0
-  isplayerSlowed: 0
 --- !u!1 &7585777571270661954
 GameObject:
   m_ObjectHideFlags: 0

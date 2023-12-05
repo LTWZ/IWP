@@ -17,6 +17,7 @@ TagManager:
   - Skill4Tutorial
   - Iceball
   - Room
+  - Map
   layers:
   - Default
   - TransparentFX
@@ -29,7 +30,7 @@ TagManager:
   - Wizard
   - Rogue
   - Fighter
-  - 
+  - Mapbounds
   - 
   - 
   - 

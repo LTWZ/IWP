@@ -43,6 +43,9 @@ public class Boss_1 : EnemyEntity
     public float meteorCooldown = 0.5f;
     private float nextMeteorTime = 0f;
 
+    private bool canmeteorspawn = true;
+    private bool meteorsFalling = false;
+
     int enemyLayer = 7;
 
     Seeker seeker;
@@ -145,6 +148,7 @@ public class Boss_1 : EnemyEntity
         {
             phase1Timer = 5.0f;
             currentState = EnemyState.Phase2;
+            canmeteorspawn = true;
             Debug.Log("Transition to Phase 2");
         }
     }
@@ -154,7 +158,7 @@ public class Boss_1 : EnemyEntity
         phase2Timer -= Time.deltaTime;
         Debug.Log("Phase 2 Timer: " + phase2Timer);
 
-        if (phase2Timer <= 0 && activeIndicatorsAndMeteors.Count == 0)
+        if (phase2Timer <= 0)
         {
             phase2Timer = 10.0f;
             currentState = EnemyState.Phase1;
@@ -190,14 +194,22 @@ public class Boss_1 : EnemyEntity
 
             if (currentState == EnemyState.Phase2)
             {
-                if (currentState == EnemyState.Phase2 && activeIndicatorsAndMeteors.Count == 0)
+                // Check the meteor cooldown before spawning a meteor
+                if (Time.time >= nextMeteorTime && canmeteorspawn == true)
                 {
-                    // Check the meteor cooldown before spawning a meteor
-                    if (Time.time >= nextMeteorTime)
+                    if (phase2Timer < 2f)
+                    {
+                        canmeteorspawn = false;
+                    }
+                    else
                     {
                         SpawnMeteors(targetPlayer.transform.position);
                         nextMeteorTime = Time.time + meteorCooldown;
                     }
+                }
+                else if (canmeteorspawn == false)
+                {
+
                 }
             }
             // Add more conditions for other states as needed
