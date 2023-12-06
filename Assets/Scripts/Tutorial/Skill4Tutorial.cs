@@ -23,7 +23,9 @@ public class Skill4Tutorial : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerMovement.GetInstance().Player.canUseskill4 = true;
+            PlayerManager playerManager = PlayerManager.GetInstance();
+            PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+            player.canUseskill4 = true;
         }
     }
 
@@ -31,7 +33,9 @@ public class Skill4Tutorial : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerMovement.GetInstance().Player.canUseskill4 = false;
+            PlayerManager playerManager = PlayerManager.GetInstance();
+            PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+            player.canUseskill4 = false;
         }
     }
 }

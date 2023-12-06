@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Test2 : PlayerEntity
 {
@@ -50,18 +51,95 @@ public class Test2 : PlayerEntity
     {
         UpdateHP();
         UpdateMana();
-        if (DialogueManager.isActive == false)
+
+        // Check if the current scene is a tutorial scene
+        bool isTutorialScene = IsTutorialScene();
+
+        // If the scene is not a tutorial scene and the dialogue is not active, allow abilities
+        if (!isTutorialScene && !DialogueManager.isActive)
         {
             Skill1();
             Skill2();
             Skill3();
             Skill4();
-
         }
-        else if (DialogueManager.isActive == true)
+        else
         {
-
+            if (canUseskill1 == true)
+            {
+                Skill1();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(1, true);
+            }
+            else
+            {
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(1, false);
+            }
+            if (canUseskill2 == true)
+            {
+                Skill2();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(2, true);
+            }
+            else
+            {
+                UIManager.GetInstance().AddBackSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ToggleImage(2, false);
+            }
+            if (canUseskill3 == true)
+            {
+                Skill3();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL4);
+                UIManager.GetInstance().ToggleImage(3, true);
+            }
+            else
+            {
+                UIManager.GetInstance().ToggleImage(3, false);
+            }
+            if (canUseskill4 == true)
+            {
+                Skill4();
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL1);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL2);
+                UIManager.GetInstance().ResetSkillFillAmount(skillType.SKILL3);
+                UIManager.GetInstance().ToggleImage(4, true);
+            }
+            else
+            {
+                UIManager.GetInstance().ToggleImage(4, false);
+            }
+            // Optionally handle the case when the scene is a tutorial or dialogue is active
         }
+
+    }
+
+    // Method to check if the current scene is a tutorial scene
+    private bool IsTutorialScene()
+    {
+        Scene currentScene = SceneManager.GetActiveScene();
+
+        // Check by scene name
+        if (currentScene.name == "TutorialLevel" || currentScene.name == "WizardTutorial" || currentScene.name == "RogueTutorial" || currentScene.name == "FighterTutorial")
+        {
+            return true;
+        }
+
+        // Alternatively, check by scene build index
+        // if (currentScene.buildIndex == yourTutorialSceneBuildIndex)
+        // {
+        //     return true;
+        // }
+
+        return false;
     }
 
     public override void Skill1()

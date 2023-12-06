@@ -25,9 +25,14 @@ public class UIManager : MonoBehaviour
         skill2.fillAmount = 0;
         skill3.fillAmount = 0;
         skill4.fillAmount = 0;
+        StartCoroutine(Test());
+    }
+    
+    private IEnumerator Test()
+    {
+        yield return null;
         LoadSkillImages();
     }
-
     [SerializeField] Image skill1;
     [SerializeField] Image skill2;
     [SerializeField] Image skill3;
@@ -50,16 +55,19 @@ public class UIManager : MonoBehaviour
         PlayerManager playerManager = PlayerManager.GetInstance();
         if (playerManager != null)
         {
-
             PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
-            Debug.Log(player);
-            Debug.Log(playerManager.GetCurrentPlayer());
-            Debug.Log(playerManager);
+            if (player != null)
+            {
+                Debug.Log(player);
+                Debug.Log(playerManager.GetCurrentPlayer());
+                Debug.Log(playerManager);
 
-            skill1.sprite = player.GetAbilitiesSet().ability1.abilitySprite;
-            skill2.sprite = player.GetAbilitiesSet().ability2.abilitySprite;
-            skill3.sprite = player.GetAbilitiesSet().ability3.abilitySprite;
-            skill4.sprite = player.GetAbilitiesSet().ability4.abilitySprite;
+                skill1.sprite = player.GetAbilitiesSet().ability1.abilitySprite;
+                skill2.sprite = player.GetAbilitiesSet().ability2.abilitySprite;
+                skill3.sprite = player.GetAbilitiesSet().ability3.abilitySprite;
+                skill4.sprite = player.GetAbilitiesSet().ability4.abilitySprite;
+            }
+
         }
     }
     public void UpdateCooldownStuff(float timer, skillType whichSkill)
@@ -178,7 +186,7 @@ public class UIManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Invalid border index: " + borderIndex);
+            //Debug.LogWarning("Invalid border index: " + borderIndex);
         }
     }
 

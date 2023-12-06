@@ -23,7 +23,9 @@ public class Skill2Tutorial : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerMovement.GetInstance().Player.canUseskill2 = true;
+            PlayerManager playerManager = PlayerManager.GetInstance();
+            PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+            player.canUseskill2 = true;
         }
     }
 
@@ -31,7 +33,9 @@ public class Skill2Tutorial : MonoBehaviour
     {
         if (collider.CompareTag("Player"))
         {
-            PlayerMovement.GetInstance().Player.canUseskill2 = false;
+            PlayerManager playerManager = PlayerManager.GetInstance();
+            PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+            player.canUseskill2 = false;
         }
     }
 

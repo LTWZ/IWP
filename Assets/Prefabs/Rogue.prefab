@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 743788125316949881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: HandPivotParent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 6175505233624743053}
   - component: {fileID: 4496325545372894617}
   - component: {fileID: 3544483314914521318}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PlayerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,7 +179,7 @@ GameObject:
   - component: {fileID: 2409052710821016806}
   - component: {fileID: 4911976472782355572}
   - component: {fileID: 245297895226298507}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Rogue
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -352,7 +352,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8614428442490028457}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -56,7 +56,9 @@ public class PlayerMovement : MonoBehaviour
 
             if (slowDuration <= 0)
             {
-                Player.isplayerSlowed = false;
+                PlayerManager playerManager = PlayerManager.GetInstance();
+                PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+                player.isplayerSlowed = false;
             }
         }
         else
