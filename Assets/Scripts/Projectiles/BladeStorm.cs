@@ -7,7 +7,8 @@ public class BladeStorm : MonoBehaviour
     private int timerRate = 1;
     public float radius = 5f; // Radius of effect
     public float lifetime = 3f;
-    private Transform playerTransform;// Duration of the black hole
+    private Transform playerTransform;
+    public bool isbladestormdestroyed;// Duration of the black hole
 
     private float destroyTime;
     private float DOTElapsed;
@@ -30,7 +31,7 @@ public class BladeStorm : MonoBehaviour
         // Check if it's time to destroy the black hole
         if (Time.time >= destroyTime)
         {
-            Destroy(gameObject); // Destroy the black hole GameObject
+            Destroy(gameObject);
         }
 
         DOTElapsed += Time.deltaTime;

@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0f7d12969c4de24299fc7772c1a54c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 1
   bleedingDamagePerSecond: 1
   bleedingDuration: 1
 --- !u!114 &6763625704897950944

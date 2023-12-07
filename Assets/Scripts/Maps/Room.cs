@@ -22,16 +22,16 @@ public class Room : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Im called");
         if (activatedRoom)
             return;
 
         if (other.GetComponent<PlayerEntity>())
         {
             OpenCloseDoors(true);
+            SpawnEnemy();
+            activatedRoom = true;
         }
-        SpawnEnemy();
-        activatedRoom = true;
+
     }
 
     void OpenCloseDoors(bool doorActive)

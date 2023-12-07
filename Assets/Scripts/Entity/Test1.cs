@@ -152,6 +152,12 @@ public class Test1 : PlayerEntity
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject beam = Instantiate(beamPrefab, transform.position, Quaternion.identity);
+                // Get the VFX component attached to the Fireball prefab
+                //ParticleSystem fireballVFX = beam.GetComponentInChildren<ParticleSystem>();
+                //if (fireballVFX != null)
+                //{
+                //    fireballVFX.Play();
+                //}
                 Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 beam.transform.rotation = Quaternion.Euler(0, 0, angle);

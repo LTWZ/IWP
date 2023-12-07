@@ -26,6 +26,9 @@ public class PlayerManager : MonoBehaviour
 
     public delegate void OnPlayerChange();
     public OnPlayerChange onPlayerChange;
+    private bool canLoadData = false;
+    private int currHealth = 0;
+    private int currMana = 0;
 
     private void Awake()
     {
@@ -68,11 +71,28 @@ public class PlayerManager : MonoBehaviour
                 break;
         }
         GameObject.FindGameObjectWithTag("CinemachineCamera").GetComponent<CinemachineVirtualCamera>().Follow = playerCreated.transform;
+
+        if (canLoadData)
+        {
+            playerCreated.GetComponent<PlayerEntity>().SetCurrHealth(currHealth);
+            playerCreated.GetComponent<PlayerEntity>().SetCurrMana(currMana);
+        }
+        else
+        {
+            canLoadData = true;
+        }
+
         onPlayerChange?.Invoke();
     }
 
     public GameObject GetCurrentPlayer()
     {
         return playerCreated;
+    }
+
+    public void SavePlayerData()
+    {
+        currHealth = playerCreated.GetComponent<PlayerEntity>().GetCurrHealth();
+        currMana = playerCreated.GetComponent<PlayerEntity>().GetCurrMana();
     }
 }

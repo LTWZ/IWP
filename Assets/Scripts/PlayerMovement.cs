@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Transform HandPivot;
     private Vector2 moveDir;
     public Test1 Player;
+    public Test2 Player2;
     public bool isMovementEnabled = true;
     public float slowDuration = 2f;
     private float slowTimer = 0f;

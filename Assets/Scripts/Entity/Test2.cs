@@ -34,7 +34,7 @@ public class Test2 : PlayerEntity
 
     [Header("Ability 4")]
     public float cooldown4 = 5;
-    bool isCooldown4 = false;
+    public bool isCooldown4 = false;
     public KeyCode ability4;
     public float bladeStormDuration = 5f;
     private bool isBladeStormActive = false;
@@ -170,7 +170,14 @@ public class Test2 : PlayerEntity
                     transform.position = (Vector3)((Vector2)transform.position + teleportDirection.normalized * teleportDistance);
                     isCooldown1 = true;
                     UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
-                    ChangeMana(-5);
+                    if (canUseskill1 == true)
+                    {
+
+                    }
+                    else
+                    {
+                        ChangeMana(-5);
+                    }
                 }
                 else
                 {
@@ -192,8 +199,15 @@ public class Test2 : PlayerEntity
         {
             if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 10 && isbladescast == false)
             {
-                // Consume mana
-                ChangeMana(-10);
+                if (canUseskill2 == true)
+                {
+
+                }
+                else
+                {
+                    // Consume mana
+                    ChangeMana(-10);
+                }
 
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -246,8 +260,16 @@ public class Test2 : PlayerEntity
         {
             if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 15 && !isNinjaStarThrown)
             {
-                // Consume mana
-                ChangeMana(-15);
+
+                if (canUseskill3 == true)
+                {
+
+                }
+                else
+                {
+                    // Consume mana
+                    ChangeMana(-15);
+                }
 
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -293,7 +315,7 @@ public class Test2 : PlayerEntity
             Vector2 returnDirection = (playerPosition - (Vector2)ninjaStar.transform.position);
             ninjaStar.GetComponent<Rigidbody2D>().velocity = returnDirection.normalized * ninjastarSpeed;
 
-            if (returnDirection.magnitude <= 1f)
+            if (returnDirection.magnitude <= 0.1f)
                 break;
 
             yield return null;
@@ -312,15 +334,25 @@ public class Test2 : PlayerEntity
         {
             if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 20)
             {
-                // Consume mana
-                ChangeMana(-20);
-
+                isCooldown4 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 // Summon the bladestorm
                 // Instantiate the bladestorm prefab at the player's position
                 Instantiate(bladestormPrefab, transform.position, Quaternion.identity);
+                if (canUseskill4 == true)
+                {
+
+                }
+                else
+                {
+                    // Consume mana
+                    ChangeMana(-20);
+                }
+
+
             }
             else
             {

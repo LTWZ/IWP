@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8513341044164265908}
   - component: {fileID: 5854485967396731572}
   - component: {fileID: 1885406653141629976}
+  - component: {fileID: 5662012609502186243}
   m_Layer: 0
   m_Name: BladeStorm
   m_TagString: Untagged
@@ -84,8 +85,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248c2135d954c8147bcce6aa4205d355, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damagePerSecond: 10
+  damageOverTime: 1
   radius: 5
+  lifetime: 3
+  isbladestormdestroyed: 0
+--- !u!114 &5662012609502186243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882096119473001526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d2690e9a0213bf4d899fe42ce3341df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8540331707926089690
 GameObject:
   m_ObjectHideFlags: 0

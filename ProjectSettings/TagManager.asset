@@ -18,6 +18,8 @@ TagManager:
   - Iceball
   - Room
   - Map
+  - SFX
+  - music
   layers:
   - Default
   - TransparentFX
@@ -31,7 +33,7 @@ TagManager:
   - Rogue
   - Fighter
   - Mapbounds
-  - 
+  - Room
   - 
   - 
   - 

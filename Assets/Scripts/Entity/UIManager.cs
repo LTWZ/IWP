@@ -37,6 +37,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image skill2;
     [SerializeField] Image skill3;
     [SerializeField] Image skill4;
+    [SerializeField] Image skill1_alt;
+    [SerializeField] Image skill2_alt;
+    [SerializeField] Image skill3_alt;
+    [SerializeField] Image skill4_alt;
     [SerializeField] Slider healthbarSlider;
     [SerializeField] TextMeshProUGUI healthbarValueText;
     [SerializeField] Slider manaSlider;
@@ -66,6 +70,10 @@ public class UIManager : MonoBehaviour
                 skill2.sprite = player.GetAbilitiesSet().ability2.abilitySprite;
                 skill3.sprite = player.GetAbilitiesSet().ability3.abilitySprite;
                 skill4.sprite = player.GetAbilitiesSet().ability4.abilitySprite;
+                skill1_alt.sprite = player.GetAbilitiesSet().ability1.abilitySprite;
+                skill2_alt.sprite = player.GetAbilitiesSet().ability2.abilitySprite;
+                skill3_alt.sprite = player.GetAbilitiesSet().ability3.abilitySprite;
+                skill4_alt.sprite = player.GetAbilitiesSet().ability4.abilitySprite;
             }
 
         }

@@ -115,6 +115,7 @@ public class LevelManager : MonoBehaviour
 
     IEnumerator LoadScene(string name)
     {
+        PlayerManager.GetInstance().SavePlayerData();
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(name);
 
         while (!asyncLoad.isDone)

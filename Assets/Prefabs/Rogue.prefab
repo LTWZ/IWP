@@ -244,6 +244,7 @@ MonoBehaviour:
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
   Player: {fileID: 0}
+  Player2: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
 --- !u!61 &2409052710821016801
@@ -339,7 +340,8 @@ MonoBehaviour:
   ability3: 51
   ninjaStarPrefab: {fileID: 6086498364840054281, guid: 476cbc3ee323e5044be4c2bd63a82eff, type: 3}
   ninjastarSpeed: 20
-  cooldown4: 1
+  cooldown4: 5
+  isCooldown4: 0
   ability4: 52
   bladeStormDuration: 5
   bladestormPrefab: {fileID: 4882096119473001526, guid: 015b27b56201ca0419561e475a97862b, type: 3}

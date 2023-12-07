@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerEntity : MonoBehaviour
 {
@@ -31,6 +32,21 @@ public class PlayerEntity : MonoBehaviour
         return currMana;
     }
 
+    public int GetCurrHealth()
+    {
+        return currentHP;
+    }
+
+    public void SetCurrHealth(int loadedCurrHP)
+    {
+        currentHP = loadedCurrHP;
+    }
+
+    public void SetCurrMana(int loadedCurrMana)
+    {
+        currMana = loadedCurrMana;
+    }
+
     public AbitiliesSet GetAbilitiesSet()
     {
         return abitiliesSet;
@@ -48,7 +64,7 @@ public class PlayerEntity : MonoBehaviour
 
     public virtual void Skill1()
     {
-        
+
     }
 
     public virtual void Skill2()
@@ -68,7 +84,7 @@ public class PlayerEntity : MonoBehaviour
 
     public virtual void UpdateHP()
     {
-        
+
     }
 
     public virtual void UpdateMana()
@@ -95,7 +111,8 @@ public class PlayerEntity : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            // die ofc
+            SceneManager.LoadScene("GameOver");
+            Destroy(PlayerManager.GetInstance().gameObject);
         }
 
         uiManager.UpdateHealthDisplay(currentHP, Hp);
@@ -105,18 +122,17 @@ public class PlayerEntity : MonoBehaviour
     {
         currMana += amtChanged;
 
-        if (currMana > Mana)
+        if (currMana > maxMana)
         {
-            currMana = Mana;
+            currMana = maxMana;
         }
 
-        if (currMana <= 0)
-        {
-            // die ofc
-        }
+        //if (currMana <= 0)
+        //{
+        //    // die ofc
+        //}
 
         currMana = Mathf.Clamp(currMana, 0, maxMana);
-
         uiManager.UpdateManaDisplay(currMana, maxMana);
     }
 
@@ -147,6 +163,6 @@ public class PlayerEntity : MonoBehaviour
 
     //private void OnTriggerStay2D(Collider2D collision)
     //{
-        
+
     //}
 }
