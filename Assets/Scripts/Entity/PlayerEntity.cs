@@ -19,6 +19,7 @@ public class PlayerEntity : MonoBehaviour
     public bool canUseskill3 = false;
     public bool canUseskill4 = false;
     public bool isplayerSlowed = false;
+    private bool isFlashing = false;
 
     [SerializeField] AbitiliesSet abitiliesSet;
     private void Awake()
@@ -102,6 +103,11 @@ public class PlayerEntity : MonoBehaviour
     /// </summary>
     public void ChangeHealth(int amtChanged)
     {
+        if (isFlashing == false)
+        {
+            StartCoroutine(FlashPlayer());
+        }
+
         currentHP += amtChanged;
 
         if (currentHP > Hp)
@@ -116,6 +122,59 @@ public class PlayerEntity : MonoBehaviour
         }
 
         uiManager.UpdateHealthDisplay(currentHP, Hp);
+    }
+
+    private IEnumerator FlashPlayer()
+    {
+        // Set the flag to indicate that the coroutine is running
+        isFlashing = true;
+
+        // Get the current player
+        GameObject currentPlayer = PlayerManager.GetInstance().GetCurrentPlayer();
+
+        if (currentPlayer != null)
+        {
+            // Retrieve the SpriteRenderer component of the child object
+            SpriteRenderer playerRenderer = currentPlayer.GetComponentInChildren<SpriteRenderer>();
+
+            if (playerRenderer != null)
+            {
+                // Number of times the player will flash
+                int numberOfFlashes = 2;
+
+                // Original color of the player sprite
+                Color originalColor = playerRenderer.color;
+
+                for (int i = 0; i < numberOfFlashes; i++)
+                {
+                    // Toggle the color alpha (transparency)
+                    playerRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+
+                    // Wait for a short duration
+                    yield return new WaitForSeconds(0.1f);
+
+                    // Toggle back to the original color
+                    playerRenderer.color = originalColor;
+
+                    // Wait for a short duration
+                    yield return new WaitForSeconds(0.1f);
+                }
+
+                // Ensure player is visible at the end
+                playerRenderer.color = originalColor;
+            }
+            else
+            {
+                Debug.LogError("SpriteRenderer component not found on the child object of the current player.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Current player not found.");
+        }
+
+        // Set the flag to indicate that the coroutine has finished
+        isFlashing = false;
     }
 
     public void ChangeMana(int amtChanged)

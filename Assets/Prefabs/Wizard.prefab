@@ -244,6 +244,7 @@ MonoBehaviour:
   HandPivotParent: {fileID: 743788125316949881}
   HandPivot: {fileID: 8614428442490028457}
   Player: {fileID: 3801587330817731383}
+  Player2: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
 --- !u!61 &2409052710821016801

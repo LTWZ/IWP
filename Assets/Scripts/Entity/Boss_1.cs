@@ -287,6 +287,9 @@ public class Boss_1 : EnemyEntity
         // Calculate the direction to the player
         Vector2 direction = (targetPlayer.transform.position - fireballSpawnPoint.position).normalized;
 
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        fireball.transform.rotation = Quaternion.Euler(0, 0, angle);
+
         // Debug the direction
         Debug.Log("Fireball Direction: " + direction);
 

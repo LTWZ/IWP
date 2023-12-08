@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5854485967396731572}
   - component: {fileID: 1885406653141629976}
   - component: {fileID: 5662012609502186243}
+  - component: {fileID: 817011884094554299}
   m_Layer: 0
   m_Name: BladeStorm
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4882096119473001526}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 7, y: 7, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6932822726623644725}
@@ -49,9 +50,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01855278, y: 0}
+  m_Offset: {x: -0.007028716, y: -0.0027306082}
   serializedVersion: 2
-  m_Radius: 2.448052
+  m_Radius: 0.49335146
 --- !u!50 &5854485967396731572
 Rigidbody2D:
   serializedVersion: 4
@@ -86,8 +87,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOverTime: 1
-  radius: 5
-  lifetime: 3
+  radius: 3
+  lifetime: 5
   isbladestormdestroyed: 0
 --- !u!114 &5662012609502186243
 MonoBehaviour:
@@ -101,6 +102,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d2690e9a0213bf4d899fe42ce3341df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &817011884094554299
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4882096119473001526}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5c504b861bb5d0740ba68ca34059e3bd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8540331707926089690
 GameObject:
   m_ObjectHideFlags: 0
@@ -127,7 +148,7 @@ Transform:
   m_GameObject: {fileID: 8540331707926089690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1049262266116221953}
@@ -173,8 +194,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
+  m_SortingOrder: 3
+  m_Sprite: {fileID: 0}
   m_Color: {r: 0.9716981, g: 0.0045834924, b: 0.0045834924, a: 0.53333336}
   m_FlipX: 0
   m_FlipY: 0
@@ -182,6 +203,6 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

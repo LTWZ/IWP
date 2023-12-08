@@ -14,6 +14,7 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] protected int attackValue;
     [SerializeField] NavMeshAgent navMeshAgent;
     private Room roomReference;
+    private bool isFlashing = false;
 
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
@@ -22,12 +23,16 @@ public class EnemyEntity : MonoBehaviour
 
     public void ChangeHealth(int amtChanged)
     {
+        if (isFlashing == false)
+        {
+            // Pass the enemy game object to FlashEnemy
+            StartCoroutine(FlashEnemy(gameObject));
+        }
+
         currHealth += amtChanged;
         Debug.Log(currHealth);
 
         currHealth = Mathf.Clamp(currHealth, 0, Hp);
-        // btw since u have reference to hp/maxhp. if u want u can go ahead and add more functionality like if they below certain
-        // hp, they trigger something.
 
         if (currHealth <= 0)
         {
@@ -42,6 +47,56 @@ public class EnemyEntity : MonoBehaviour
             }
             // die ofc
         }
+    }
+
+    private IEnumerator FlashEnemy(GameObject enemy)
+    {
+        // Set the flag to indicate that the coroutine is running
+        isFlashing = true;
+
+        if (enemy != null)
+        {
+            // Retrieve the SpriteRenderer component of the enemy object
+            SpriteRenderer enemyRenderer = enemy.GetComponentInChildren<SpriteRenderer>();
+
+            if (enemyRenderer != null)
+            {
+                // Number of times the enemy will flash
+                int numberOfFlashes = 2;
+
+                // Original color of the enemy sprite
+                Color originalColor = enemyRenderer.color;
+
+                for (int i = 0; i < numberOfFlashes; i++)
+                {
+                    // Toggle the color alpha (transparency)
+                    enemyRenderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, 0f);
+
+                    // Wait for a short duration
+                    yield return new WaitForSeconds(0.1f);
+
+                    // Toggle back to the original color
+                    enemyRenderer.color = originalColor;
+
+                    // Wait for a short duration
+                    yield return new WaitForSeconds(0.1f);
+                }
+
+                // Ensure enemy is visible at the end
+                enemyRenderer.color = originalColor;
+            }
+            else
+            {
+                Debug.LogError("SpriteRenderer component not found on the child object of the enemy.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Enemy object is null.");
+        }
+
+        // Set the flag to indicate that the coroutine has finished
+        isFlashing = false;
     }
 
     /// <summary>
