@@ -22,7 +22,34 @@ public class VolumeManager : MonoBehaviour
 
     private void Start()
     {
+        // Check if this is the first launch of the game
+        if (!PlayerPrefs.HasKey("VolumeSet"))
+        {
+            // Set the volume sliders to their maximum values
+            VolSlider.value = VolSlider.maxValue;
+            SFXSlider.value = SFXSlider.maxValue;
 
+            // Save a key to indicate that the volume has been set
+            PlayerPrefs.SetInt("VolumeSet", 1);
+
+            // Save the maximum values to PlayerPrefs
+            PlayerPrefs.SetFloat("VolumeValue", VolSlider.maxValue);
+            PlayerPrefs.SetFloat("SFXValue", SFXSlider.maxValue);
+
+            // Apply the volume settings
+            AudioManager.instance.MusicVolume(VolSlider.maxValue);
+            AudioManager.instance.SFXVolume(SFXSlider.maxValue);
+
+            // Mark that the volume has been changed
+            musicVolumeChanged = true;
+            sfxVolumeChanged = true;
+        }
+        else
+        {
+            // Load saved volume levels
+            LoadVolumeLevels();
+            LoadSFXValues();
+        }
     }
 
     public void ToggleMusic()
@@ -66,8 +93,16 @@ public class VolumeManager : MonoBehaviour
     // Call this method whenever a scene is changed
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        LoadVolumeLevels();
-        LoadSFXValues();
+        // Load volume levels only if they have been changed
+        if (!musicVolumeChanged)
+        {
+            LoadVolumeLevels();
+        }
+
+        if (!sfxVolumeChanged)
+        {
+            LoadSFXValues();
+        }
     }
 
     private void OnDisable()

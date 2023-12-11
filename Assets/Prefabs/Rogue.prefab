@@ -331,16 +331,16 @@ MonoBehaviour:
   ability1: 49
   teleportRange: 10
   teleportDistanceMultiplier: 5
-  cooldown2: 1
+  cooldown2: 7
   ability2: 50
   serratedBladePrefab: {fileID: 5824785853246384633, guid: 7437790b46d10f047872bfd2ebe73af0, type: 3}
   bladeSpeed: 10
   numBlades: 3
-  cooldown3: 1
+  cooldown3: 12
   ability3: 51
   ninjaStarPrefab: {fileID: 6086498364840054281, guid: 476cbc3ee323e5044be4c2bd63a82eff, type: 3}
   ninjastarSpeed: 20
-  cooldown4: 5
+  cooldown4: 30
   isCooldown4: 0
   ability4: 52
   bladeStormDuration: 5

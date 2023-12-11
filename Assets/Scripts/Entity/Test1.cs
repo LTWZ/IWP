@@ -31,7 +31,7 @@ public class Test1 : PlayerEntity
     public KeyCode ability4;
     public GameObject beamPrefab2;
     public GameObject beamtemp;
-    public float beamSpeed; // Adjust the speed of the beam
+    public float beamSpeed = 10f; // Adjust the speed of the beam
     public float beamLifetime;
     public float beamoktimer = 0;
     public bool beamok = false;

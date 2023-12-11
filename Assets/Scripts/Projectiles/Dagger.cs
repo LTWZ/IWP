@@ -13,7 +13,7 @@ public class Dagger : MonoBehaviour
         {
             collider.GetComponent<EnemyEntity>().ChangeHealth(-damage);
 
-            if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Room")
+            if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Fireball")
             {
                 Destroy(gameObject);
             }

@@ -8,6 +8,19 @@ public class GunTutorialDialogue : MonoBehaviour
     public Actor[] actors;
     [SerializeField] GameObject door;
     private bool isDialogueFinished = false;
+    private bool isGunTutorialComplete = false;
+
+    public void Start()
+    {
+        // Load the completion status from PlayerPrefs
+        isGunTutorialComplete = PlayerPrefs.GetInt("GunTutComplete") == 1 ? true : false;
+        if (isGunTutorialComplete)
+        {
+            // Disable the door
+            door.SetActive(false);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player"))
@@ -15,8 +28,17 @@ public class GunTutorialDialogue : MonoBehaviour
             DialogueManager dialogueManager = FindObjectOfType<DialogueManager>();
             if (dialogueManager != null)
             {
-                dialogueManager.StartConversationInArea(messages, actors);
-                isDialogueFinished = false;
+                // Check if the gun tutorial is not complete
+                if (!isGunTutorialComplete)
+                {
+                    // Start the conversation
+                    dialogueManager.StartConversationInArea(messages, actors);
+
+                    // Set flags and save completion status in PlayerPrefs
+                    isDialogueFinished = true;
+                    isGunTutorialComplete = true;
+                    PlayerPrefs.SetInt("GunTutComplete", isGunTutorialComplete ? 1 : 0);
+                }
             }
 
             // Optional: Disable the trigger to prevent re-triggering.
@@ -26,8 +48,10 @@ public class GunTutorialDialogue : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (isDialogueFinished == false)
+        // Check if the dialogue is finished and the tutorial is complete
+        if (isDialogueFinished)
         {
+            // Disable the door
             door.SetActive(false);
         }
     }

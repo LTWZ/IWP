@@ -20,6 +20,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OpenDialogue(Message[] messages, Actor[] actors)
     {
+        Debug.Log("OpenDialogue called");
         currentMessages = messages;
         currentActors = actors;
         activeMessage = 0;
@@ -82,6 +83,7 @@ public class DialogueManager : MonoBehaviour
 
     void Start()
     {
+        Debug.Log("DialogueManager Start");
         backgroundbox.transform.localScale = Vector3.zero;
     }
 
@@ -92,10 +94,16 @@ public class DialogueManager : MonoBehaviour
         {
             NextMessage();
         }
+        //Debug.Log(isActive);
     }
 
     public void StartConversationInArea(Message[] messages, Actor[] actors)
     {
         OpenDialogue(messages, actors);
+    }
+
+    private void OnApplicationQuit()
+    {
+        isActive = false;
     }
 }

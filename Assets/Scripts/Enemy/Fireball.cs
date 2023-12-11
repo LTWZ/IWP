@@ -20,7 +20,7 @@ public class Fireball : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (collider.gameObject.tag != "Enemy" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Fireball")
+        if (collider.gameObject.tag != "Enemy" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Fireball" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Bullet")
         {
             Destroy(gameObject);
         }

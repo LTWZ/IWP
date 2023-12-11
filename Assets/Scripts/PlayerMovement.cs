@@ -68,6 +68,11 @@ public class PlayerMovement : MonoBehaviour
             SetMovementSpeed(movement_speed);
         }
 
+        if (Input.GetKeyDown(KeyCode.Minus))
+        {
+            PlayerPrefs.DeleteAll();
+        }
+
     }
 
     public void SetMovementSpeed(float newSpeed)

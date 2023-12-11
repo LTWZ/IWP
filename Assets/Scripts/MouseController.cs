@@ -12,7 +12,7 @@ public class MouseController : MonoBehaviour
 {
     private Vector3 Direction;
     public event Action Fire;
-    private float InteractionRange = 10f; // change it to increase/decrease interaction range
+    private float InteractionRange = 1f; // change it to increase/decrease interaction range
     public delegate void OnNumsInput(int nums);
     public OnNumsInput onNumsInput;
     // Start is called before the first frame update

@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70994cf5ce1239d49ac1144686ac4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 1
+  Hp: 300
   speed: 0
   Mana: 300
   maxMana: 300
@@ -327,20 +327,20 @@ MonoBehaviour:
   canUseskill4: 0
   isplayerSlowed: 0
   abitiliesSet: {fileID: 11400000, guid: 3adc940fb3feb4d419bc7743428b02cc, type: 2}
-  cooldown1: 1
+  cooldown1: 7
   ability1: 49
   beamPrefab: {fileID: 2635694883127984476, guid: 9445c08d98a9a824a93f8c56ba88412c, type: 3}
-  cooldown2: 1
+  cooldown2: 15
   ability2: 50
   aoePrefab: {fileID: 2764619505362769234, guid: cf76c28c946bf384e8add37c12507e63, type: 3}
-  cooldown3: 1
+  cooldown3: 8
   ability3: 51
   BHPrefab: {fileID: 5931775721796409052, guid: 5d5b8ba842eb3a949b9b59a1ad9a7b1b, type: 3}
-  cooldown4: 1
+  cooldown4: 25
   ability4: 52
   beamPrefab2: {fileID: 2676994559499624895, guid: 04e5e610b4950b2478de11260e21f428, type: 3}
   beamtemp: {fileID: 2676994559499624895, guid: f156a96ca5bcb4647b3c309422b82c86, type: 3}
-  beamSpeed: 3
+  beamSpeed: 10
   beamLifetime: 2
   beamoktimer: 0
   beamok: 0
