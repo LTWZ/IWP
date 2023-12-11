@@ -317,9 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70994cf5ce1239d49ac1144686ac4307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
+  Hp: 1
   speed: 0
-  Mana: 100
+  Mana: 300
   maxMana: 300
   canUseskill1: 0
   canUseskill2: 0

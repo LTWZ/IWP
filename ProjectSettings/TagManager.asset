@@ -21,6 +21,7 @@ TagManager:
   - SFX
   - music
   - Missile
+  - Ninja
   layers:
   - Default
   - TransparentFX

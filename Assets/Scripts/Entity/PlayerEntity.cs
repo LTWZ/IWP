@@ -119,6 +119,9 @@ public class PlayerEntity : MonoBehaviour
         {
             SceneManager.LoadScene("GameOver");
             Destroy(PlayerManager.GetInstance().gameObject);
+            Destroy(EnemyManager.GetInstance().gameObject);
+            Destroy(LevelManager.GetInstance().gameObject);
+            Destroy(WeaponManager.GetInstance().gameObject);
         }
 
         uiManager.UpdateHealthDisplay(currentHP, Hp);

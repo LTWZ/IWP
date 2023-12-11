@@ -317,10 +317,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd79086593498ff45be899b03d05811b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 100
+  Hp: 300
   speed: 5
-  Mana: 100
-  maxMana: 200
+  Mana: 300
+  maxMana: 300
   canUseskill1: 0
   canUseskill2: 0
   canUseskill3: 0

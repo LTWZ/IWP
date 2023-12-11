@@ -6,14 +6,20 @@ public class Room : MonoBehaviour
 {
     [SerializeField] GameObject[] doorList;
     [SerializeField] GameObject[] enemyList;
-    [SerializeField] int howManyEnemyToSpawn = 1;
+    [SerializeField] int amountOfWaves = 3;
+    [SerializeField] int minEnemyPerWave = 2;
+    [SerializeField] int maxEnemyPerWave = 4;
+
     private BoxCollider2D boxCollider;
     private bool activatedRoom;
+
+    private int wavesLeft;
     private int amountOfEnemy;
     [SerializeField] private Transform[] spawnPoints;
 
     private void Start()
     {
+        wavesLeft = 3;
         OpenCloseDoors(false);
         activatedRoom = false;
         amountOfEnemy = 0;
@@ -28,7 +34,7 @@ public class Room : MonoBehaviour
         if (other.GetComponent<PlayerEntity>())
         {
             OpenCloseDoors(true);
-            SpawnEnemy();
+            StartCoroutine(DelayWave());
             activatedRoom = true;
         }
 
@@ -42,9 +48,11 @@ public class Room : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    void StartWave()
     {
-        for (int i = 0; i < howManyEnemyToSpawn; i++)
+        amountOfEnemy = Random.Range(minEnemyPerWave, maxEnemyPerWave + 1);
+
+        for (int i = 0; i < amountOfEnemy; i++)
         {
             if (spawnPoints.Length > 0)
             {
@@ -57,7 +65,6 @@ public class Room : MonoBehaviour
                 // Instantiate enemy at the chosen spawn point
                 GameObject newEnemy = Instantiate(enemyList[enemyIndex], spawnPoint.position, Quaternion.identity);
                 newEnemy.GetComponent<EnemyEntity>().SetRoomReference(this);
-                amountOfEnemy++;
             }
             else
             {
@@ -76,7 +83,6 @@ public class Room : MonoBehaviour
                 GameObject newEnemy = Instantiate(enemyList[enemyIndex], gameObject.transform);
                 newEnemy.transform.position = new Vector3(xPos, yPos, 1);
                 newEnemy.GetComponent<EnemyEntity>().SetRoomReference(this);
-                amountOfEnemy++;
             }
 
 
@@ -92,7 +98,25 @@ public class Room : MonoBehaviour
 
         if (amountOfEnemy <= 0)
         {
-            OpenCloseDoors(false);
+            amountOfWaves--;
+            if (amountOfWaves > 0)
+            {
+                StartCoroutine(DelayWave());
+            }
+            else
+            {
+                OpenCloseDoors(false);
+            }
         }
+    }
+
+    /// <summary>
+    /// Delay the duration at which the wave will spawn.
+    /// </summary>
+    /// <returns></returns>
+    IEnumerator DelayWave()
+    {
+        yield return new WaitForSeconds(1);
+        StartWave();
     }
 }

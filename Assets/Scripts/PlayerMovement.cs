@@ -53,13 +53,14 @@ public class PlayerMovement : MonoBehaviour
         {
             SetMovementSpeed(2);
             slowDuration -= Time.deltaTime;
-            Debug.Log(slowDuration);
+            Debug.Log("slow duration" + slowDuration);
 
             if (slowDuration <= 0)
             {
+                slowDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
-                player.isplayerSlowed = false;
+                player.isplayerSlowed = false;    
             }
         }
         else
