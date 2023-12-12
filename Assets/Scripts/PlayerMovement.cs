@@ -71,6 +71,8 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Minus))
         {
             PlayerPrefs.DeleteAll();
+            PlayerPrefs.SetFloat("VolumeValue", 1);
+            PlayerPrefs.SetFloat("SFXValue", 1);
         }
 
     }
