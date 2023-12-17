@@ -19,6 +19,7 @@ public class PlayerEntity : MonoBehaviour
     public bool canUseskill3 = false;
     public bool canUseskill4 = false;
     public bool isplayerSlowed = false;
+    public bool isplayerSpedUp = false;
     private bool isFlashing = false;
 
     [SerializeField] AbitiliesSet abitiliesSet;
@@ -101,9 +102,9 @@ public class PlayerEntity : MonoBehaviour
     /// <summary>
     /// Change the health of the playerEntity. Use negative value to represent reducing health and positive to represent adding health.
     /// </summary>
-    public void ChangeHealth(int amtChanged)
+    public void ChangeHealth(int amtChanged, bool isPlayerDamage = false)
     {
-        if (isFlashing == false)
+        if (!isPlayerDamage && !isFlashing)
         {
             StartCoroutine(FlashPlayer());
         }

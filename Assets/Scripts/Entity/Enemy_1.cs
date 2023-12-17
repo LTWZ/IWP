@@ -92,6 +92,12 @@ public class Enemy_1 : EnemyEntity
         }
     }
 
+
+    protected override void Update()
+    {
+        base.Update();
+    }
+
     public void EnemyMove()
     {
         if (IsEnemyRooted == true)

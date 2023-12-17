@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selectWizardButton: {fileID: 1381490115}
   selectRogueButton: {fileID: 1043777755}
-  selectWarriorButton: {fileID: 0}
+  selectWarriorButton: {fileID: 1162930808}
 --- !u!4 &270129656
 Transform:
   m_ObjectHideFlags: 0
@@ -1877,7 +1877,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   wizardPrefab: {fileID: 2409052710821016828, guid: f46c5d8ba4cba1b49a4a53f6ca30bad5, type: 3}
   roguePrefab: {fileID: 2409052710821016828, guid: 897ed949eead5464bbdeb0f998272648, type: 3}
-  warriorPrefab: {fileID: 0}
+  warriorPrefab: {fileID: 2409052710821016828, guid: d3d2a14a6e0839d43ab94dacc568f07d, type: 3}
 --- !u!4 &1854461813
 Transform:
   m_ObjectHideFlags: 0

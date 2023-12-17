@@ -24,6 +24,8 @@ TagManager:
   - Ninja
   - Bullet
   - Bladestorm
+  - FireAOE
+  - BloodPool
   layers:
   - Default
   - TransparentFX
@@ -63,4 +65,7 @@ TagManager:
     locked: 0
   - name: EnemyClone
     uniqueID: 26822853
+    locked: 0
+  - name: BloodPool
+    uniqueID: 3434173329
     locked: 0

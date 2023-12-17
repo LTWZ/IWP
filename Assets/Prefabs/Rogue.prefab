@@ -245,6 +245,7 @@ MonoBehaviour:
   HandPivot: {fileID: 8614428442490028457}
   Player: {fileID: 0}
   Player2: {fileID: 0}
+  Player3: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
 --- !u!61 &2409052710821016801
@@ -326,7 +327,7 @@ MonoBehaviour:
   canUseskill3: 0
   canUseskill4: 0
   isplayerSlowed: 0
-  abitiliesSet: {fileID: 11400000, guid: 19a0f7e0248b5d04bbca1d1f0d490723, type: 2}
+  abitiliesSet: {fileID: 11400000, guid: a962c5b16c88c0e429a019d3f89cc6d6, type: 2}
   cooldown1: 1
   ability1: 49
   teleportRange: 10

@@ -17,7 +17,7 @@ public class SelectCharacter : MonoBehaviour
     {
         selectWizardButton.onClick.AddListener(delegate { SelectClass(PlayerType.WIZARD); });
         selectRogueButton.onClick.AddListener(delegate { SelectClass(PlayerType.ROGUE); });
-        //selectWarriorButton.onClick.AddListener(delegate { SelectClass(PlayerType.WARRIOR); });
+        selectWarriorButton.onClick.AddListener(delegate { SelectClass(PlayerType.WARRIOR); });
         pm = PlayerManager.GetInstance();
 
     }
@@ -53,7 +53,7 @@ public class SelectCharacter : MonoBehaviour
         }
         if (whichPlayerType == PlayerType.WARRIOR)
         {
-            SceneManager.LoadScene("WarriorTutorial");
+            SceneManager.LoadScene("TutorialLevel");
         }
         /*SceneManager.LoadScene("TutorialLevel");*/ // Load the next scene (change "Gameplay" to your scene name).
     }

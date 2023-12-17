@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] MouseController mouseController;
     [SerializeField] float movement_speed;
     [SerializeField] float currentMovementSpeed;
+    private float originalMovementSpeed;
     private SpriteRenderer sr;
     [SerializeField] Animator animator;
     [SerializeField] Rigidbody2D rb;
@@ -17,8 +18,10 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 moveDir;
     public Test1 Player;
     public Test2 Player2;
+    public Test3 Player3;
     public bool isMovementEnabled = true;
     public float slowDuration = 2f;
+    public float speedDuration = 2f;
     private float slowTimer = 0f;
 
     private void Awake()
@@ -34,10 +37,13 @@ public class PlayerMovement : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         currentMovementSpeed = movement_speed;
+        originalMovementSpeed = movement_speed;
     }
 
     void Update()
     {
+
+        Debug.Log(speedDuration);
         if (!isMovementEnabled || DialogueManager.isActive)
         {
             StopPlayer();
@@ -51,21 +57,37 @@ public class PlayerMovement : MonoBehaviour
 
         if (GetComponent<PlayerEntity>().isplayerSlowed == true)
         {
-            SetMovementSpeed(2);
+            SetMovementSpeed(originalMovementSpeed / 2);
             slowDuration -= Time.deltaTime;
-            Debug.Log("slow duration" + slowDuration);
+            Debug.Log("slow duration: " + slowDuration);
 
             if (slowDuration <= 0)
             {
                 slowDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
-                player.isplayerSlowed = false;    
+                player.isplayerSlowed = false;
+                ResetSpeedModifier(); // Reset speed when slow effect ends
+            }
+        }
+        else if (GetComponent<PlayerEntity>().isplayerSpedUp == true)
+        {
+            SetMovementSpeed(originalMovementSpeed * 1.5f);
+            speedDuration -= Time.deltaTime;
+            Debug.Log("speed duration: " + speedDuration);
+
+            if (speedDuration <= 0)
+            {
+                speedDuration = 2f;
+                PlayerManager playerManager = PlayerManager.GetInstance();
+                PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+                player.isplayerSpedUp = false;
+                ResetSpeedModifier(); // Reset speed when speed up effect ends
             }
         }
         else
         {
-            SetMovementSpeed(movement_speed);
+            ResetSpeedModifier(); // Reset speed when no effect is active
         }
 
         if (Input.GetKeyDown(KeyCode.Minus))
@@ -80,6 +102,10 @@ public class PlayerMovement : MonoBehaviour
     public void SetMovementSpeed(float newSpeed)
     {
         currentMovementSpeed = newSpeed;
+    }
+    public void ResetSpeedModifier()
+    {
+        SetMovementSpeed(originalMovementSpeed);
     }
 
     void StopPlayer()
