@@ -108,6 +108,27 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(LoadScene("Level1"));
     }
 
+    public void LoadLevel2()
+    {
+        StartCoroutine(LoadScene("Level2"));
+    }
+
+    public void LoadLevel3()
+    {
+        StartCoroutine(LoadScene("Level3"));
+    }
+
+    public void LoadLevel4()
+    {
+        StartCoroutine(LoadScene("Level4"));
+    }
+
+    public void LoadLevel5()
+    {
+        StartCoroutine(LoadScene("Level5"));
+    }
+
+
     public void LoadTutorialLevel()
     {
         StartCoroutine(LoadScene("TutorialLevel"));
