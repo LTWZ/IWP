@@ -1055,6 +1055,8 @@ MonoBehaviour:
     WeaponsPrefab: {fileID: 3709961587577995171, guid: 679fe1bab4b28ce4091add0db5112e82, type: 3}
   - weaponsSO: {fileID: 11400000, guid: 23cc832b7cf2e134e84cac422deff223, type: 2}
     WeaponsPrefab: {fileID: 3709961587577995171, guid: 487e0b62a0d50574aad655a33a6953d6, type: 3}
+  - weaponsSO: {fileID: 11400000, guid: 97991949a5d953544bd61660768d69f9, type: 2}
+    WeaponsPrefab: {fileID: 3709961587577995171, guid: ef65233d6b2728f49a1c4b02ecf3c369, type: 3}
   weaponDisplayPrefab: {fileID: 5764461811237798788, guid: f413950d3f45c1740a483dfec51b0a2d, type: 3}
 --- !u!4 &1161821101
 Transform:

@@ -422,10 +422,11 @@ MonoBehaviour:
   rootDuration: 5
   enemyGFX: {fileID: 7623455674827787871}
   attackCooldown: 2
-  iceballPrefab: {fileID: 1811587667708369447, guid: fe779366dcdb3dd44a40d1cded963fa3, type: 3}
+  iceballPrefab: {fileID: 1811587667708369447, guid: 72469be06b72acc40ac7545333366ef4, type: 3}
   iceballSpawnPoint: {fileID: 4466587994836078222}
   iceballSpeed: 5
-  iceballCooldown: 3
+  iceballhomingSpeed: 3
+  iceballCooldown: 5
   IsEnemyRooted: 0
 --- !u!195 &16659106802077198
 NavMeshAgent:

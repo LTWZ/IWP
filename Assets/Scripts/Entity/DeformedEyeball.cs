@@ -32,7 +32,8 @@ public class DeformedEyeball : EnemyEntity
 
     public GameObject iceballPrefab;
     public Transform iceballSpawnPoint;
-    public float iceballSpeed = 10f;
+    public float iceballSpeed = 5f;
+    public float iceballhomingSpeed = 4f;
     public float iceballCooldown = 0.5f;
     private float nextIceballTime = 0f;
 
@@ -140,23 +141,30 @@ public class DeformedEyeball : EnemyEntity
             // Set the iceball's velocity with the rotated direction
             iceball.GetComponent<Rigidbody2D>().velocity = rotatedDirection * iceballSpeed;
 
-            // Start homing after 1 second
-            StartCoroutine(HomingAfterDelay(iceball, iceballSpeed, targetPlayer, 1f));
+            // Start homing after a specific delay with a maximum lifetime of 5 seconds
+            float homingDelay = i * 0.75f; // Adjust the delay for each projectile
+            StartCoroutine(HomingAfterDelay(iceball, iceballhomingSpeed, targetPlayer, homingDelay, 5f));
         }
     }
 
-    IEnumerator HomingAfterDelay(GameObject iceball, float speed, GameObject target, float delay)
+    IEnumerator HomingAfterDelay(GameObject iceball, float speed, GameObject target, float delay, float maxLifetime)
     {
+        float elapsedTime = 0f;
+
         yield return new WaitForSeconds(delay);
 
-        while (iceball != null && target != null)
+        while (iceball != null && target != null && elapsedTime < maxLifetime)
         {
             // Update the iceball's velocity to home in on the player's position
             Vector2 direction = (target.transform.position - iceball.transform.position).normalized;
             iceball.GetComponent<Rigidbody2D>().velocity = direction * speed;
 
+            elapsedTime += Time.deltaTime;
             yield return null;
         }
+
+        // Destroy the iceball when it reaches its maximum lifetime
+        Destroy(iceball);
     }
 
     public void EnemyMove()
