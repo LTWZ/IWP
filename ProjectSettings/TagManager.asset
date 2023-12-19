@@ -26,6 +26,7 @@ TagManager:
   - Bladestorm
   - FireAOE
   - BloodPool
+  - Icicle
   layers:
   - Default
   - TransparentFX

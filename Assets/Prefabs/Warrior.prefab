@@ -347,7 +347,6 @@ MonoBehaviour:
   cooldown4: 5
   isCooldown4: 0
   ability4: 52
-  bladeStormDuration: 5
   bloodpoolPrefab: {fileID: 3433706144679501814, guid: e6d3a80bf615cf04cb2d9594e697ee3e, type: 3}
 --- !u!1 &7585777571270661954
 GameObject:

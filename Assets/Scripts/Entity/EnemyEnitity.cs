@@ -21,7 +21,7 @@ public class EnemyEntity : MonoBehaviour
     /// </summary>
     /// 
 
-    public void ChangeHealth(int amtChanged)
+    public virtual void ChangeHealth(int amtChanged)
     {
         if (isFlashing == false)
         {
@@ -36,16 +36,21 @@ public class EnemyEntity : MonoBehaviour
 
         if (currHealth <= 0)
         {
-            roomReference.ReduceEnemy();
             PlayerEntity player = FindObjectOfType<PlayerEntity>();
-
             if (player != null)
             {
                 // Gain back a random amount of mana
                 int manaGained = Random.Range(10, 21); // Adjust the range as needed
                 player.ChangeMana(manaGained);
             }
-            // die ofc
+
+            // Check if the enemy is part of the room before reducing the enemy count
+            if (roomReference != null)
+            {
+                roomReference.ReduceEnemy();
+            }
+
+            // Die logic here
         }
     }
 

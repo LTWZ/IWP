@@ -39,36 +39,43 @@ public class BlackHoleScript : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Player") && collider.CompareTag("Skill2Tutorial"))
+            if (collider.CompareTag("Player") || collider.CompareTag("Skill2Tutorial"))
             {
-                continue; // Skip the player
+                continue; // Skip the player and Skill2Tutorial
             }
 
             if (collider.CompareTag("Enemy"))
             {
                 // Handle the enemy logic here
-                Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+                EnemyEntity enemy = collider.GetComponent<EnemyEntity>();
 
-                if (rb != null)
+                if (enemy != null)
                 {
-                    // Calculate force direction
-                    Vector2 direction = (transform.position - rb.transform.position).normalized;
-                    rb.AddForce(direction * pullForce);
-                    rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50f);
-                }
-
-                if (DOTElapsed > timerRate)
-                {
-                    EnemyEntity enemy = collider.GetComponent<EnemyEntity>();
-                    if (enemy != null)
+                    // Check if the enemy is boss_2 and not immune to damage
+                    if (enemy is Boss_2 boss2 && boss2.isImmuneToDamage)
                     {
-                        enemy.ChangeHealth(-damageOverTime);
-                        Debug.Log("enemy hit by BH");
+
+                    }
+                    else
+                    {
+                        Rigidbody2D rb = collider.GetComponent<Rigidbody2D>();
+
+                        if (rb != null)
+                        {
+                            // Calculate force direction
+                            Vector2 direction = (transform.position - rb.transform.position).normalized;
+                            rb.AddForce(direction * pullForce);
+                            rb.velocity = Vector3.ClampMagnitude(rb.velocity, 50f);
+                        }
+
+                        if (DOTElapsed > timerRate)
+                        {
+                            enemy.ChangeHealth(-damageOverTime);
+                            Debug.Log("boss_2 hit by BH");
+                        }
                     }
                 }
             }
-
-
         }
 
         if (DOTElapsed > timerRate)
