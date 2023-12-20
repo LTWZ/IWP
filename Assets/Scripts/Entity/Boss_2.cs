@@ -185,7 +185,7 @@ public class Boss_2 : EnemyEntity
     void SummonIceCrystal()
     {
         // Define the radius around the player where the ice crystal can be summoned
-        float summonRadius = 5.0f; // Adjust the radius as needed
+        float summonRadius = 4.0f; // Adjust the radius as needed
 
         // Calculate a random position within the summon radius
         Vector2 randomOffset = Random.insideUnitCircle * summonRadius;

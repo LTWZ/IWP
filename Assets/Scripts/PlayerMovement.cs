@@ -5,7 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private static PlayerMovement instance;
-
+    private float knockbackDuration = 0.5f;
+    private float knockbackForce = 5f;
+    private bool isKnockbackActive = false;
+    private Vector2 knockbackDirection;
     [SerializeField] MouseController mouseController;
     [SerializeField] float movement_speed;
     [SerializeField] float currentMovementSpeed;
@@ -99,6 +102,38 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
+
+
+
+
+    void Knockback()
+    {
+        // Apply knockback force in the specified direction
+        rb.velocity = knockbackDirection * knockbackForce;
+    }
+
+    public void ApplyKnockback(Vector2 direction, float force)
+    {
+        // Set knockback direction and force
+        knockbackDirection = direction;
+        knockbackForce = force;
+
+        // Start knockback
+        StartCoroutine(StartKnockback());
+    }
+
+    IEnumerator StartKnockback()
+    {
+        isKnockbackActive = true;
+
+        // Wait for the specified knockback duration
+        yield return new WaitForSeconds(knockbackDuration);
+
+        // End knockback
+        isKnockbackActive = false;
+        rb.velocity = Vector2.zero; // Reset velocity after knockback
+    }
+
     public void SetMovementSpeed(float newSpeed)
     {
         currentMovementSpeed = newSpeed;
@@ -136,8 +171,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        // To process physics calculations
-        Move();
+        if (isKnockbackActive)
+        {
+            // Apply knockback force when active
+            Knockback();
+        }
+        else
+        {
+            // To process physics calculations
+            Move();
+        }
     }
 
     void ProcessInputs()
@@ -159,7 +202,10 @@ public class PlayerMovement : MonoBehaviour
     }
     void Move()
     {
-        rb.MovePosition(rb.position + moveDir * currentMovementSpeed * Time.deltaTime);
+        if (!isKnockbackActive)
+        {
+            rb.MovePosition(rb.position + moveDir * currentMovementSpeed * Time.deltaTime);
+        }
     }
 
 }
