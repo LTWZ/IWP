@@ -21,6 +21,7 @@ public class Test2 : PlayerEntity
     public float bladeSpeed = 10f;
     public int numBlades = 3;
     private bool isbladescast = false;
+    public float knifeslifetime;
 
     [Header("Ability 3")]
     public float cooldown3 = 5;
@@ -47,13 +48,30 @@ public class Test2 : PlayerEntity
         UIManager.GetInstance().onCooldown += DisableCooldown;
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         UpdateHP();
         UpdateMana();
+        UpdateCoins();
+        UpdateHPPotionsAmt();
+        UpdateManaPotionsAmt();
 
         // Check if the current scene is a tutorial scene
         bool isTutorialScene = IsTutorialScene();
+
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrManaPotionAmt() >= 1)
+            {
+                PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeManaPotionAmt(-1);
+                PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeMana(20);
+            }
+            else
+            {
+
+            }
+        }
 
         // If the scene is not a tutorial scene and the dialogue is not active, allow abilities
         if (!isTutorialScene && !DialogueManager.isActive)
@@ -237,7 +255,7 @@ public class Test2 : PlayerEntity
             Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
 
             // Set the blade's velocity
-            blade.GetComponent<Rigidbody2D>().velocity = direction * ninjastarSpeed;
+            blade.GetComponent<Rigidbody2D>().velocity = direction * bladeSpeed;
 
             // Calculate the angle to face the target position
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
@@ -247,11 +265,15 @@ public class Test2 : PlayerEntity
 
             // Wait for a short delay before shooting the next blade
             yield return new WaitForSeconds(0.3f);
+
+            Destroy(blade, knifeslifetime);
         }
 
         isCooldown2 = true;
         UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
         isbladescast = false;
+
+
     }
 
     public override void Skill3()
@@ -365,18 +387,18 @@ public class Test2 : PlayerEntity
 
     public override void UpdateHP()
     {
-
-    }
-    public override void UpdateMana()
-    {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeMana(-20);
+            ChangeHealth(-20);
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            ChangeMana(20);
+            ChangeHealth(20);
         }
+    }
+    public override void UpdateMana()
+    {
+
     }
 
     void DisableCooldown(skillType whatSkill)

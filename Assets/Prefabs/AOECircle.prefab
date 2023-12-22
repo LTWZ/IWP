@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionTime: 5
-  damage: 3
+  damage: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

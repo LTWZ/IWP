@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 public class PlayerEntity : MonoBehaviour
 {
     [SerializeField] protected int Hp;
+    [SerializeField] protected int Coins;
+    [SerializeField] protected int HealthPotionCount;
+    [SerializeField] protected int ManaPotionCount;
     [SerializeField] protected int speed;
     [SerializeField] protected int Mana;
     protected int currentHP;
@@ -13,6 +16,9 @@ public class PlayerEntity : MonoBehaviour
     [Header("Mana Code")]
     [SerializeField] protected int maxMana = 100;
     protected int currMana;
+    protected int currCoins;
+    protected int currHealthPotions;
+    protected int currManaPotions;
     private UIManager uiManager;
     public bool canUseskill1 = false;
     public bool canUseskill2 = false;
@@ -20,6 +26,7 @@ public class PlayerEntity : MonoBehaviour
     public bool canUseskill4 = false;
     public bool isplayerSlowed = false;
     public bool isplayerSpedUp = false;
+    public bool isplayerRooted = false;
     private bool isFlashing = false;
 
     [SerializeField] AbitiliesSet abitiliesSet;
@@ -27,6 +34,38 @@ public class PlayerEntity : MonoBehaviour
     {
         currentHP = Hp;
         currMana = Mana;
+        currCoins = Coins;
+        currHealthPotions = HealthPotionCount;
+        currManaPotions = ManaPotionCount;
+    }
+
+    public virtual void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha0))
+        {
+            Debug.Log(GetCurrentManaPercentage());
+            if (GetCurrManaPotionAmt() > 0 && GetCurrentManaPercentage() < 100f)
+            {
+                ChangeManaPotionAmt(-1);
+                ChangeMana(20);
+            }
+            else
+            {
+                Debug.Log("NO MANA POTION LEFT");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha9))
+        {
+            if (GetCurrHPPotionAmt() > 0 && GetCurrentHealthPercentage() < 100f) 
+            {
+                ChangeHealthPotionAmt(-1);
+                ChangeHealth(20, true);
+            }
+            else
+            {
+                Debug.Log("NO MANA POTION LEFT");
+            }
+        }
     }
 
     public int GetCurrMana()
@@ -39,6 +78,31 @@ public class PlayerEntity : MonoBehaviour
         return currentHP;
     }
 
+    public int GetCurrCoins()
+    {
+        return currCoins;
+    }
+
+    public int GetCurrHPPotionAmt()
+    {
+        return currHealthPotions;
+    }
+
+    public int GetCurrManaPotionAmt()
+    {
+        return currManaPotions;
+    }
+
+    public float GetCurrentHealthPercentage()
+    {
+        return (float)currentHP / Hp * 100f;
+    }
+
+    public float GetCurrentManaPercentage()
+    {
+        return (float)currMana / maxMana * 100f;
+    }
+
     public void SetCurrHealth(int loadedCurrHP)
     {
         currentHP = loadedCurrHP;
@@ -47,6 +111,21 @@ public class PlayerEntity : MonoBehaviour
     public void SetCurrMana(int loadedCurrMana)
     {
         currMana = loadedCurrMana;
+    }
+
+    public void SetCurrCoins(int loadedCurrCoins)
+    {
+        currCoins = loadedCurrCoins;
+    }
+
+    public void SetHPPotionAmt(int loadedHPPotionAmt)
+    {
+        currHealthPotions = loadedHPPotionAmt;
+    }
+
+    public void SetManaPotionAmt(int loadedManaPotionAmt)
+    {
+        currManaPotions = loadedManaPotionAmt;
     }
 
     public AbitiliesSet GetAbilitiesSet()
@@ -61,6 +140,9 @@ public class PlayerEntity : MonoBehaviour
             uiManager = UIManager.GetInstance();
             uiManager.UpdateHealthDisplay(currentHP, Hp);
             uiManager.UpdateManaDisplay(currMana, maxMana);
+            uiManager.UpdateCoinsDisplay(currCoins);
+            uiManager.UpdateHPPotionDisplay(currHealthPotions);
+            uiManager.UpdateManaPotionDisplay(currManaPotions);
         }
     }
 
@@ -93,6 +175,23 @@ public class PlayerEntity : MonoBehaviour
     {
 
     }
+
+    public virtual void UpdateCoins()
+    {
+
+    }
+
+    public virtual void UpdateManaPotionsAmt()
+    {
+
+    }
+
+    public virtual void UpdateHPPotionsAmt()
+    {
+
+    }
+
+
 
     public virtual void UpdateManaTutorial()
     {
@@ -197,6 +296,24 @@ public class PlayerEntity : MonoBehaviour
 
         currMana = Mathf.Clamp(currMana, 0, maxMana);
         uiManager.UpdateManaDisplay(currMana, maxMana);
+    }
+
+    public void ChangeCoins(int amtChanged)
+    {
+        currCoins += amtChanged;
+        uiManager.UpdateCoinsDisplay(currCoins);
+    }
+
+    public void ChangeHealthPotionAmt(int amtChanged)
+    {
+        currHealthPotions += amtChanged;
+        uiManager.UpdateHPPotionDisplay(currHealthPotions);
+    }
+
+    public void ChangeManaPotionAmt(int amtChanged)
+    {
+        currManaPotions += amtChanged;
+        uiManager.UpdateManaPotionDisplay(currManaPotions);
     }
 
     // this is an issue u need fix now. OnTriggerEnter dont trigger bcos both ur enemy and ur player has a boxcollider that is not isTrigger

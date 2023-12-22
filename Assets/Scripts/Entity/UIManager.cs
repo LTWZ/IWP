@@ -49,6 +49,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] Image border2;
     [SerializeField] Image border3;
     [SerializeField] Image border4;
+    [SerializeField] TextMeshProUGUI coinValueText;
+    [SerializeField] TextMeshProUGUI healthpotionNumText;
+    [SerializeField] TextMeshProUGUI manapotionNumText;
 
 
     public delegate void OnCooldown(skillType whichSkill);
@@ -124,6 +127,21 @@ public class UIManager : MonoBehaviour
     {
         manaSlider.value = (float)currMana / maxMana;
         manaValueText.text = currMana.ToString() + "/" + maxMana.ToString();
+    }
+
+    public void UpdateCoinsDisplay(int currCoins)
+    {
+        coinValueText.text = currCoins.ToString();
+    }
+
+    public void UpdateHPPotionDisplay(int currhealthpotionNum)
+    {
+        healthpotionNumText.text = currhealthpotionNum.ToString();
+    }
+
+    public void UpdateManaPotionDisplay(int currmanapotionNum)
+    {
+        manapotionNumText.text = currmanapotionNum.ToString();
     }
 
     private void Update()

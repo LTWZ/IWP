@@ -108,7 +108,7 @@ public class Boss_2 : EnemyEntity
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.GetComponent<Beam>())
+        if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
         }
@@ -174,7 +174,7 @@ public class Boss_2 : EnemyEntity
         }
     }
 
-    public override void ChangeHealth(int amtChanged)
+    public override void ChangeHealth(int amtChanged, bool isSelfDamage = false)
     {
         if (!isImmuneToDamage)
         {

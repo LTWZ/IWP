@@ -29,6 +29,9 @@ public class PlayerManager : MonoBehaviour
     private bool canLoadData = false;
     private int currHealth = 0;
     private int currMana = 0;
+    private int currCoins = 0;
+    private int HPPotionAmt = 0;
+    private int ManaPotionAmt = 0;
 
     private void Awake()
     {
@@ -76,6 +79,9 @@ public class PlayerManager : MonoBehaviour
         {
             playerCreated.GetComponent<PlayerEntity>().SetCurrHealth(currHealth);
             playerCreated.GetComponent<PlayerEntity>().SetCurrMana(currMana);
+            playerCreated.GetComponent<PlayerEntity>().SetCurrCoins(currCoins);
+            playerCreated.GetComponent<PlayerEntity>().SetHPPotionAmt(HPPotionAmt);
+            playerCreated.GetComponent<PlayerEntity>().SetManaPotionAmt(ManaPotionAmt);
         }
         else
         {
@@ -94,5 +100,8 @@ public class PlayerManager : MonoBehaviour
     {
         currHealth = playerCreated.GetComponent<PlayerEntity>().GetCurrHealth();
         currMana = playerCreated.GetComponent<PlayerEntity>().GetCurrMana();
+        currCoins = playerCreated.GetComponent<PlayerEntity>().GetCurrCoins();
+        HPPotionAmt = playerCreated.GetComponent<PlayerEntity>().GetCurrHPPotionAmt();
+        ManaPotionAmt = playerCreated.GetComponent<PlayerEntity>().GetCurrManaPotionAmt();
     }
 }

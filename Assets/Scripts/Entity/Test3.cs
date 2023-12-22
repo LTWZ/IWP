@@ -41,13 +41,30 @@ public class Test3 : PlayerEntity
         enemyLayer = LayerMask.GetMask("Enemy");
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         UpdateHP();
         UpdateMana();
+        UpdateCoins();
+        UpdateHPPotionsAmt();
+        UpdateManaPotionsAmt();
 
         // Check if the current scene is a tutorial scene
         bool isTutorialScene = IsTutorialScene();
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrManaPotionAmt() >= 1)
+            {
+                PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeManaPotionAmt(-1);
+                PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeMana(20);
+            }
+            else
+            {
+
+            }
+        }
 
         // If the scene is not a tutorial scene and the dialogue is not active, allow abilities
         if (!isTutorialScene && !DialogueManager.isActive)

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7104409773327566726}
   m_Layer: 0
   m_Name: EnemyAOE
-  m_TagString: Untagged
+  m_TagString: EnemyAOE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,7 +87,7 @@ MonoBehaviour:
   damageOverTime: 1
   radius: 2
   lifetime: 3
-  isbladestormdestroyed: 0
+  isBladestormDestroyed: 0
 --- !u!1 &6627540806425845158
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7599501573009780527}
   m_Layer: 0
   m_Name: EnemyAOESprite
-  m_TagString: Untagged
+  m_TagString: EnemyAOE
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

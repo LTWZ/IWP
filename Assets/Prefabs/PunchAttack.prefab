@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3549850659606337302}
   m_Layer: 0
   m_Name: PunchAttackSprite
-  m_TagString: Untagged
+  m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 2725806233209433182}
   m_Layer: 0
   m_Name: PunchAttack
-  m_TagString: Untagged
+  m_TagString: Punch
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

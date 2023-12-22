@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     public bool isMovementEnabled = true;
     public float slowDuration = 2f;
     public float speedDuration = 2f;
+    public float rootedDuration = 2f;
     private float slowTimer = 0f;
 
     private void Awake()
@@ -46,7 +47,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(speedDuration);
+        //Debug.Log(speedDuration);
         if (!isMovementEnabled || DialogueManager.isActive)
         {
             StopPlayer();
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (GetComponent<PlayerEntity>().isplayerSpedUp == true)
         {
-            SetMovementSpeed(originalMovementSpeed * 1.5f);
+            SetMovementSpeed(0);
             speedDuration -= Time.deltaTime;
             Debug.Log("speed duration: " + speedDuration);
 
@@ -88,17 +89,32 @@ public class PlayerMovement : MonoBehaviour
                 ResetSpeedModifier(); // Reset speed when speed up effect ends
             }
         }
+        else if (GetComponent<PlayerEntity>().isplayerRooted == true)
+        {
+            SetMovementSpeed(0);
+            rootedDuration -= Time.deltaTime;
+            Debug.Log("speed duration: " + rootedDuration);
+
+            if (rootedDuration <= 0)
+            {
+                rootedDuration = 2f;
+                PlayerManager playerManager = PlayerManager.GetInstance();
+                PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+                player.isplayerRooted = false;
+                ResetSpeedModifier(); // Reset speed when speed up effect ends
+            }
+        }
         else
         {
             ResetSpeedModifier(); // Reset speed when no effect is active
         }
 
-        if (Input.GetKeyDown(KeyCode.Minus))
-        {
-            PlayerPrefs.DeleteAll();
-            PlayerPrefs.SetFloat("VolumeValue", 1);
-            PlayerPrefs.SetFloat("SFXValue", 1);
-        }
+        //if (Input.GetKeyDown(KeyCode.Minus))
+        //{
+        //    PlayerPrefs.DeleteAll();
+        //    PlayerPrefs.SetFloat("VolumeValue", 1);
+        //    PlayerPrefs.SetFloat("SFXValue", 1);
+        //}
 
     }
 

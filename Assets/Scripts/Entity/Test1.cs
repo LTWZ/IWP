@@ -49,13 +49,18 @@ public class Test1 : PlayerEntity
     //    this.currMana = currMana;
     //}
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         UpdateHP();
         UpdateMana();
+        UpdateCoins();
+        UpdateHPPotionsAmt();
+        UpdateManaPotionsAmt();
 
         // Check if the current scene is a tutorial scene
         bool isTutorialScene = IsTutorialScene();
+
 
         // If the scene is not a tutorial scene and the dialogue is not active, allow abilities
         if (!isTutorialScene && !DialogueManager.isActive)
@@ -210,7 +215,7 @@ public class Test1 : PlayerEntity
                 if (blackHoleScript != null)
                 {
                     // Customize the black hole's behavior (e.g., damage, pull force)
-                    blackHoleScript.SetDamageOverTime(1); // Adjust the damage as needed
+                    blackHoleScript.SetDamageOverTime(5); // Adjust the damage as needed
                     blackHoleScript.SetPullForce(10); // Adjust the pull force as needed
                 }
             }
@@ -370,18 +375,33 @@ public class Test1 : PlayerEntity
 
     public override void UpdateHP()
     {
-
-    }
-    public override void UpdateMana()
-    {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeMana(-20);
+            ChangeHealth(-20);
         }
         else if (Input.GetKeyDown(KeyCode.L))
         {
-            ChangeMana(20);
+            ChangeHealth(20);
         }
+    }
+    public override void UpdateMana()
+    {
+
+    }
+
+    public override void UpdateCoins()
+    {
+
+    }
+
+    public override void UpdateHPPotionsAmt()
+    {
+
+    }
+
+    public override void UpdateManaPotionsAmt()
+    {
+        
     }
 
     void DisableCooldown(skillType whatSkill)

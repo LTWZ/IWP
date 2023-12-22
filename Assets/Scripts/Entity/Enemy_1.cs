@@ -71,7 +71,7 @@ public class Enemy_1 : EnemyEntity
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.GetComponent<Beam>())
+        if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
         }

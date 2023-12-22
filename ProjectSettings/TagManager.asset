@@ -27,6 +27,9 @@ TagManager:
   - FireAOE
   - BloodPool
   - Icicle
+  - Punch
+  - EnemyAOE
+  - FireAOEEnemy
   layers:
   - Default
   - TransparentFX

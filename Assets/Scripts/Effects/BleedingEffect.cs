@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BleedingEffect : MonoBehaviour
+public class BleedingEffectEnemy : MonoBehaviour
 {
     private float bleedingDamagePerSecond;
     private float bleedingDuration;
@@ -55,6 +55,6 @@ public class BleedingEffect : MonoBehaviour
 
         // Apply damage over time to the object with this effect
         // This might be adjusted based on your game's health system
-        GetComponent<EnemyEntity>().ChangeHealth(-damageToApply);
+        GetComponent<PlayerEntity>().ChangeHealth(-damageToApply);
     }
 }

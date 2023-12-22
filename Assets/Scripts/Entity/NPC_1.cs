@@ -5,6 +5,7 @@ using UnityEngine;
 public class NPC_1 : MonoBehaviour
 {
     public DialogueTrigger trigger;
+    public GameObject panelToOpen;
     private bool inTriggerZone = false;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -27,7 +28,19 @@ public class NPC_1 : MonoBehaviour
     {
         if (inTriggerZone && Input.GetKeyDown(KeyCode.F))
         {
-            trigger.StartDialogue();
+            OpenPanel();
+        }
+    }
+
+    private void OpenPanel()
+    {
+        if (panelToOpen != null)
+        {
+            panelToOpen.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("Panel to open is not assigned!");
         }
     }
 }

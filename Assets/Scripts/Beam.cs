@@ -13,7 +13,7 @@ public class Beam : MonoBehaviour
         if (collider.GetComponent<EnemyEntity>())
             collider.GetComponent<EnemyEntity>().ChangeHealth(-damage);
 
-        if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Skill1Tutorial" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Fireball")
+        if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "RoomManager" && collider.gameObject.tag != "Skill1Tutorial" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Fireball" && collider.gameObject.tag != "FireAOEEnemy")
         {
             Destroy(gameObject);
         }

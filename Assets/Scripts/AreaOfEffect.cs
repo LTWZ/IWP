@@ -5,7 +5,7 @@ using UnityEngine;
 public class AreaOfEffect : MonoBehaviour
 {
     public float explosionTime = 2.0f;  // Time until detonation
-    public float damage = 10.0f;         // Amount of damage to deal
+    public int damage = 10;         // Amount of damage to deal
     [SerializeField] LayerMask enemyLayer;         // Specify the enemy layer
     private float slowdownFactor = 0.5f;
 
@@ -43,7 +43,7 @@ public class AreaOfEffect : MonoBehaviour
             EnemyEntity enemy = hitCollider.GetComponent<EnemyEntity>();
             if (enemy != null)
             {
-                enemy.ChangeHealth(-3);
+                enemy.ChangeHealth(-damage);
             }
 
 

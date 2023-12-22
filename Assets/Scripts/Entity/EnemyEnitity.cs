@@ -21,9 +21,9 @@ public class EnemyEntity : MonoBehaviour
     /// </summary>
     /// 
 
-    public virtual void ChangeHealth(int amtChanged)
+    public virtual void ChangeHealth(int amtChanged, bool isSelfDamage = false)
     {
-        if (isFlashing == false)
+        if (!isSelfDamage && isFlashing == false)
         {
             // Pass the enemy game object to FlashEnemy
             StartCoroutine(FlashEnemy(gameObject));
@@ -39,9 +39,20 @@ public class EnemyEntity : MonoBehaviour
             PlayerEntity player = FindObjectOfType<PlayerEntity>();
             if (player != null)
             {
-                // Gain back a random amount of mana
-                int manaGained = Random.Range(10, 21); // Adjust the range as needed
-                player.ChangeMana(manaGained);
+
+                if (GetComponent<Enemy_3>())
+                {
+
+                }
+                else
+                {
+                    // Gain back a random amount of mana
+                    int manaGained = Random.Range(10, 21);
+                    int coinget = Random.Range(1, 5);
+                    player.ChangeCoins(coinget);
+                    player.ChangeMana(manaGained);// Adjust the range as needed
+                }
+
             }
 
             // Check if the enemy is part of the room before reducing the enemy count

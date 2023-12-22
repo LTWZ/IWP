@@ -249,6 +249,7 @@ MonoBehaviour:
   isMovementEnabled: 1
   slowDuration: 2
   speedDuration: 2
+  rootedDuration: 2
 --- !u!61 &2409052710821016801
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -320,6 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 300
+  Coins: 200
   speed: 0
   Mana: 300
   maxMana: 300
@@ -329,6 +331,7 @@ MonoBehaviour:
   canUseskill4: 0
   isplayerSlowed: 0
   isplayerSpedUp: 0
+  isplayerRooted: 0
   abitiliesSet: {fileID: 11400000, guid: 19a0f7e0248b5d04bbca1d1f0d490723, type: 2}
   cooldown1: 5
   ability1: 49

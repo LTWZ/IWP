@@ -113,7 +113,7 @@ public class Boss_3 : EnemyEntity
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.GetComponent<Beam>())
+        if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
         }
@@ -250,7 +250,7 @@ public class Boss_3 : EnemyEntity
         // Instantiate the tempbeam at the calculated position
         GameObject tempbeam = Instantiate(beamtemp, posToSpawnIn, Quaternion.identity);
         float widthOfBeam = tempbeam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
-        float lengthofBeam = directionVector.magnitude * 100;
+        float lengthofBeam = directionVector.magnitude * 110;
         float offSetScale = lengthofBeam / widthOfBeam;
 
         // Set the scale and rotation of tempbeam
@@ -270,7 +270,7 @@ public class Boss_3 : EnemyEntity
         // Instantiate beamPrefab2 at the stored position
         GameObject beam = Instantiate(beamPrefab2, tempBeamSpawnPosition, Quaternion.identity);
         float widthOfBeam2 = beam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
-        float lengthofBeam2 = directionVector.magnitude * 100;
+        float lengthofBeam2 = directionVector.magnitude * 110;
         float offSetScale2 = lengthofBeam2 / widthOfBeam2;
 
         // Set the scale and rotation of beamPrefab2
