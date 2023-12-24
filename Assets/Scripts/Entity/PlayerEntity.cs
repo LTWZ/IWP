@@ -25,6 +25,7 @@ public class PlayerEntity : MonoBehaviour
     public bool canUseskill3 = false;
     public bool canUseskill4 = false;
     public bool isplayerSlowed = false;
+    public bool isplayerSlowedByFinalBossAOE = false;
     public bool isplayerSpedUp = false;
     public bool isplayerRooted = false;
     private bool isFlashing = false;

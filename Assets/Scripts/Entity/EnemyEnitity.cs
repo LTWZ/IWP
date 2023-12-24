@@ -14,6 +14,7 @@ public class EnemyEntity : MonoBehaviour
     [SerializeField] protected int attackValue;
     [SerializeField] NavMeshAgent navMeshAgent;
     private Room roomReference;
+    private FinalBossRoom roomReferenceBoss;
     private bool isFlashing = false;
 
     /// <summary>
@@ -59,6 +60,10 @@ public class EnemyEntity : MonoBehaviour
             if (roomReference != null)
             {
                 roomReference.ReduceEnemy();
+            }
+            if (roomReferenceBoss != null)
+            {
+                roomReferenceBoss.ReduceEnemy();
             }
 
             // Die logic here
@@ -194,5 +199,10 @@ public class EnemyEntity : MonoBehaviour
     public void SetRoomReference(Room theRoomReference)
     {
         roomReference = theRoomReference;
+    }
+
+    public void SetRoomReferenceBoss(FinalBossRoom theRoomReference)
+    {
+        roomReferenceBoss = theRoomReference;
     }
 }

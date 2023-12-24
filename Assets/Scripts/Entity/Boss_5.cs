@@ -52,6 +52,10 @@ public class Boss_5 : EnemyEntity
     private bool canmeteorspawn = true;
     private bool meteorsFalling = false;
     private bool hasSummonedFireAOE = false;
+    public bool isImmuneToDamage = false;
+
+    // Add a variable to hold the SpriteRenderer component
+    private SpriteRenderer spriteRenderer;
 
 
 
@@ -59,6 +63,9 @@ public class Boss_5 : EnemyEntity
 
     Seeker seeker;
     Rigidbody2D rb;
+
+    // Add a variable to hold the default color
+    private Color defaultColor;
 
     public bool IsEnemyRooted = false;
 
@@ -85,6 +92,14 @@ public class Boss_5 : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
+        // Get the SpriteRenderer component
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        // Save the default color
+        if (spriteRenderer != null)
+        {
+            defaultColor = spriteRenderer.color;
+        }
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -164,6 +179,8 @@ public class Boss_5 : EnemyEntity
             phase1Timer = 5.0f;
             currentState = EnemyState.Phase2;
             canmeteorspawn = true;
+            isImmuneToDamage = true;
+            spriteRenderer.color = Color.blue;
             Debug.Log("Transition to Phase 2");
         }
     }
@@ -178,7 +195,29 @@ public class Boss_5 : EnemyEntity
             phase2Timer = 10.0f;
             currentState = EnemyState.Phase1;
             hasSummonedFireAOE = false;
+            isImmuneToDamage = false;
+            spriteRenderer.color = defaultColor;
             Debug.Log("Transition back to Phase 1");
+        }
+    }
+
+    public override void ChangeHealth(int amtChanged, bool isSelfDamage = false)
+    {
+        if (!isImmuneToDamage)
+        {
+            // ... (your existing code)
+            base.ChangeHealth(amtChanged);
+        }
+        else
+        {
+            // Handle gaining back health while immune to damage
+            if (amtChanged > 0)
+            {
+                // Gain back health logic (e.g., play a sound, visual effect, etc.)
+                Debug.Log("Gaining back health while immune to damage");
+                currHealth += amtChanged;
+                currHealth = Mathf.Clamp(currHealth, 0, Hp);
+            }
         }
     }
 

@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     public Test3 Player3;
     public bool isMovementEnabled = true;
     public float slowDuration = 2f;
+    public float finalbossslowDuration = 2f;
     public float speedDuration = 2f;
     public float rootedDuration = 2f;
     private float slowTimer = 0f;
@@ -71,6 +72,21 @@ public class PlayerMovement : MonoBehaviour
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
                 player.isplayerSlowed = false;
+                ResetSpeedModifier(); // Reset speed when slow effect ends
+            }
+        }
+        if (GetComponent<PlayerEntity>().isplayerSlowedByFinalBossAOE == true)
+        {
+            SetMovementSpeed(originalMovementSpeed / 1.5f);
+            finalbossslowDuration -= Time.deltaTime;
+            Debug.Log("slow duration: " + finalbossslowDuration);
+
+            if (finalbossslowDuration <= 0)
+            {
+                finalbossslowDuration = 2f;
+                PlayerManager playerManager = PlayerManager.GetInstance();
+                PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
+                player.isplayerSlowedByFinalBossAOE = false;
                 ResetSpeedModifier(); // Reset speed when slow effect ends
             }
         }
