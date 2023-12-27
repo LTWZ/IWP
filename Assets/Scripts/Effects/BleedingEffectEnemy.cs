@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BleedingEffect : MonoBehaviour
+public class BleedingEffectEnemy : MonoBehaviour
 {
     private float bleedingDamagePerSecond;
     private float bleedingDuration;

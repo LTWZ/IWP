@@ -134,6 +134,11 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(LoadScene("TutorialLevel"));
     }
 
+    public void LoadWinScreen()
+    {
+        StartCoroutine(LoadScene("GameWin"));
+    }
+
     IEnumerator LoadScene(string name)
     {
         PlayerManager.GetInstance().SavePlayerData();

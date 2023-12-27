@@ -248,6 +248,7 @@ MonoBehaviour:
   Player3: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
+  finalbossslowDuration: 2
   speedDuration: 2
   rootedDuration: 2
 --- !u!61 &2409052710821016801
@@ -321,7 +322,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 300
-  Coins: 300
+  Coins: 0
+  HealthPotionCount: 0
+  ManaPotionCount: 0
   speed: 5
   Mana: 300
   maxMana: 300
@@ -330,6 +333,7 @@ MonoBehaviour:
   canUseskill3: 0
   canUseskill4: 0
   isplayerSlowed: 0
+  isplayerSlowedByFinalBossAOE: 0
   isplayerSpedUp: 0
   isplayerRooted: 0
   abitiliesSet: {fileID: 11400000, guid: a962c5b16c88c0e429a019d3f89cc6d6, type: 2}

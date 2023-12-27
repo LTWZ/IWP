@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using TMPro;
+
+public class BuyAK74 : MonoBehaviour
+{
+    public TextMeshProUGUI debugLogText; // Reference to your TextMeshProUGUI component
+    public GameObject door;
+
+    public void BuyAK47()
+    {
+        PlayerEntity currentPlayer = PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>();
+
+        if (currentPlayer.GetCurrCoins() >= 45)
+        {
+            door.SetActive(false);
+            currentPlayer.ChangeCoins(-45);
+
+            // Log a message to the TextMeshProUGUI
+            if (debugLogText != null)
+            {
+                debugLogText.text = "AK74 bought!";
+            }
+        }
+        else
+        {
+            // Log a message to the TextMeshProUGUI
+            if (debugLogText != null)
+            {
+                debugLogText.text = "Not enough coins!";
+            }
+        }
+    }
+}

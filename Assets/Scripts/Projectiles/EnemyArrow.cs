@@ -51,12 +51,12 @@ public class EnemyArrow : MonoBehaviour
         void StartBleedingEffect(PlayerEntity player)
         {
             // Check if the enemy already has a bleeding effect
-            BleedingEffect existingBleedingEffect = player.GetComponent<BleedingEffect>();
+            BleedingEffectEnemy existingBleedingEffect = player.GetComponent<BleedingEffectEnemy>();
 
             if (existingBleedingEffect == null)
             {
                 // Create a new BleedingEffect component on the enemy
-                BleedingEffect bleedingEffect = player.gameObject.AddComponent<BleedingEffect>();
+                BleedingEffectEnemy bleedingEffect = player.gameObject.AddComponent<BleedingEffectEnemy>();
 
                 // Set bleeding parameters
                 bleedingEffect.StartBleeding(bleedingDamagePerSecond, bleedingDuration);
