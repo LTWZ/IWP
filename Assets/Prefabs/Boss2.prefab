@@ -417,7 +417,9 @@ MonoBehaviour:
   healthbar: {fileID: 1377802036918368882}
   attackValue: 10
   navMeshAgent: {fileID: 16659106802077198}
-  isImmuneToDamage: 0
+  deathEffectPrefab: {fileID: 0}
+  deathEffectDuration: 1
+  deathSprite: {fileID: 21300000, guid: dfaa3fd586758214f99a7cd7119e521d, type: 3}
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
@@ -427,6 +429,7 @@ MonoBehaviour:
   iceballSpawnPoint: {fileID: 4466587994836078222}
   iceballSpeed: 6
   iceballCooldown: 2
+  isImmuneToDamage: 0
   icecrystalPrefab: {fileID: 8594859291363688216, guid: 19c45e1e81902a7458b6bb7320c0eed8, type: 3}
   IsEnemyRooted: 0
 --- !u!195 &16659106802077198

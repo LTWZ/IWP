@@ -248,6 +248,7 @@ MonoBehaviour:
   Player3: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
+  finalbossslowDuration: 2
   speedDuration: 2
   rootedDuration: 2
 --- !u!61 &2409052710821016801
@@ -322,6 +323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   Coins: 200
+  HealthPotionCount: 0
+  ManaPotionCount: 0
   speed: 0
   Mana: 300
   maxMana: 300
@@ -330,10 +333,11 @@ MonoBehaviour:
   canUseskill3: 0
   canUseskill4: 0
   isplayerSlowed: 0
+  isplayerSlowedByFinalBossAOE: 0
   isplayerSpedUp: 0
   isplayerRooted: 0
   abitiliesSet: {fileID: 11400000, guid: 19a0f7e0248b5d04bbca1d1f0d490723, type: 2}
-  cooldown1: 5
+  cooldown1: 7
   ability1: 49
   dashSpeed: 10
   dashDamage: 5
@@ -341,13 +345,13 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128
-  cooldown2: 5
+  cooldown2: 8
   ability2: 50
   aoeMovementPrefab: {fileID: 2764619505362769234, guid: ee03a568b07f74e4a8ab64300a721301, type: 3}
-  cooldown3: 5
+  cooldown3: 3
   ability3: 51
   FireAOEPrefab: {fileID: 5495407511495031970, guid: 7f0ca89ae12cd9349bb3c95bcbf76bce, type: 3}
-  cooldown4: 5
+  cooldown4: 25
   isCooldown4: 0
   ability4: 52
   bloodpoolPrefab: {fileID: 3433706144679501814, guid: e6d3a80bf615cf04cb2d9594e697ee3e, type: 3}

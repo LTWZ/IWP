@@ -417,6 +417,9 @@ MonoBehaviour:
   healthbar: {fileID: 1377802036918368882}
   attackValue: 10
   navMeshAgent: {fileID: 16659106802077198}
+  deathEffectPrefab: {fileID: 0}
+  deathEffectDuration: 1
+  deathSprite: {fileID: 21300000, guid: dfaa3fd586758214f99a7cd7119e521d, type: 3}
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5

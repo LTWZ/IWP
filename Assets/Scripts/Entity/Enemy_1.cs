@@ -164,11 +164,11 @@ public class Enemy_1 : EnemyEntity
 
     public override void UpdateHPEnemy()
     {
-        if (currHealth <= 0)
-        {
-            //RoomManager.GetInstance().EnemyDefeated();
-            Destroy(gameObject);
-        }
+        //if (currHealth <= 0)
+        //{
+        //    //RoomManager.GetInstance().EnemyDefeated();
+        //    Destroy(gameObject);
+        //}
     }
 
     private void OnTriggerStay2D(Collider2D collision)

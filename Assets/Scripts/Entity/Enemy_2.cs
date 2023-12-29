@@ -205,7 +205,6 @@ public class Enemy_2 : EnemyEntity
         if (currHealth <= 0)
         {
             //RoomManager.GetInstance().EnemyDefeated();
-            Destroy(gameObject);
         }
     }
 

@@ -16,6 +16,8 @@ public class EnemyEntity : MonoBehaviour
     private Room roomReference;
     private FinalBossRoom roomReferenceBoss;
     private bool isFlashing = false;
+    [SerializeField] Animator deathAnimation;
+    [SerializeField] GameObject deathAnimationPrefab;
 
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
@@ -37,6 +39,10 @@ public class EnemyEntity : MonoBehaviour
 
         if (currHealth <= 0)
         {
+            deathAnimation.SetTrigger("isDead");
+
+            Instantiate(deathAnimationPrefab, transform.position, Quaternion.identity);
+
             PlayerEntity player = FindObjectOfType<PlayerEntity>();
             if (player != null)
             {
@@ -67,7 +73,13 @@ public class EnemyEntity : MonoBehaviour
             }
 
             // Die logic here
+            Destroy(gameObject);
         }
+    }
+
+    public void DestroyEnemy()
+    {
+        Destroy(gameObject);
     }
 
     private IEnumerator FlashEnemy(GameObject enemy)

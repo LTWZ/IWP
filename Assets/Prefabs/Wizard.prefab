@@ -248,6 +248,7 @@ MonoBehaviour:
   Player3: {fileID: 0}
   isMovementEnabled: 1
   slowDuration: 2
+  finalbossslowDuration: 2
   speedDuration: 2
   rootedDuration: 2
 --- !u!61 &2409052710821016801
@@ -332,10 +333,11 @@ MonoBehaviour:
   canUseskill3: 0
   canUseskill4: 0
   isplayerSlowed: 0
+  isplayerSlowedByFinalBossAOE: 0
   isplayerSpedUp: 0
   isplayerRooted: 0
   abitiliesSet: {fileID: 11400000, guid: 3adc940fb3feb4d419bc7743428b02cc, type: 2}
-  cooldown1: 1
+  cooldown1: 7
   ability1: 49
   beamPrefab: {fileID: 2635694883127984476, guid: 9445c08d98a9a824a93f8c56ba88412c, type: 3}
   cooldown2: 15
