@@ -22,11 +22,11 @@ public class Shuriken : MonoBehaviour
             collider.GetComponent<EnemyEntity>().ChangeHealth(-damage);
         }
 
-        if (collider.gameObject.tag == "Map" && !isReturning)
-        {
-            // Start returning to the player
-            StartCoroutine(ReturnToPlayer());
-        }
+        //if (collider.gameObject.tag == "Map" && !isReturning)
+        //{
+        //    // Start returning to the player
+        //    StartCoroutine(ReturnToPlayer());
+        //}
     }
 
     IEnumerator ReturnToPlayer()
@@ -40,7 +40,7 @@ public class Shuriken : MonoBehaviour
             Vector2 returnDirection = (playerPosition - (Vector2)transform.position);
             GetComponent<Rigidbody2D>().velocity = returnDirection.normalized * ninjastarSpeed;
 
-            if (returnDirection.magnitude <= 1f)
+            if (returnDirection.magnitude <= 0.1f)
                 break;
 
             yield return null;

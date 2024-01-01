@@ -336,6 +336,7 @@ GameObject:
   - component: {fileID: 1113279710958651170}
   - component: {fileID: 5769388228970531083}
   - component: {fileID: 5341615201960936773}
+  - component: {fileID: 1884034928010980717}
   m_Layer: 7
   m_Name: Training Dummy
   m_TagString: Enemy
@@ -414,11 +415,34 @@ MonoBehaviour:
   healthbar: {fileID: 1377802036918368882}
   attackValue: 0
   navMeshAgent: {fileID: 0}
+  deathAnimation: {fileID: 1884034928010980717}
+  deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
   rootDuration: 5
   stopDistance: 0.5
   attackCooldown: 2
   IsEnemyRooted: 0
+  isenemydefeated: 0
   enemyGFX: {fileID: 7623455674827787871}
+--- !u!95 &1884034928010980717
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029834440377953696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6533791732368201924
 GameObject:
   m_ObjectHideFlags: 0

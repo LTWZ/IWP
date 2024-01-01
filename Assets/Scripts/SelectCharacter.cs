@@ -12,6 +12,7 @@ public class SelectCharacter : MonoBehaviour
     PlayerManager pm;
     private bool isWizardTutorialComplete;
     private bool isRogueTutorialComplete;
+    private bool isWarriorTutorialComplete;
 
     private void Start()
     {
@@ -26,6 +27,7 @@ public class SelectCharacter : MonoBehaviour
     {
         isWizardTutorialComplete = PlayerPrefs.GetInt("WizTutComplete") == 1? true : false;
         isRogueTutorialComplete = PlayerPrefs.GetInt("RogTutComplete") == 1? true : false;
+        isWarriorTutorialComplete = PlayerPrefs.GetInt("WarTutComplete") == 1 ? true : false;
         PlayerManager.GetInstance().SetPlayerType(whichPlayerType);
         if (whichPlayerType == PlayerType.WIZARD)
         {
@@ -53,7 +55,14 @@ public class SelectCharacter : MonoBehaviour
         }
         if (whichPlayerType == PlayerType.WARRIOR)
         {
-            SceneManager.LoadScene("TutorialLevel");
+            if (isWarriorTutorialComplete == false)
+            {
+                SceneManager.LoadScene("FighterTutorial");
+            }
+            else if (isRogueTutorialComplete == true)
+            {
+                SceneManager.LoadScene("TutorialLevel");
+            }
         }
         /*SceneManager.LoadScene("TutorialLevel");*/ // Load the next scene (change "Gameplay" to your scene name).
     }

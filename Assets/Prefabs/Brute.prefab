@@ -397,6 +397,8 @@ MonoBehaviour:
   healthbar: {fileID: 1377802036918368882}
   attackValue: 10
   navMeshAgent: {fileID: 16659106802077198}
+  deathAnimation: {fileID: -31587534634872727}
+  deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
@@ -526,7 +528,7 @@ Animator:
   m_GameObject: {fileID: 5029834440377953696}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 442f61e30a99fc8408a327fa1d7d1b2e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

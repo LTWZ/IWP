@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (GetComponent<PlayerEntity>().isplayerSpedUp == true)
         {
-            SetMovementSpeed(0);
+            SetMovementSpeed(originalMovementSpeed * 1.5f);
             speedDuration -= Time.deltaTime;
             Debug.Log("speed duration: " + speedDuration);
 

@@ -9,13 +9,13 @@ public class Room : MonoBehaviour
     [SerializeField] int amountOfWaves = 3;
     [SerializeField] int minEnemyPerWave = 2;
     [SerializeField] int maxEnemyPerWave = 4;
+    [SerializeField] GameObject spawnIndicatorPrefab;
 
     private BoxCollider2D boxCollider;
     private bool activatedRoom;
-
     private int wavesLeft;
     private int amountOfEnemy;
-    [SerializeField] private Transform[] spawnPoints;
+    [SerializeField] Transform[] spawnPoints;
 
     private void Start()
     {
@@ -37,7 +37,6 @@ public class Room : MonoBehaviour
             StartCoroutine(DelayWave());
             activatedRoom = true;
         }
-
     }
 
     void OpenCloseDoors(bool doorActive)
@@ -52,46 +51,50 @@ public class Room : MonoBehaviour
     {
         amountOfEnemy = Random.Range(minEnemyPerWave, maxEnemyPerWave + 1);
 
+        List<Transform> availableSpawnPoints = new List<Transform>(spawnPoints);
+
         for (int i = 0; i < amountOfEnemy; i++)
         {
-            if (spawnPoints.Length > 0)
+            if (availableSpawnPoints.Count > 0)
             {
                 int enemyIndex = Random.Range(0, enemyList.Length);
 
-                // Choose a random spawn point
-                int spawnIndex = Random.Range(0, spawnPoints.Length);
-                Transform spawnPoint = spawnPoints[spawnIndex];
+                // Choose a random spawn point from the available options
+                int spawnIndex = Random.Range(0, availableSpawnPoints.Count);
+                Transform spawnPoint = availableSpawnPoints[spawnIndex];
 
-                // Instantiate enemy at the chosen spawn point
-                GameObject newEnemy = Instantiate(enemyList[enemyIndex], spawnPoint.position, Quaternion.identity);
-                newEnemy.GetComponent<EnemyEntity>().SetRoomReference(this);
+                // Remove the chosen spawn point from the available options
+                availableSpawnPoints.RemoveAt(spawnIndex);
+
+                // Instantiate spawn indicator at the chosen spawn point
+                GameObject spawnIndicator = Instantiate(spawnIndicatorPrefab, spawnPoint.position, Quaternion.identity);
+
+                // Instantiate enemy after a delay
+                StartCoroutine(SpawnEnemyWithDelay(enemyIndex, spawnPoint.position, spawnIndicator));
             }
             else
             {
-                // Get the i mean which enemy
-                int enemyIndex = Random.Range(0, enemyList.Length);
-
-                // Get the possible position to spawn in
-                float xMinPos = boxCollider.bounds.min.x;
-                float xMaxPos = boxCollider.bounds.max.x;
-                float yMinPos = boxCollider.bounds.min.y;
-                float yMaxPos = boxCollider.bounds.max.y;
-
-                float xPos = Random.Range(xMinPos, xMaxPos);
-                float yPos = Random.Range(yMinPos, yMaxPos);
-
-                GameObject newEnemy = Instantiate(enemyList[enemyIndex], gameObject.transform);
-                newEnemy.transform.position = new Vector3(xPos, yPos, 1);
-                newEnemy.GetComponent<EnemyEntity>().SetRoomReference(this);
+                // Handle the case when there are no more available spawn points
+                Debug.LogWarning("No more available spawn points.");
+                break;
             }
-
-
         }
     }
 
-    /// <summary>
-    /// Reduce the enemy count of the room by 1.
-    /// </summary>
+    IEnumerator SpawnEnemyWithDelay(int enemyIndex, Vector3 spawnPoint, GameObject spawnIndicator)
+    {
+        // Wait for a random delay between 0.5 to 1 second
+        float delay = Random.Range(0.5f, 1f);
+        yield return new WaitForSeconds(delay);
+
+        // Destroy the spawn indicator
+        Destroy(spawnIndicator);
+
+        // Instantiate enemy at the chosen spawn point
+        GameObject newEnemy = Instantiate(enemyList[enemyIndex], spawnPoint, Quaternion.identity);
+        newEnemy.GetComponent<EnemyEntity>().SetRoomReference(this);
+    }
+
     public void ReduceEnemy()
     {
         amountOfEnemy--;
@@ -99,6 +102,7 @@ public class Room : MonoBehaviour
         if (amountOfEnemy <= 0)
         {
             amountOfWaves--;
+
             if (amountOfWaves > 0)
             {
                 StartCoroutine(DelayWave());
@@ -110,10 +114,6 @@ public class Room : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Delay the duration at which the wave will spawn.
-    /// </summary>
-    /// <returns></returns>
     IEnumerator DelayWave()
     {
         yield return new WaitForSeconds(1);

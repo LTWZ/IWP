@@ -242,7 +242,15 @@ public class Test3 : PlayerEntity
         UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
 
         // Use mana if the skill was successful
-        ChangeMana(-5);
+        if (canUseskill1 == true)
+        {
+
+        }
+        else
+        {
+           ChangeMana(-5);
+        }
+        
     }
 
     void CheckCollisionsWithEnemies()
