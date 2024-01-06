@@ -39,6 +39,8 @@ public class LightningSlime : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
@@ -48,6 +50,7 @@ public class LightningSlime : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }

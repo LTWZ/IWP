@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using NavMeshPlus;
 using UnityEngine.AI;
+using System.Collections;
 
 public class Enemy_1 : EnemyEntity
 {
@@ -31,6 +32,9 @@ public class Enemy_1 : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+    // Reference to the sprite renderer component
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
@@ -39,6 +43,7 @@ public class Enemy_1 : EnemyEntity
         currSpeed = speed;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
@@ -74,6 +79,8 @@ public class Enemy_1 : EnemyEntity
         if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
+            // Change color when rooted
+            ChangeColorWhenRooted();
         }
 
         // Check for a root ability (you can use a different trigger condition)
@@ -81,6 +88,18 @@ public class Enemy_1 : EnemyEntity
         {
             rootTimer = rootDuration;
         }
+    }
+
+    private IEnumerator DelayedChangeColor(Color newColor, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.color = newColor;
+    }
+
+    private void ChangeColorWhenRooted()
+    {
+        // Wait for 0.5 seconds before changing the color to red
+        StartCoroutine(DelayedChangeColor(Color.red, 0.5f));
     }
 
     void FixedUpdate()
@@ -114,6 +133,7 @@ public class Enemy_1 : EnemyEntity
             if (rootTimer <= 0)
             {
                 IsEnemyRooted = false;
+                spriteRenderer.color = Color.white;
             }
         }
 

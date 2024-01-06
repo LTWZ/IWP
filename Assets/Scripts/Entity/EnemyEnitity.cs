@@ -18,6 +18,28 @@ public class EnemyEntity : MonoBehaviour
     private bool isFlashing = false;
     [SerializeField] Animator deathAnimation;
     [SerializeField] GameObject deathAnimationPrefab;
+        // New field for tracking whether the enemy is slowed
+    public bool isEnemySlowed = false;
+    // New field for storing the original color
+    private Color originalColor;
+
+    // New field for tracking the enemyRenderer
+    private SpriteRenderer enemyRenderer;
+
+    private void Awake()
+    {
+        // Retrieve the SpriteRenderer component of the enemy object
+        enemyRenderer = GetComponentInChildren<SpriteRenderer>();
+        if (enemyRenderer != null)
+        {
+            // Store the original color
+            originalColor = enemyRenderer.color;
+        }
+        else
+        {
+            Debug.LogError("SpriteRenderer component not found on the child object of the enemy.");
+        }
+    }
 
     /// <summary>
     /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
@@ -54,8 +76,8 @@ public class EnemyEntity : MonoBehaviour
                 else
                 {
                     // Gain back a random amount of mana
-                    int manaGained = Random.Range(10, 21);
-                    int coinget = Random.Range(1, 5);
+                    int manaGained = Random.Range(1,6);
+                    int coinget = Random.Range(1, 3);
                     player.ChangeCoins(coinget);
                     player.ChangeMana(manaGained);// Adjust the range as needed
                 }
@@ -132,6 +154,7 @@ public class EnemyEntity : MonoBehaviour
         isFlashing = false;
     }
 
+
     /// <summary>
     /// Apply the speed modifier according to the value inputted. e.g. 0.1 means 10% of the original speed. 2.0 means 200% of the original speed.
     /// </summary>
@@ -145,6 +168,26 @@ public class EnemyEntity : MonoBehaviour
     //    // Adjust the enemy's movement speed based on the factor
     //    slowdownFactor = factor;
     //}
+
+    public void EnemySlowed()
+    {
+        // Retrieve the SpriteRenderer component of the enemy object
+        if (enemyRenderer == null)
+        {
+            enemyRenderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        if (isEnemySlowed)
+        {
+            // Change color to blue instantly
+            enemyRenderer.color = Color.blue;
+        }
+        else
+        {
+            // Change color back to the original color instantly
+            enemyRenderer.color = originalColor;
+        }
+    }
 
     public virtual void SetTarget()
     {

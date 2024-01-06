@@ -5,6 +5,7 @@ using TMPro;
 using NavMeshPlus;
 using UnityEngine.AI;
 using System;
+using System.Collections;
 
 public class Enemy_3 : EnemyEntity
 {
@@ -27,12 +28,16 @@ public class Enemy_3 : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+    // Reference to the sprite renderer component
+    private SpriteRenderer spriteRenderer;
+
     private void Start()
     {
         SetTarget();
         currHealth = Hp;
         currSpeed = speed;
         InvokeRepeating("UpdateTargetPosition", 0f, .5f);
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     void UpdateTargetPosition()
@@ -50,12 +55,25 @@ public class Enemy_3 : EnemyEntity
         if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
+            ChangeColorWhenRooted();
         }
 
         if (IsEnemyRooted)
         {
             Invoke("EndRoot", rootDuration);
         }
+    }
+
+    private IEnumerator DelayedChangeColor(Color newColor, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.color = newColor;
+    }
+
+    private void ChangeColorWhenRooted()
+    {
+        // Wait for 0.5 seconds before changing the color to red
+        StartCoroutine(DelayedChangeColor(Color.red, 0.5f));
     }
 
     private void EndRoot()

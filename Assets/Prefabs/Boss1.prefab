@@ -339,6 +339,7 @@ GameObject:
   - component: {fileID: 16659106802077198}
   - component: {fileID: 350223235142259266}
   - component: {fileID: 5115090644375024665}
+  - component: {fileID: 3532316036293897122}
   m_Layer: 7
   m_Name: Boss1
   m_TagString: Enemy
@@ -417,9 +418,8 @@ MonoBehaviour:
   healthbar: {fileID: 1377802036918368882}
   attackValue: 10
   navMeshAgent: {fileID: 16659106802077198}
-  deathEffectPrefab: {fileID: 0}
-  deathEffectDuration: 1
-  deathSprite: {fileID: 21300000, guid: dfaa3fd586758214f99a7cd7119e521d, type: 3}
+  deathAnimation: {fileID: 3532316036293897122}
+  deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
@@ -525,6 +525,26 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!95 &3532316036293897122
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5029834440377953696}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &6408438213067480708
 GameObject:
   m_ObjectHideFlags: 0

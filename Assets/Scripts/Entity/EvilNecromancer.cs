@@ -41,6 +41,8 @@ public class EvilNecromancer : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
@@ -50,6 +52,7 @@ public class EvilNecromancer : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -84,6 +87,7 @@ public class EvilNecromancer : EnemyEntity
         if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
+            ChangeColorWhenRooted();
         }
 
         // Check for a root ability (you can use a different trigger condition)
@@ -91,6 +95,18 @@ public class EvilNecromancer : EnemyEntity
         {
             rootTimer = rootDuration;
         }
+    }
+
+    private IEnumerator DelayedChangeColor(Color newColor, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.color = newColor;
+    }
+
+    private void ChangeColorWhenRooted()
+    {
+        // Wait for 0.5 seconds before changing the color to red
+        StartCoroutine(DelayedChangeColor(Color.red, 0.5f));
     }
 
     void FixedUpdate()

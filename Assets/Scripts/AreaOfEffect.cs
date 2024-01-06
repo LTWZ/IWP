@@ -8,6 +8,7 @@ public class AreaOfEffect : MonoBehaviour
     public int damage = 10;         // Amount of damage to deal
     [SerializeField] LayerMask enemyLayer;         // Specify the enemy layer
     private float slowdownFactor = 0.5f;
+    public float radius = 1.0f;
 
     private float timer;
 
@@ -35,7 +36,7 @@ public class AreaOfEffect : MonoBehaviour
     void Detonate()
     {
         // Find all colliders within the AoE circle
-        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, GetComponent<CircleCollider2D>().radius, enemyLayer);
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayer);
 
         // Deal damage to each enemy in the AoE
         foreach (Collider2D hitCollider in hitColliders)
@@ -58,6 +59,8 @@ public class AreaOfEffect : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(0.5f);
+            collision.GetComponent<EnemyEntity>().isEnemySlowed = true;
+            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 
@@ -66,6 +69,8 @@ public class AreaOfEffect : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(1.0f);
+            collision.GetComponent<EnemyEntity>().isEnemySlowed = false;
+            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 }

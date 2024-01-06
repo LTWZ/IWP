@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using TMPro;
 using NavMeshPlus;
 using UnityEngine.AI;
+using System.Collections;
 
 public class GhostBrute : EnemyEntity
 {
@@ -35,6 +36,8 @@ public class GhostBrute : EnemyEntity
     [Header("HP Code")]
     private TextMeshProUGUI HB_valuetext;
 
+    private SpriteRenderer spriteRenderer;
+
 
     private void Start()
     {
@@ -44,6 +47,7 @@ public class GhostBrute : EnemyEntity
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
@@ -78,6 +82,7 @@ public class GhostBrute : EnemyEntity
         if (collision.GetComponent<Beam>() || collision.GetComponent<TrapBullet>())
         {
             IsEnemyRooted = true;
+            ChangeColorWhenRooted();
         }
 
         // Check for a root ability (you can use a different trigger condition)
@@ -92,6 +97,18 @@ public class GhostBrute : EnemyEntity
             isFirstTouch = false;
             attackTimer = Time.time + 0.5f; // Set the attack timer 0.5 seconds into the future
         }
+    }
+
+    private IEnumerator DelayedChangeColor(Color newColor, float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        spriteRenderer.color = newColor;
+    }
+
+    private void ChangeColorWhenRooted()
+    {
+        // Wait for 0.5 seconds before changing the color to red
+        StartCoroutine(DelayedChangeColor(Color.red, 0.5f));
     }
 
     void FixedUpdate()

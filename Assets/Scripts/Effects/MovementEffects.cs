@@ -43,6 +43,8 @@ public class MovementEffects : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(0.5f);
+            collision.GetComponent<EnemyEntity>().isEnemySlowed = true;
+            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 
@@ -51,6 +53,8 @@ public class MovementEffects : MonoBehaviour
         if (collision.gameObject.layer == 7)
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(1.0f);
+            collision.GetComponent<EnemyEntity>().isEnemySlowed = false;
+            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 }

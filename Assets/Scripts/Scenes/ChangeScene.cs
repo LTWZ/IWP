@@ -16,6 +16,7 @@ public class ChangeScene : MonoBehaviour
     private void SceneChange()
     {
         // Load the target scene
+        AudioManager.instance.PlaySFX("Button Click");
         SceneManager.LoadScene(targetSceneName);
 
     }

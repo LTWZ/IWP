@@ -48,7 +48,7 @@ public class PlayerEntity : MonoBehaviour
             if (GetCurrManaPotionAmt() > 0 && GetCurrentManaPercentage() < 100f)
             {
                 ChangeManaPotionAmt(-1);
-                ChangeMana(20);
+                ChangeMana(50);
             }
             else
             {
@@ -60,7 +60,7 @@ public class PlayerEntity : MonoBehaviour
             if (GetCurrHPPotionAmt() > 0 && GetCurrentHealthPercentage() < 100f) 
             {
                 ChangeHealthPotionAmt(-1);
-                ChangeHealth(20, true);
+                ChangeHealth(50, true);
             }
             else
             {

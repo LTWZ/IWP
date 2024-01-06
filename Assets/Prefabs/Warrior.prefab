@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hp: 300
-  Coins: 200
+  Coins: 0
   HealthPotionCount: 0
   ManaPotionCount: 0
   speed: 0

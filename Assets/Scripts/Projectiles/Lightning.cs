@@ -7,7 +7,7 @@ public class Lightning : MonoBehaviour
     public int damage = 10;
     public Enemy_1 enemy;
 
-    void OnTriggerEnter2D(Collider2D collider)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
         // Check if the collided object is an enemy
         if (collider.GetComponent<PlayerEntity>())

@@ -323,8 +323,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Hp: 300
   Coins: 0
-  HealthPotionCount: 5
-  ManaPotionCount: 5
+  HealthPotionCount: 0
+  ManaPotionCount: 0
   speed: 0
   Mana: 300
   maxMana: 300

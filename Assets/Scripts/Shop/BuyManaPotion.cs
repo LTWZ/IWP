@@ -19,7 +19,7 @@ public class BuyManaPotion : MonoBehaviour
             // Log a message to the TextMeshProUGUI
             if (debugLogText != null)
             {
-                debugLogText.text = "Health potion bought!";
+                debugLogText.text = "Mana potion bought!";
             }
         }
         else

@@ -285,6 +285,9 @@ public class Test3 : PlayerEntity
 
                 PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().isplayerSpedUp = true;
 
+                isCooldown2 = true;
+                UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
+
                 if (canUseskill2 == true)
                 {
 

@@ -39,7 +39,8 @@ public class SelectCharacter : MonoBehaviour
             {
                 SceneManager.LoadScene("TutorialLevel");
             }
-            
+            AudioManager.instance.PlaySFX("Button Click");
+
         }
         if (whichPlayerType == PlayerType.ROGUE)
         {
@@ -51,6 +52,8 @@ public class SelectCharacter : MonoBehaviour
             {
                 SceneManager.LoadScene("TutorialLevel");
             }
+            AudioManager.instance.PlaySFX("Button Click");
+
 
         }
         if (whichPlayerType == PlayerType.WARRIOR)
@@ -63,6 +66,7 @@ public class SelectCharacter : MonoBehaviour
             {
                 SceneManager.LoadScene("TutorialLevel");
             }
+            AudioManager.instance.PlaySFX("Button Click");
         }
         /*SceneManager.LoadScene("TutorialLevel");*/ // Load the next scene (change "Gameplay" to your scene name).
     }

@@ -325,6 +325,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 556804751}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &238429311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +421,9 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ca1bcc5f99ce2c442acd31aa3c48397b, type: 3}
   - audioname: Settings
     clip: {fileID: 8300000, guid: 4ce9d9ba0e2b4de43ae42ad658b0bfea, type: 3}
-  sfxSounds: []
+  sfxSounds:
+  - audioname: Button Click
+    clip: {fileID: 8300000, guid: 17a03834ff7a5974a8e67ce9ba8c956d, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752
@@ -513,7 +527,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 570144864}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556804751}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &570144864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1454,7 +1480,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1991752857}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 556804751}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlaySFX
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Button Click
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1991752857
 MonoBehaviour:
   m_ObjectHideFlags: 0
