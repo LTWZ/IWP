@@ -10,8 +10,12 @@ public class LevelManager : MonoBehaviour
     private static LevelManager instance;
     // Define the names or IDs of your levels
     public string[] levelNames = { "Level1", "Level2", "Level3", "Level4", "Level5" };
+    public string[] unpausableScenes = { "MainMenu", "GameOver", "Settings", "GameWin", "SelectCharacter" };
+
+    public bool isPausePanelInstantiated = false;
 
     private List<string> availableLevels = new List<string>();
+    [SerializeField] GameObject pausepanel;
 
     public event Action onSceneLoad;
     // Call this function to initialize the list of available levels
@@ -102,6 +106,41 @@ public class LevelManager : MonoBehaviour
     {
         StartCoroutine(LoadScene("FighterTutorial"));
     }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPausePanelInstantiated)
+        {
+            string currentLevelName = SceneManager.GetActiveScene().name;
+
+            // Check if the current level is not in the list of unpausable scenes
+            if (!IsLevelInArray(currentLevelName, unpausableScenes))
+            {
+                Time.timeScale = 0;
+                Instantiate(pausepanel.transform);
+                isPausePanelInstantiated = true;
+            }
+        }
+    }
+
+    bool IsLevelInArray(string levelName, string[] array)
+    {
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] == levelName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void UnPauseGame()
+    {
+        Time.timeScale = 1;
+        Destroy(pausepanel.transform);
+    }
+
 
     public void LoadLeve1TempLevel()
     {

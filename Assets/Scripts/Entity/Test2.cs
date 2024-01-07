@@ -389,16 +389,15 @@ public class Test2 : PlayerEntity
     {
         if (Input.GetKeyDown(KeyCode.K))
         {
-            ChangeHealth(-20);
-        }
-        else if (Input.GetKeyDown(KeyCode.L))
-        {
             ChangeHealth(20);
         }
     }
     public override void UpdateMana()
     {
-
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            ChangeMana(20);
+        }
     }
 
     void DisableCooldown(skillType whatSkill)

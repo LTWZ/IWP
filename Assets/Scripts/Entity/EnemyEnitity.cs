@@ -201,6 +201,7 @@ public class EnemyEntity : MonoBehaviour
             healthbar.UpdateContent(currHealth);
         }
         UpdateHPEnemy();
+        EnemySlowed();
         //navMeshAgent.updateRotation = false;
     }
 
