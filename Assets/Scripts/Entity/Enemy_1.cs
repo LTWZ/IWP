@@ -137,6 +137,7 @@ public class Enemy_1 : EnemyEntity
             }
         }
 
+
         if (path == null)
         {
             return;

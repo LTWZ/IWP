@@ -420,6 +420,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 16659106802077198}
   deathAnimation: {fileID: 4988688761298065420}
   deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
+  isEnemySlowed: 0
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5

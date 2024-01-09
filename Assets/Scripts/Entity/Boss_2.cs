@@ -38,7 +38,8 @@ public class Boss_2 : EnemyEntity
     private float nextIceballTime = 0f;
     public bool isImmuneToDamage = false;
 
-
+    private float changeColortimer = 0.5f;
+    
     private float phase1Timer = 5.0f;
     private float phase2Timer = 10.0f;
 
@@ -62,6 +63,9 @@ public class Boss_2 : EnemyEntity
 
     private List<GameObject> activeIndicatorsAndMeteors = new List<GameObject>();
 
+    // Reference to the sprite renderer component
+    private SpriteRenderer spriteRenderer;
+
     public enum EnemyState
     {
         Phase1,
@@ -76,6 +80,7 @@ public class Boss_2 : EnemyEntity
         currSpeed = speed;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         //targetPlayer = EnemyManager.GetInstance().GetPlayerReference();
 
         InvokeRepeating("UpdatePath", 0f, .5f);
@@ -132,6 +137,7 @@ public class Boss_2 : EnemyEntity
             phase1isactive = false;
             isImmuneToDamage = true;
             Debug.Log("Transition to Phase 2");
+
         }
 
         switch (currentState)
@@ -161,17 +167,30 @@ public class Boss_2 : EnemyEntity
             currentState = EnemyState.Phase2;
             isImmuneToDamage = true;
             Debug.Log("Transition to Phase 2");
+
         }
     }
 
     void UpdatePhase2()
     {
         // Your Phase 2 logic here
+        changeColortimer -= Time.deltaTime;
+        Debug.Log("changecolortimer" + changeColortimer);
+        // Check if the timer is less than or equal to 0.0f
+        if (changeColortimer <= 0.0f)
+        {
+            spriteRenderer.color = Color.blue;
+
+            // Reset the timer to avoid continuous color changes
+            changeColortimer = 0.5f; // Set to an appropriate initial value
+        }
 
         if (!isSummoningIceCrystal && !hasSummonedFinalIceCrystal)
         {
             SummonIceCrystal();
         }
+
+
     }
 
     public override void ChangeHealth(int amtChanged, bool isSelfDamage = false)

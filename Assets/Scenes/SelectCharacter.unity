@@ -1715,7 +1715,15 @@ MonoBehaviour:
   - Level3
   - Level4
   - Level5
+  unpausableScenes:
+  - MainMenu
+  - GameOver
+  - Settings
+  - GameWin
+  - SelectCharacter
+  isPausePanelInstantiated: 0
   pausepanel: {fileID: 1056029149197696516, guid: 319142c9a4f82ee47941b11be33b9753, type: 3}
+  loadpanel: {fileID: 1056029149197696516, guid: 5810ff3c9b0701b41abf292568a0916d, type: 3}
 --- !u!4 &1812103726
 Transform:
   m_ObjectHideFlags: 0

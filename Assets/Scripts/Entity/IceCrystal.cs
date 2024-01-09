@@ -35,6 +35,7 @@ public class IceCrystal : EnemyEntity
     public event System.Action OnIceCrystalDestroyed;
 
 
+
     private void Start()
     {
         SetTarget();
@@ -164,15 +165,21 @@ public class IceCrystal : EnemyEntity
         }
     }
 
+    public override void DeathAnimation()
+    {
+        // Trigger the event if there are subscribers
+        OnIceCrystalDestroyed?.Invoke();
+        Destroy(gameObject);
+    }
+
+
 
     public override void UpdateHPEnemy()
     {
         if (currHealth <= 0)
         {
-            // Trigger the event if there are subscribers
-            OnIceCrystalDestroyed?.Invoke();
             //RoomManager.GetInstance().EnemyDefeated();
-            Destroy(gameObject);
+
         }
     }
 

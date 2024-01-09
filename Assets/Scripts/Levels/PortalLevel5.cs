@@ -5,13 +5,31 @@ using UnityEngine;
 public class PortalLevel5 : MonoBehaviour
 {
     private bool playerInRange = false;
+    [SerializeField] GameObject loadpanel;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Player") && playerInRange)
         {
             LevelManager.GetInstance().LoadLevel5();
+            StartCoroutine(LoadLevelWithLoadingPanel());
         }
+    }
+
+    IEnumerator LoadLevelWithLoadingPanel()
+    {
+        // Instantiate the loading panel
+        GameObject loadingPanelInstance = Instantiate(loadpanel);
+
+        UIManager.GetInstance().HideAllUIElements();
+
+        // Wait for 5 seconds
+        yield return new WaitForSeconds(5f);
+
+        UIManager.GetInstance().ShowAllUIElements();
+
+        // Destroy the loading panel after loading the scene
+        Destroy(loadingPanelInstance);
     }
 
     private void OnTriggerStay2D(Collider2D other)

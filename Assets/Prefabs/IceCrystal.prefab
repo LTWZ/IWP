@@ -417,6 +417,7 @@ GameObject:
   - component: {fileID: 3067120647882915860}
   - component: {fileID: 6238943357288796129}
   - component: {fileID: 5704184651496628602}
+  - component: {fileID: 6969317988776538670}
   m_Layer: 7
   m_Name: IceCrystal
   m_TagString: Enemy
@@ -505,12 +506,17 @@ MonoBehaviour:
   healthbar: {fileID: 139162768223271429}
   attackValue: 10
   navMeshAgent: {fileID: 0}
+  deathAnimation: {fileID: 0}
+  deathAnimationPrefab: {fileID: 0}
+  isEnemySlowed: 0
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
   enemyGFX: {fileID: 7227155751438499021}
   attackCooldown: 2
   IsEnemyRooted: 0
+  deathAnimationIC: {fileID: 6969317988776538670}
+  deathAnimationPrefabIC: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
 --- !u!114 &5704184651496628602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,6 +545,26 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
+--- !u!95 &6969317988776538670
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8594859291363688216}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
 --- !u!1 &8850943411424478427
 GameObject:
   m_ObjectHideFlags: 0

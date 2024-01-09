@@ -52,6 +52,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI coinValueText;
     [SerializeField] TextMeshProUGUI healthpotionNumText;
     [SerializeField] TextMeshProUGUI manapotionNumText;
+    [SerializeField] Image CoinImage;
+    [SerializeField] TextMeshProUGUI Cointext;
+    [SerializeField] Image ManaPotion;
+    [SerializeField] Image HealthPotion;
 
 
     public delegate void OnCooldown(skillType whichSkill);
@@ -230,6 +234,86 @@ public class UIManager : MonoBehaviour
                 return border4;
             default:
                 return null;
+        }
+    }
+
+    public void HideAllUIElements()
+    {
+        HideUIElement(skill1);
+        HideUIElement(skill2);
+        HideUIElement(skill3);
+        HideUIElement(skill4);
+        HideUIElement(skill1_alt);
+        HideUIElement(skill2_alt);
+        HideUIElement(skill3_alt);
+        HideUIElement(skill4_alt);
+
+        HideUIElement(healthbarSlider);
+        HideUIElement(healthbarValueText);
+
+        HideUIElement(manaSlider);
+        HideUIElement(manaValueText);
+
+        HideUIElement(coinValueText);
+
+        HideUIElement(healthpotionNumText);
+        HideUIElement(manapotionNumText);
+
+        HideUIElement(border1);
+        HideUIElement(border2);
+        HideUIElement(border3);
+        HideUIElement(border4);
+        HideUIElement(CoinImage);
+        HideUIElement(Cointext);
+        HideUIElement(ManaPotion);
+        HideUIElement(HealthPotion);
+    }
+
+    private void HideUIElement(Component uiElement)
+    {
+        if (uiElement != null)
+        {
+            uiElement.gameObject.SetActive(false);
+        }
+    }
+
+    public void ShowAllUIElements()
+    {
+        ShowUIElement(skill1);
+        ShowUIElement(skill2);
+        ShowUIElement(skill3);
+        ShowUIElement(skill4);
+        ShowUIElement(skill1_alt);
+        ShowUIElement(skill2_alt);
+        ShowUIElement(skill3_alt);
+        ShowUIElement(skill4_alt);
+
+        ShowUIElement(healthbarSlider);
+        ShowUIElement(healthbarValueText);
+
+        ShowUIElement(manaSlider);
+        ShowUIElement(manaValueText);
+
+        ShowUIElement(coinValueText);
+
+        ShowUIElement(healthpotionNumText);
+        ShowUIElement(manapotionNumText);
+
+        ShowUIElement(border1);
+        ShowUIElement(border2);
+        ShowUIElement(border3);
+        ShowUIElement(border4);
+        ShowUIElement(CoinImage);
+        ShowUIElement(Cointext);
+        ShowUIElement(ManaPotion);
+        ShowUIElement(HealthPotion);
+    }
+
+    private void ShowUIElement(Component uiElement)
+    {
+        if (uiElement != null)
+        {
+            uiElement.gameObject.SetActive(true);
         }
     }
 

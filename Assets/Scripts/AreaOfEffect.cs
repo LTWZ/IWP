@@ -60,7 +60,6 @@ public class AreaOfEffect : MonoBehaviour
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(0.5f);
             collision.GetComponent<EnemyEntity>().isEnemySlowed = true;
-            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 
@@ -70,7 +69,6 @@ public class AreaOfEffect : MonoBehaviour
         {
             collision.GetComponent<EnemyEntity>().ApplySpeedModifier(1.0f);
             collision.GetComponent<EnemyEntity>().isEnemySlowed = false;
-            collision.GetComponent<EnemyEntity>().EnemySlowed();
         }
     }
 }

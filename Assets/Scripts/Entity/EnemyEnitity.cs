@@ -22,6 +22,7 @@ public class EnemyEntity : MonoBehaviour
     public bool isEnemySlowed = false;
     // New field for storing the original color
     private Color originalColor;
+    private bool shouldResetColor = false;
 
     // New field for tracking the enemyRenderer
     private SpriteRenderer enemyRenderer;
@@ -61,9 +62,7 @@ public class EnemyEntity : MonoBehaviour
 
         if (currHealth <= 0)
         {
-            deathAnimation.SetTrigger("isDead");
-
-            Instantiate(deathAnimationPrefab, transform.position, Quaternion.identity);
+            DeathAnimation();
 
             PlayerEntity player = FindObjectOfType<PlayerEntity>();
             if (player != null)
@@ -97,6 +96,13 @@ public class EnemyEntity : MonoBehaviour
             // Die logic here
             Destroy(gameObject);
         }
+    }
+
+    public virtual void DeathAnimation()
+    {
+        deathAnimation.SetTrigger("isDead");
+
+        Instantiate(deathAnimationPrefab, transform.position, Quaternion.identity);
     }
 
     public void DestroyEnemy()
@@ -169,26 +175,6 @@ public class EnemyEntity : MonoBehaviour
     //    slowdownFactor = factor;
     //}
 
-    public void EnemySlowed()
-    {
-        // Retrieve the SpriteRenderer component of the enemy object
-        if (enemyRenderer == null)
-        {
-            enemyRenderer = GetComponentInChildren<SpriteRenderer>();
-        }
-
-        if (isEnemySlowed)
-        {
-            // Change color to blue instantly
-            enemyRenderer.color = Color.blue;
-        }
-        else
-        {
-            // Change color back to the original color instantly
-            enemyRenderer.color = originalColor;
-        }
-    }
-
     public virtual void SetTarget()
     {
 
@@ -201,7 +187,6 @@ public class EnemyEntity : MonoBehaviour
             healthbar.UpdateContent(currHealth);
         }
         UpdateHPEnemy();
-        EnemySlowed();
         //navMeshAgent.updateRotation = false;
     }
 
