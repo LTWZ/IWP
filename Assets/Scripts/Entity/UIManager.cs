@@ -56,6 +56,14 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Cointext;
     [SerializeField] Image ManaPotion;
     [SerializeField] Image HealthPotion;
+    [SerializeField] Image Skill1ManaImage;
+    [SerializeField] TextMeshProUGUI Skill1ManaCost;
+    [SerializeField] Image Skill2ManaImage;
+    [SerializeField] TextMeshProUGUI Skill2ManaCost;
+    [SerializeField] Image Skill3ManaImage;
+    [SerializeField] TextMeshProUGUI Skill3ManaCost;
+    [SerializeField] Image Skill4ManaImage;
+    [SerializeField] TextMeshProUGUI Skill4ManaCost;
 
 
     public delegate void OnCooldown(skillType whichSkill);
@@ -267,6 +275,14 @@ public class UIManager : MonoBehaviour
         HideUIElement(Cointext);
         HideUIElement(ManaPotion);
         HideUIElement(HealthPotion);
+        HideUIElement(Skill1ManaImage);
+        HideUIElement(Skill1ManaCost);
+        HideUIElement(Skill2ManaImage);
+        HideUIElement(Skill2ManaCost);
+        HideUIElement(Skill3ManaImage);
+        HideUIElement(Skill3ManaCost);
+        HideUIElement(Skill4ManaImage);
+        HideUIElement(Skill4ManaCost);
     }
 
     private void HideUIElement(Component uiElement)
@@ -307,6 +323,14 @@ public class UIManager : MonoBehaviour
         ShowUIElement(Cointext);
         ShowUIElement(ManaPotion);
         ShowUIElement(HealthPotion);
+        ShowUIElement(Skill1ManaImage);
+        ShowUIElement(Skill1ManaCost);
+        ShowUIElement(Skill2ManaImage);
+        ShowUIElement(Skill2ManaCost);
+        ShowUIElement(Skill3ManaImage);
+        ShowUIElement(Skill3ManaCost);
+        ShowUIElement(Skill4ManaImage);
+        ShowUIElement(Skill4ManaCost);
     }
 
     private void ShowUIElement(Component uiElement)
