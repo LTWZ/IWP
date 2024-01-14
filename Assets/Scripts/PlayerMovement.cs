@@ -125,6 +125,10 @@ public class PlayerMovement : MonoBehaviour
             ResetSpeedModifier(); // Reset speed when no effect is active
         }
 
+        ///
+        /// UNCOMMENT THIS EVERY TIME A NEW PERSON PLAYS THE GAME/OR FINAL SUBMISSION
+        ///
+
         //if (Input.GetKeyDown(KeyCode.Minus))
         //{
         //    PlayerPrefs.DeleteAll();

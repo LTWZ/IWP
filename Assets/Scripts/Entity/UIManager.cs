@@ -64,6 +64,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Skill3ManaCost;
     [SerializeField] Image Skill4ManaImage;
     [SerializeField] TextMeshProUGUI Skill4ManaCost;
+    [SerializeField] RawImage Minimap; 
 
 
     public delegate void OnCooldown(skillType whichSkill);
@@ -158,9 +159,44 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            OnClickToggleMinimap();
+        }
         //Debug.Log(healthbarValueText.text);
     }
+
+    public void OnClickToggleMinimap()
+    {
+        if (Minimap.gameObject.activeSelf)
+        {
+            // If the image is currently active, hide it
+            HideImage();
+        }
+        else
+        {
+            // If the image is not active, show it
+            ShowImage();
+        }
+    }
+
+    private void ShowImage()
+    {
+        // Set the image to be active
+        Minimap.gameObject.SetActive(true);
+
+        // Additional logic if needed when showing the image
+    }
+
+    private void HideImage()
+    {
+        // Set the image to be inactive
+        Minimap.gameObject.SetActive(false);
+
+        // Additional logic if needed when hiding the image
+    }
+
+
 
     public void ResetSkillFillAmount(skillType whichSkill)
     {

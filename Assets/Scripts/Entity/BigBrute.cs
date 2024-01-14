@@ -19,6 +19,7 @@ public class BigBrute : EnemyEntity
     public Transform enemyGFX;
     private float attackTimer = 0f;
     public float attackCooldown = 2f;
+    public GameObject warningIconPrefab;
 
     public float chargeCooldown = 5f; // Adjust the charge cooldown as needed
     private float nextChargeTime = 0f;
@@ -184,18 +185,30 @@ public class BigBrute : EnemyEntity
 
         if (Time.time >= nextChargeTime)
         {
-            Charge();
+            StartCoroutine(Charge());
+            nextChargeTime = Time.time + chargeCooldown;
         }
     }
 
 
-    void Charge()
+    IEnumerator Charge()
     {
-        // Start charging
-        isCharging = true;
+
+        if (Time.time < nextChargeTime)
+        {
+            // Boss is on cooldown, cannot dash yet
+            yield break;
+        }
+
+        // Spawn a warning icon at the boss's current position
+        GameObject warningIcon = Instantiate(warningIconPrefab, targetPlayer.transform.position, Quaternion.identity);
+        Destroy(warningIcon, 0.5f); // Adjust the warning icon's lifetime as needed
+        Vector3 warningIconSpawnPosition = warningIcon.transform.position;
+
+        yield return new WaitForSeconds(0.5f); // Adjust the delay before charging as needed
 
         // Calculate direction to the player
-        Vector2 chargeDirection = ((Vector2)targetPlayer.transform.position - rb.position).normalized;
+        Vector2 chargeDirection = ((Vector2)warningIconSpawnPosition - rb.position).normalized;
 
         // Apply force to charge
         rb.AddForce(chargeDirection * chargeSpeed, ForceMode2D.Impulse);
@@ -204,14 +217,16 @@ public class BigBrute : EnemyEntity
         nextChargeTime = Time.time + chargeCooldown;
 
         // Reset charging status after a short delay (you can adjust the delay as needed)
-        Invoke("ResetChargeStatus", 1f);
-    }
-
-    void ResetChargeStatus()
-    {
+        yield return new WaitForSeconds(1f);
         isCharging = false;
         rb.velocity = Vector2.zero;
     }
+
+    //void ResetChargeStatus()
+    //{
+    //    isCharging = false;
+    //    rb.velocity = Vector2.zero;
+    //}
 
     public override void UpdateHPEnemy()
     {

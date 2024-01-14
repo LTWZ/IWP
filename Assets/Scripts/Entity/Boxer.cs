@@ -125,7 +125,7 @@ public class Boxer : EnemyEntity
         }
 
         // Check if the enemy is close to the player and stopped moving
-        if (!isMoving && Vector2.Distance(rb.position, targetPlayer.transform.position) <= 10 && Time.time >= nextFireballTime)
+        if (!isMoving && Vector2.Distance(rb.position, targetPlayer.transform.position) <= 8 && Time.time >= nextFireballTime)
         {
             ShootFireball();
             nextFireballTime = Time.time + fireballCooldown;

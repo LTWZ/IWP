@@ -399,6 +399,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 16659106802077198}
   deathAnimation: {fileID: 3893762301223272702}
   deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
+  isEnemySlowed: 0
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
@@ -407,7 +408,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 1811587667708369447, guid: 70c0f92f00ff09643a1a31578ddca947, type: 3}
   fireballSpawnPoint: {fileID: 4466587994836078222}
   fireballSpeed: 6
-  fireballCooldown: 1
+  fireballCooldown: 2
   IsEnemyRooted: 0
 --- !u!50 &5769388228970531083
 Rigidbody2D:
