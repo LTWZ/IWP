@@ -49,7 +49,7 @@ public class EnemyAOE : MonoBehaviour
 
         foreach (Collider2D collider in colliders)
         {
-            if (collider.CompareTag("Enemy") || collider.CompareTag("Skill2Tutorial"))
+            if (collider.CompareTag("Enemy") || collider.CompareTag("Skill2Tutorial") || collider.CompareTag("Skill") || collider.CompareTag("EnemyAOE"))
             {
                 continue;
             }

@@ -115,6 +115,7 @@ public class Enemy_1 : EnemyEntity
     protected override void Update()
     {
         base.Update();
+
     }
 
     public void EnemyMove()
@@ -128,7 +129,7 @@ public class Enemy_1 : EnemyEntity
         if (IsEnemyRooted == true)
         {
             rootTimer -= Time.deltaTime;
-            //Debug.Log(rootTimer);
+            //Debug.Log("root timer" + rootTimer);
 
             if (rootTimer <= 0)
             {

@@ -54,6 +54,12 @@ public class PlayerManager : MonoBehaviour
         chosenPlayerType = playerType;
     }
 
+    public PlayerType GetPlayerType()
+    {
+        return chosenPlayerType;
+    }
+
+
     /// <summary>
     /// Create the player according to what playertype is chosen.
     /// </summary>

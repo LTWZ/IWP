@@ -420,6 +420,7 @@ MonoBehaviour:
   navMeshAgent: {fileID: 16659106802077198}
   deathAnimation: {fileID: 2264622368272936828}
   deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
+  isEnemySlowed: 0
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5
@@ -427,8 +428,8 @@ MonoBehaviour:
   attackCooldown: 2
   lightningBoltPrefab: {fileID: 2635694883127984476, guid: c62404da3e9be7a4e96f80ba6bf26dc8, type: 3}
   iceballSpawnPoint: {fileID: 4466587994836078222}
-  lightningBoltSpeed: 10
-  iceballCooldown: 2
+  lightningBoltSpeed: 7
+  iceballCooldown: 4
   IsEnemyRooted: 0
 --- !u!195 &16659106802077198
 NavMeshAgent:

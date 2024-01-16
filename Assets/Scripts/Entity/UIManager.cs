@@ -7,6 +7,7 @@ using TMPro;
 public class UIManager : MonoBehaviour
 {
     private static UIManager instance;
+    private PlayerType selectedPlayerType;
     public static UIManager GetInstance()
     {
         return instance;
@@ -26,6 +27,23 @@ public class UIManager : MonoBehaviour
         skill3.fillAmount = 0;
         skill4.fillAmount = 0;
         StartCoroutine(Test());
+        selectedPlayerType = PlayerManager.GetInstance().GetPlayerType();
+        if (selectedPlayerType == PlayerType.WIZARD)
+        {
+            HideUIElement(Skill3HPImage);
+            HideUIElement(Skill3HPCost);
+        }
+        if (selectedPlayerType == PlayerType.ROGUE)
+        {
+            HideUIElement(Skill3HPImage);
+            HideUIElement(Skill3HPCost);
+        }
+        if (selectedPlayerType == PlayerType.WARRIOR)
+        {
+            HideUIElement(Skill3ManaImage);
+            HideUIElement(Skill3ManaCost);
+        }
+
     }
     
     private IEnumerator Test()
@@ -62,6 +80,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Skill2ManaCost;
     [SerializeField] Image Skill3ManaImage;
     [SerializeField] TextMeshProUGUI Skill3ManaCost;
+    [SerializeField] Image Skill3HPImage;
+    [SerializeField] TextMeshProUGUI Skill3HPCost;
     [SerializeField] Image Skill4ManaImage;
     [SerializeField] TextMeshProUGUI Skill4ManaCost;
     [SerializeField] RawImage Minimap; 
@@ -319,6 +339,11 @@ public class UIManager : MonoBehaviour
         HideUIElement(Skill3ManaCost);
         HideUIElement(Skill4ManaImage);
         HideUIElement(Skill4ManaCost);
+        if (selectedPlayerType == PlayerType.WARRIOR)
+        {
+            HideUIElement(Skill3HPImage);
+            HideUIElement(Skill3HPCost);
+        }
     }
 
     private void HideUIElement(Component uiElement)
@@ -367,6 +392,11 @@ public class UIManager : MonoBehaviour
         ShowUIElement(Skill3ManaCost);
         ShowUIElement(Skill4ManaImage);
         ShowUIElement(Skill4ManaCost);
+        if (selectedPlayerType == PlayerType.WARRIOR)
+        {
+            ShowUIElement(Skill3HPImage);
+            ShowUIElement(Skill3HPCost);
+        }
     }
 
     private void ShowUIElement(Component uiElement)
@@ -375,6 +405,18 @@ public class UIManager : MonoBehaviour
         {
             uiElement.gameObject.SetActive(true);
         }
+    }
+
+    public void IsHealth()
+    {
+        ShowUIElement(Skill3HPImage);
+        ShowUIElement(Skill3HPCost);
+    }
+
+    public void IsMana()
+    {
+        ShowUIElement(Skill3ManaImage);
+        ShowUIElement(Skill3ManaCost);
     }
 
 }

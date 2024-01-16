@@ -408,8 +408,7 @@ MonoBehaviour:
   fireballPrefab: {fileID: 7528330765396543995, guid: 1a5a0c437e016314d9152d61878a7ac7, type: 3}
   fireballSpawnPoint: {fileID: 4466587994836078222}
   fireballSpeed: 8
-  fireballCooldown: 1
-  IsEnemyRooted: 0
+  fireballCooldown: 3
 --- !u!50 &5769388228970531083
 Rigidbody2D:
   serializedVersion: 4
