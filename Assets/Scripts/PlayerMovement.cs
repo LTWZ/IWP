@@ -27,6 +27,10 @@ public class PlayerMovement : MonoBehaviour
     public float finalbossslowDuration = 2f;
     public float speedDuration = 2f;
     public float rootedDuration = 2f;
+    [SerializeField] GameObject slowsprite;
+    public GameObject bleedsprite;
+    public GameObject speedsprite;
+    public GameObject rootsprite;
 
     private void Awake()
     {
@@ -77,12 +81,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (GetComponent<PlayerEntity>().isplayerSlowed == true)
         {
+            slowsprite.SetActive(true);
             SetMovementSpeed(originalMovementSpeed / 2.0f);
             slowDuration -= Time.deltaTime;
             Debug.Log("slow duration: " + slowDuration);
 
             if (slowDuration <= 0)
             {
+                slowsprite.SetActive(false);
                 slowDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
@@ -92,12 +98,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (GetComponent<PlayerEntity>().isplayerSpedUp == true)
         {
+            speedsprite.SetActive(true);
             SetMovementSpeed(originalMovementSpeed * 1.5f);
             speedDuration -= Time.deltaTime;
             Debug.Log("speed duration: " + speedDuration);
 
             if (speedDuration <= 0)
             {
+                speedsprite.SetActive(false);
                 speedDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();
@@ -107,12 +115,14 @@ public class PlayerMovement : MonoBehaviour
         }
         else if (GetComponent<PlayerEntity>().isplayerRooted == true)
         {
+            rootsprite.SetActive(true);
             SetMovementSpeed(0);
             rootedDuration -= Time.deltaTime;
             Debug.Log("speed duration: " + rootedDuration);
 
             if (rootedDuration <= 0)
             {
+                rootsprite.SetActive(false);
                 rootedDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();

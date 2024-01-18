@@ -30,6 +30,7 @@ TagManager:
   - Punch
   - EnemyAOE
   - FireAOEEnemy
+  - Pistol
   layers:
   - Default
   - TransparentFX

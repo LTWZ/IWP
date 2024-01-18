@@ -76,6 +76,12 @@ public class MouseController : MonoBehaviour
             if (collider.transform.GetComponent<IInteract>() != null)
             {
                 collider.transform.GetComponent<IInteract>().Interact();
+                if (collider.CompareTag("Pistol"))
+                {
+                    // Code to execute if the collider has the tag "Pistol"
+                    PistolDoorLogic.GetInstance().candoorbeopened = true;
+                }
+
                 Debug.Log("t");
             }
         }

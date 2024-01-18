@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using System.Runtime.InteropServices;
 
 public class Test1 : PlayerEntity
 {
@@ -37,6 +38,11 @@ public class Test1 : PlayerEntity
     public bool beamok = false;
     public float finishcastingtimer = 0;
     public bool finishcasting = false;// Adjust the maximum lifetime of the beam
+    private Vector3 storedCursorPosition;
+    [DllImport("user32.dll")]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool SetCursorPos(int x, int y);
+
 
     private void Start()
     {

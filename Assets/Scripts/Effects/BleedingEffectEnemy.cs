@@ -10,6 +10,7 @@ public class BleedingEffectEnemy : MonoBehaviour
 
     public void StartBleeding(float damagePerSecond, float duration)
     {
+        PlayerMovement.GetInstance().bleedsprite.SetActive(true);
         bleedingDamagePerSecond = damagePerSecond;
         bleedingDuration = duration;
         remainingDuration = duration;
@@ -43,6 +44,7 @@ public class BleedingEffectEnemy : MonoBehaviour
         }
         else
         {
+            PlayerMovement.GetInstance().bleedsprite.SetActive(false);
             // Stop the bleeding effect (you might stop particle effects, animations, etc.)
             Destroy(this);
         }
