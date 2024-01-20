@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weapons_data: {fileID: 11400000, guid: a8d97acd8587c7a41ae2c5dd49b9a510, type: 2}
   EmitterPivot: {fileID: 9051523189692182802}
-  bullet_prefab: {fileID: 6939172365172394034, guid: 04c909138f5abee429181d0b09231006, type: 3}
+  bullet_prefab: {fileID: 6939172365172394034, guid: 971e5d4d8cf207f4191d125862e95e4d, type: 3}
   BulletSpeed: 60
 --- !u!1 &5115742587872580052
 GameObject:

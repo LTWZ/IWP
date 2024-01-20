@@ -15,5 +15,5 @@ MonoBehaviour:
   WeaponName: Pistol
   WeaponImage: {fileID: 21300000, guid: 356a0c7dcf2282e48ba868fafd7f9746, type: 3}
   bulletcount: 30
-  firerate: 1
+  firerate: 0.5
   manacost: 2

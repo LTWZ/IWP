@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class AK47Bullet : MonoBehaviour
 {
     private float MaxTravelTime = 5f;
     // Start is called before the first frame update
@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnTriggerEnter2D(Collider2D collider)
@@ -32,9 +32,9 @@ public class Bullet : MonoBehaviour
         // this is hardcoded btw, thr value. U find a way to get it. Idk how u gonna set atatck value
         // my suggestion is to refer to the player dmg value, or the gun value. But u prob need a way to reference to those
         if (collider.GetComponent<EnemyEntity>())
-            collider.GetComponent<EnemyEntity>().ChangeHealth(-1);
+            collider.GetComponent<EnemyEntity>().ChangeHealth(-5);
 
-        
+
         Debug.Log("Hit");
         if (collider.gameObject.tag != "Player" && collider.gameObject.tag != "Room" && collider.gameObject.tag != "Skill" && collider.gameObject.tag != "Iceball" && collider.gameObject.tag != "Bladestorm" && collider.gameObject.tag != "Fireball" && collider.gameObject.tag != "EnemyAOE" && collider.gameObject.tag != "Punch" && collider.gameObject.tag != "EnemyAOE")
         {
@@ -42,3 +42,4 @@ public class Bullet : MonoBehaviour
         }
     }
 }
+
