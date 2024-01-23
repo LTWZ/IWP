@@ -424,6 +424,30 @@ MonoBehaviour:
   sfxSounds:
   - audioname: Button Click
     clip: {fileID: 8300000, guid: 17a03834ff7a5974a8e67ce9ba8c956d, type: 3}
+  - audioname: Fireball
+    clip: {fileID: 8300000, guid: 2120ea42f9250934c8c7694572e92013, type: 3}
+  - audioname: EnemyDie
+    clip: {fileID: 8300000, guid: d7c885fb3dff31444b50c37c8b4f9f2c, type: 3}
+  - audioname: EnemyHit
+    clip: {fileID: 8300000, guid: 3444fed3aec3bf44a90b9570d1cc4391, type: 3}
+  - audioname: Blackhole
+    clip: {fileID: 8300000, guid: 3342c11cf4bcbf34596f4b859d4dce22, type: 3}
+  - audioname: LuxE
+    clip: {fileID: 8300000, guid: ca517cc6c54d27b4b9279e5184c02ca3, type: 3}
+  - audioname: LuxR
+    clip: {fileID: 8300000, guid: 936e912b074f94e4386ee115c66cf5a9, type: 3}
+  - audioname: Pistolshoot
+    clip: {fileID: 8300000, guid: e838b9f12ba28e44088bbba2fdc8dccf, type: 3}
+  - audioname: Playerdamage
+    clip: {fileID: 8300000, guid: 8e38857b280e6344b97d4ab58d63c512, type: 3}
+  - audioname: Roguedash
+    clip: {fileID: 8300000, guid: fc84aff6f89a09d4ba4f843c1375834e, type: 3}
+  - audioname: Roguestar
+    clip: {fileID: 8300000, guid: e4d0cc2e7cb2d2846a4244a8784a5705, type: 3}
+  - audioname: Rogueknife
+    clip: {fileID: 8300000, guid: f135e5e7a17538840a2447fdeba3b002, type: 3}
+  - audioname: Rogueult
+    clip: {fileID: 8300000, guid: e0370bf5ac8da464884ce5d146a82c4c, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752

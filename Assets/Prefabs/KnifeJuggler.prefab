@@ -408,9 +408,9 @@ MonoBehaviour:
   fireballPrefab: {fileID: 5824785853246384633, guid: 1aa370f6540d0394aaf33be921c487bb, type: 3}
   fireballSpawnPoint: {fileID: 4466587994836078222}
   fireballSpeed: 10
-  fireballCooldown: 5
-  knifeslifetime: 5
-  numBlades: 3
+  fireballCooldown: 7
+  knifeslifetime: 3
+  numBlades: 2
   IsEnemyRooted: 0
 --- !u!50 &5769388228970531083
 Rigidbody2D:

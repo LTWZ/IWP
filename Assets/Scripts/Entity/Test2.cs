@@ -186,6 +186,7 @@ public class Test2 : PlayerEntity
                 {
                     // Teleport the character to the mouse position within the teleport range
                     transform.position = (Vector3)((Vector2)transform.position + teleportDirection.normalized * teleportDistance);
+                    AudioManager.instance.PlaySFX("Roguedash");
                     isCooldown1 = true;
                     UIManager.GetInstance().UpdateCooldownStuff(cooldown1, skillType.SKILL1);
                     if (canUseskill1 == true)
@@ -230,6 +231,7 @@ public class Test2 : PlayerEntity
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+                AudioManager.instance.PlaySFX("Rogueknife");
                 // Summon and shoot out blades
                 StartCoroutine(ShootSerratedBlades(mousePos));
             }
@@ -296,6 +298,8 @@ public class Test2 : PlayerEntity
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
+                AudioManager.instance.PlaySFX("Roguestar");
+
                 // Throw the ninja star
                 StartCoroutine(ThrowNinjaStar(mousePos));
             }
@@ -357,6 +361,7 @@ public class Test2 : PlayerEntity
             if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 20)
             {
                 isCooldown4 = true;
+                AudioManager.instance.PlaySFX("Rogueult");
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown4, skillType.SKILL4);
                 // Get the mouse position in world coordinates
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

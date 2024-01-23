@@ -163,12 +163,7 @@ public class Test1 : PlayerEntity
             {
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 GameObject beam = Instantiate(beamPrefab, transform.position, Quaternion.identity);
-                // Get the VFX component attached to the Fireball prefab
-                //ParticleSystem fireballVFX = beam.GetComponentInChildren<ParticleSystem>();
-                //if (fireballVFX != null)
-                //{
-                //    fireballVFX.Play();
-                //}
+                AudioManager.instance.PlaySFX("Fireball");
                 Vector2 direction = (mousePos - (Vector2)transform.position).normalized;
                 float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
                 beam.transform.rotation = Quaternion.Euler(0, 0, angle);
@@ -202,6 +197,7 @@ public class Test1 : PlayerEntity
         {
             if (PlayerMovement.GetInstance().Player.currMana >= 10)
             {
+                AudioManager.instance.PlaySFX("Blackhole");
                 isCooldown2 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
                 if (canUseskill2 == true)
@@ -241,6 +237,7 @@ public class Test1 : PlayerEntity
             {
                 if (PlayerMovement.GetInstance().Player.currMana >= 15)
                 {
+                    AudioManager.instance.PlaySFX("LuxE");
                     // Get the mouse position in world coordinates
                     Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -281,6 +278,7 @@ public class Test1 : PlayerEntity
 
             if (PlayerMovement.GetInstance().Player.currMana >= 20)
             {
+                AudioManager.instance.PlaySFX("LuxR");
                 PlayerMovement.GetInstance().isMovementEnabled = false;
                 //where the beam spawns
                 Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);

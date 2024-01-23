@@ -428,8 +428,8 @@ MonoBehaviour:
   attackCooldown: 2
   lightningBoltPrefab: {fileID: 2635694883127984476, guid: c62404da3e9be7a4e96f80ba6bf26dc8, type: 3}
   iceballSpawnPoint: {fileID: 4466587994836078222}
-  lightningBoltSpeed: 7
-  iceballCooldown: 4
+  lightningBoltSpeed: 5
+  iceballCooldown: 6
   IsEnemyRooted: 0
 --- !u!195 &16659106802077198
 NavMeshAgent:

@@ -207,6 +207,7 @@ public class PlayerEntity : MonoBehaviour
         if (!isPlayerDamage && !isFlashing)
         {
             StartCoroutine(FlashPlayer());
+            AudioManager.instance.PlaySFX("Playerdamage");
         }
 
         currentHP += amtChanged;

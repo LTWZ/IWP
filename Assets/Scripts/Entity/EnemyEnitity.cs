@@ -53,6 +53,7 @@ public class EnemyEntity : MonoBehaviour
         {
             // Pass the enemy game object to FlashEnemy
             StartCoroutine(FlashEnemy(gameObject));
+            AudioManager.instance.PlaySFX("EnemyHit");
         }
 
         currHealth += amtChanged;
@@ -92,7 +93,7 @@ public class EnemyEntity : MonoBehaviour
             {
                 roomReferenceBoss.ReduceEnemy();
             }
-
+            AudioManager.instance.PlaySFX("EnemyDie");
             // Die logic here
             Destroy(gameObject);
         }
