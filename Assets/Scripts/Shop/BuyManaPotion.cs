@@ -20,6 +20,7 @@ public class BuyManaPotion : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Mana potion bought!";
+                AudioManager.instance.PlaySFX("CanBuy");
             }
         }
         else
@@ -28,6 +29,7 @@ public class BuyManaPotion : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Not enough coins!";
+                AudioManager.instance.PlaySFX("NoBuy");
             }
         }
     }

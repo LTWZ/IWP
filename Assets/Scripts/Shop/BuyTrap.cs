@@ -21,6 +21,7 @@ public class BuyTrap : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Trap Gun bought!";
+                AudioManager.instance.PlaySFX("CanBuy");
             }
         }
         else
@@ -29,6 +30,7 @@ public class BuyTrap : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Not enough coins!";
+                AudioManager.instance.PlaySFX("NoBuy");
             }
         }
     }

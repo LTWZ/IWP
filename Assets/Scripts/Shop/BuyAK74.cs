@@ -21,6 +21,7 @@ public class BuyAK74 : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "AK74 bought!";
+                AudioManager.instance.PlaySFX("CanBuy");
             }
         }
         else
@@ -29,6 +30,7 @@ public class BuyAK74 : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Not enough coins!";
+                AudioManager.instance.PlaySFX("NoBuy");
             }
         }
     }

@@ -178,6 +178,7 @@ public class Test3 : PlayerEntity
             {
                 // Dash towards the mouse position
                 StartCoroutine(DashRoutine(dashDirection));
+                AudioManager.instance.PlaySFX("Warriordash");
             }
             else if (currMana <= 5)
             {
@@ -285,6 +286,8 @@ public class Test3 : PlayerEntity
 
                 PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().isplayerSpedUp = true;
 
+                AudioManager.instance.PlaySFX("Warriorspeed");
+
                 isCooldown2 = true;
                 UIManager.GetInstance().UpdateCooldownStuff(cooldown2, skillType.SKILL2);
 
@@ -321,6 +324,8 @@ public class Test3 : PlayerEntity
                 // Summon the bladestorm
                 // Instantiate the bladestorm prefab at the player's position
                 Instantiate(FireAOEPrefab, transform.position, Quaternion.identity);
+
+                AudioManager.instance.PlaySFX("Warriorfire");
                 if (canUseskill3 == true)
                 {
 
@@ -352,6 +357,8 @@ public class Test3 : PlayerEntity
                 // Summon the bladestorm
                 // Instantiate the bladestorm prefab at the player's position
                 Instantiate(bloodpoolPrefab, transform.position, Quaternion.identity);
+
+                AudioManager.instance.PlaySFX("WarriorAOE");
                 if (canUseskill4 == true)
                 {
 

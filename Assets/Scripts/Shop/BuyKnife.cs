@@ -21,6 +21,7 @@ public class BuyKnife : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Knife Gun bought!";
+                AudioManager.instance.PlaySFX("CanBuy");
             }
         }
         else
@@ -29,6 +30,7 @@ public class BuyKnife : MonoBehaviour
             if (debugLogText != null)
             {
                 debugLogText.text = "Not enough coins!";
+                AudioManager.instance.PlaySFX("NoBuy");
             }
         }
     }

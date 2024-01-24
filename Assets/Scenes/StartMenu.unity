@@ -448,6 +448,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: f135e5e7a17538840a2447fdeba3b002, type: 3}
   - audioname: Rogueult
     clip: {fileID: 8300000, guid: e0370bf5ac8da464884ce5d146a82c4c, type: 3}
+  - audioname: Warriordash
+    clip: {fileID: 8300000, guid: add376ccfb16dfe46b6dbd03252d0d9e, type: 3}
+  - audioname: Warriorspeed
+    clip: {fileID: 8300000, guid: e299ee3f65083db49b9ed7231259876a, type: 3}
+  - audioname: Warriorfire
+    clip: {fileID: 8300000, guid: 5d1da282a3090a84fb4e2f1367bd4862, type: 3}
+  - audioname: WarriorAOE
+    clip: {fileID: 8300000, guid: fa44280b4b037a848a5f68ca4087d168, type: 3}
+  - audioname: CanBuy
+    clip: {fileID: 8300000, guid: 719e98c68403fb744b9b0d132713b885, type: 3}
+  - audioname: NoBuy
+    clip: {fileID: 8300000, guid: 0f84f1302f2dd9a4d8fb61f46e491be4, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752
