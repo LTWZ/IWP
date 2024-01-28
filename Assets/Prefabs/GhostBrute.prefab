@@ -392,13 +392,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89247ec69653c38469220a56703e465b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hp: 50
+  Hp: 30
   speed: 200
   healthbar: {fileID: 1377802036918368882}
   attackValue: 0
   navMeshAgent: {fileID: 16659106802077198}
   deathAnimation: {fileID: 8955398738710377288}
   deathAnimationPrefab: {fileID: 7781563062484533471, guid: 1f32fd10533ac844f8a760d954737a3d, type: 3}
+  isEnemySlowed: 0
   nextWaypointDistance: 3
   stopDistance: 0.5
   rootDuration: 5

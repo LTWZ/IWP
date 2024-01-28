@@ -417,7 +417,7 @@ MonoBehaviour:
   Coins: 0
   HealthPotionCount: 0
   ManaPotionCount: 0
-  speed: 5
+  speed: 0
   Mana: 300
   maxMana: 300
   canUseskill1: 0

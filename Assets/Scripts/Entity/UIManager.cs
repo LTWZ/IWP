@@ -84,7 +84,26 @@ public class UIManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI Skill3HPCost;
     [SerializeField] Image Skill4ManaImage;
     [SerializeField] TextMeshProUGUI Skill4ManaCost;
-    [SerializeField] RawImage Minimap; 
+    [SerializeField] RawImage Minimap;
+    [SerializeField] Image Skill1KeyImage;
+    [SerializeField] TextMeshProUGUI Skill1KeyText;
+    [SerializeField] Image Skill2KeyImage;
+    [SerializeField] TextMeshProUGUI Skill2KeyText;
+    [SerializeField] Image Skill3KeyImage;
+    [SerializeField] TextMeshProUGUI Skill3KeyText;
+    [SerializeField] Image Skill4KeyImage;
+    [SerializeField] TextMeshProUGUI Skill4KeyText;
+    [SerializeField] Image HealthPotKeyImage;
+    [SerializeField] TextMeshProUGUI HealthPotKeyText;
+    [SerializeField] Image ManaPotKeyImage;
+    [SerializeField] TextMeshProUGUI ManaPotKeyText;
+    [SerializeField] Image MapUIImage;
+    [SerializeField] Image MapKeyImage;
+    [SerializeField] TextMeshProUGUI MapKeyText;
+    [SerializeField] Image PauseUIImage;
+    [SerializeField] Image PauseKeyImage;
+    [SerializeField] TextMeshProUGUI PauseKeyText;
+
 
 
     public delegate void OnCooldown(skillType whichSkill);
@@ -344,6 +363,24 @@ public class UIManager : MonoBehaviour
             HideUIElement(Skill3HPImage);
             HideUIElement(Skill3HPCost);
         }
+        HideUIElement(Skill1KeyImage);
+        HideUIElement(Skill1KeyText);
+        HideUIElement(Skill2KeyImage);
+        HideUIElement(Skill2KeyText);
+        HideUIElement(Skill3KeyImage);
+        HideUIElement(Skill3KeyText);
+        HideUIElement(Skill4KeyImage);
+        HideUIElement(Skill4KeyText);
+        HideUIElement(HealthPotKeyImage);
+        HideUIElement(HealthPotKeyText);
+        HideUIElement(ManaPotKeyImage);
+        HideUIElement(ManaPotKeyText);
+        HideUIElement(MapUIImage);
+        HideUIElement(MapKeyImage);
+        HideUIElement(MapKeyText);
+        HideUIElement(PauseUIImage);
+        HideUIElement(PauseKeyImage);
+        HideUIElement(PauseKeyText);
     }
 
     private void HideUIElement(Component uiElement)
@@ -397,6 +434,24 @@ public class UIManager : MonoBehaviour
             ShowUIElement(Skill3HPImage);
             ShowUIElement(Skill3HPCost);
         }
+        ShowUIElement(Skill1KeyImage);
+        ShowUIElement(Skill1KeyText);
+        ShowUIElement(Skill2KeyImage);
+        ShowUIElement(Skill2KeyText);
+        ShowUIElement(Skill3KeyImage);
+        ShowUIElement(Skill3KeyText);
+        ShowUIElement(Skill4KeyImage);
+        ShowUIElement(Skill4KeyText);
+        ShowUIElement(HealthPotKeyImage);
+        ShowUIElement(HealthPotKeyText);
+        ShowUIElement(ManaPotKeyImage);
+        ShowUIElement(ManaPotKeyText);
+        ShowUIElement(MapUIImage);
+        ShowUIElement(MapKeyImage);
+        ShowUIElement(MapKeyText);
+        ShowUIElement(PauseUIImage);
+        ShowUIElement(PauseKeyImage);
+        ShowUIElement(PauseKeyText);
     }
 
     private void ShowUIElement(Component uiElement)

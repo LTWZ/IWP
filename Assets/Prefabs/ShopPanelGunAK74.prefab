@@ -469,8 +469,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: BuyAK, Assembly-CSharp
+      - m_Target: {fileID: 6417045107450246381}
+        m_TargetAssemblyTypeName: BuyAK74, Assembly-CSharp
         m_MethodName: BuyAK47
         m_Mode: 1
         m_Arguments:
