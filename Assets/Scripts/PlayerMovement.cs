@@ -66,12 +66,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (GetComponent<PlayerEntity>().isplayerSlowedByFinalBossAOE == true)
         {
+            slowsprite.SetActive(true);
             SetMovementSpeed(originalMovementSpeed / 1.5f);
             finalbossslowDuration -= Time.deltaTime;
             Debug.Log("slow duration: " + finalbossslowDuration);
 
             if (finalbossslowDuration <= 0)
             {
+                slowsprite.SetActive(false);
                 finalbossslowDuration = 2f;
                 PlayerManager playerManager = PlayerManager.GetInstance();
                 PlayerEntity player = playerManager.GetCurrentPlayer().GetComponent<PlayerEntity>();

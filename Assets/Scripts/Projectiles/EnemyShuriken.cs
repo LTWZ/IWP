@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyShuriken : MonoBehaviour
 {
-    private int damage = 3;
+    private int damage = 10;
     private Transform enemyTransform;
     public float ninjastarSpeed = 10f;
     private bool isReturning = false;
