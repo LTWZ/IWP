@@ -11,7 +11,7 @@ public class Test2 : PlayerEntity
     public KeyCode ability1;
     public float teleportRange = 5f;
     public float teleportDistanceMultiplier = 5f;
-    int mapLayer = 99;
+    int mapLayer = 6;
     // Change this for debug mode purposes, original value is 6
 
     [Header("Ability 2")]
