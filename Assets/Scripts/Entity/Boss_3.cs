@@ -200,6 +200,7 @@ public class Boss_3 : EnemyEntity
                 if (currentState == EnemyState.Phase1)
                 {
                     StartBlackHoleSequence();
+                    AudioManager.instance.PlaySFX("EnemyBH");
                     nextFireballTime = Time.time + fireballCooldown;
                 }
             }

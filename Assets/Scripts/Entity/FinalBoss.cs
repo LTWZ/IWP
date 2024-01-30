@@ -313,6 +313,8 @@ public class FinalBoss : EnemyEntity
 
         // Instantiate the black hole at the random position
         GameObject blackHole = Instantiate(AOEPrefab, indicatorSpawnPosition, Quaternion.identity);
+
+        AudioManager.instance.PlaySFX("AOE");
     }
 
     // Coroutine to destroy the indicator after a short delay
@@ -439,6 +441,8 @@ public class FinalBoss : EnemyEntity
 
         // Instantiate the meteor at the specified position
         GameObject meteor = Instantiate(meteorPrefab, meteorSpawnPosition, Quaternion.identity);
+
+        AudioManager.instance.PlaySFX("MeteorBoss");
 
         // Destroy the indicator after spawning the meteor
         Destroy(indicator);

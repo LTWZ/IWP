@@ -474,6 +474,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0913b28b01b1ef84db1069f33871b666, type: 3}
   - audioname: Arrow
     clip: {fileID: 8300000, guid: 4563660c8b0fa424bab5e8f02782c28d, type: 3}
+  - audioname: AOE
+    clip: {fileID: 8300000, guid: cd9fd2f784f9f5444b056d113b783151, type: 3}
+  - audioname: EnemyBH
+    clip: {fileID: 8300000, guid: 0ca345b700906ad4cae542923c49ebe9, type: 3}
+  - audioname: MeteorBoss
+    clip: {fileID: 8300000, guid: 2e198750771bfdb46b43acd1662dec38, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752
