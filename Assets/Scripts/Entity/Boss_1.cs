@@ -251,6 +251,8 @@ public class Boss_1 : EnemyEntity
         // Instantiate the meteor at the specified position
         GameObject meteor = Instantiate(meteorPrefab, meteorSpawnPosition, Quaternion.identity);
 
+        AudioManager.instance.PlaySFX("Meteor");
+
         // Destroy the indicator after spawning the meteor
         Destroy(indicator);
 
@@ -281,6 +283,9 @@ public class Boss_1 : EnemyEntity
 
     void ShootFireball()
     {
+
+        AudioManager.instance.PlaySFX("FireballEnemy");
+
         // Instantiate a fireball
         GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);
 

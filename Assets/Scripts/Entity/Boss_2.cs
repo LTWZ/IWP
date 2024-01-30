@@ -265,6 +265,7 @@ public class Boss_2 : EnemyEntity
                 {
                     int icicleCount = icicleCounts[currentIcicleIndex];
                     ShootIcicle(icicleCount);
+                    AudioManager.instance.PlaySFX("Icicle");
 
                     // Increment the index, and loop back to the beginning if necessary
                     currentIcicleIndex = (currentIcicleIndex + 1) % icicleCounts.Count;

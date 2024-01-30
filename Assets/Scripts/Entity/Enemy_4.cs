@@ -128,6 +128,7 @@ public class Enemy_4 : EnemyEntity
         if (!isMoving && Vector2.Distance(rb.position, targetPlayer.transform.position) <= 10 && Time.time >= nextIceballTime)
         {
             ShootIceball();
+            AudioManager.instance.PlaySFX("Snowball");
             nextIceballTime = Time.time + iceballCooldown;
         }
     }

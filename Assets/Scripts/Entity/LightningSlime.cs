@@ -114,6 +114,7 @@ public class LightningSlime : EnemyEntity
         if (!isMoving && Vector2.Distance(rb.position, targetPlayer.transform.position) <= 10 && Time.time >= nextIceballTime)
         {
             ShootLightningBolts();
+            AudioManager.instance.PlaySFX("Electric");
             nextIceballTime = Time.time + iceballCooldown;
         }
     }

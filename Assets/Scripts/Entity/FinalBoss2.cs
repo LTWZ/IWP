@@ -267,6 +267,7 @@ public class FinalBoss2 : EnemyEntity
                 if (currentState == EnemyState.Phase1)
                 {
                     ShootFireball();
+                    AudioManager.instance.PlaySFX("FireballEnemy");
                     nextFireballTime = Time.time + fireballCooldown;
                 }
             }
@@ -297,6 +298,7 @@ public class FinalBoss2 : EnemyEntity
                 if (currentState == EnemyState.Phase3)
                 {
                     ShootArrow();
+                    AudioManager.instance.PlaySFX("Arrow");
                     nextArrowTime = Time.time + arrowCooldown;
                 }
             }

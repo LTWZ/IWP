@@ -460,6 +460,20 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 719e98c68403fb744b9b0d132713b885, type: 3}
   - audioname: NoBuy
     clip: {fileID: 8300000, guid: 0f84f1302f2dd9a4d8fb61f46e491be4, type: 3}
+  - audioname: FireballEnemy
+    clip: {fileID: 8300000, guid: ea87cfcb5c6f0ef41a7f59ad67632788, type: 3}
+  - audioname: Snowball
+    clip: {fileID: 8300000, guid: 98d007a2c3cebfe478764fa4c10e81ef, type: 3}
+  - audioname: Meteor
+    clip: {fileID: 8300000, guid: 9e8957b97837a334e9ff90dba039fc44, type: 3}
+  - audioname: Slimeball
+    clip: {fileID: 8300000, guid: 17bdd98326ab41f4998052d2ba80b83f, type: 3}
+  - audioname: Icicle
+    clip: {fileID: 8300000, guid: 402854d20e4bc354cb873a9b558867b2, type: 3}
+  - audioname: Electric
+    clip: {fileID: 8300000, guid: 0913b28b01b1ef84db1069f33871b666, type: 3}
+  - audioname: Arrow
+    clip: {fileID: 8300000, guid: 4563660c8b0fa424bab5e8f02782c28d, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752

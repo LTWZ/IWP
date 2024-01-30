@@ -136,6 +136,7 @@ public class Enemy_2 : EnemyEntity
 
     void ShootFireball()
     {
+        AudioManager.instance.PlaySFX("FireballEnemy");
 
         // Instantiate a fireball
         GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);

@@ -130,6 +130,7 @@ public class DeformedEyeball : EnemyEntity
         if (!isMoving && Vector2.Distance(rb.position, targetPlayer.transform.position) <= 10 && Time.time >= nextIceballTime)
         {
             ShootIceball();
+            AudioManager.instance.PlaySFX("Slimeball");
             nextIceballTime = Time.time + iceballCooldown;
         }
     }

@@ -241,6 +241,7 @@ public class FinalBoss : EnemyEntity
                 if (currentState == EnemyState.Phase1)
                 {
                     ShootFireball();
+                    AudioManager.instance.PlaySFX("FireballEnemy");
                     nextFireballTime = Time.time + fireballCooldown;
                 }
             }
@@ -271,6 +272,7 @@ public class FinalBoss : EnemyEntity
                 if (currentState == EnemyState.Phase3)
                 {
                     ShootArrow();
+                    AudioManager.instance.PlaySFX("Arrow");
                     nextArrowTime = Time.time + arrowCooldown;
                 }
             }
@@ -362,6 +364,7 @@ public class FinalBoss : EnemyEntity
                 // If no intersection, use the original spawn position
                 adjustedSpawnPosition = arrowSpawnPoint.position;
             }
+
 
             // Instantiate an iceball
             GameObject arrow = Instantiate(arrowPrefab, adjustedSpawnPosition, Quaternion.identity);
