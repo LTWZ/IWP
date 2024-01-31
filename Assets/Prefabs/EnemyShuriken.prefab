@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 7348883277501516875}
   - component: {fileID: 8636550685212244218}
   - component: {fileID: -5411832591679026995}
+  - component: {fileID: 9014880691196245636}
   m_Layer: 0
   m_Name: EnemyShuriken
   m_TagString: Skill
@@ -179,3 +180,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ninjastarSpeed: 10
+--- !u!95 &9014880691196245636
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6086498364840054281}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4c610cbb466fbd845bf2fda565ba85b1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
