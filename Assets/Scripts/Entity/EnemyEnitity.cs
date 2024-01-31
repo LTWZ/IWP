@@ -42,10 +42,7 @@ public class EnemyEntity : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
-    /// </summary>
-    /// 
+    // Change the health of the enemyEntity. Use negative value to represent reducing health and positive to represent adding health.
 
     public virtual void ChangeHealth(int amtChanged, bool isSelfDamage = false)
     {
@@ -162,9 +159,7 @@ public class EnemyEntity : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Apply the speed modifier according to the value inputted. e.g. 0.1 means 10% of the original speed. 2.0 means 200% of the original speed.
-    /// </summary>
+    // Apply the speed modifier according to the value inputted. e.g. 0.1 means 10% of the original speed. 2.0 means 200% of the original speed.
     public void ApplySpeedModifier(float speedChanged)
     {
         currSpeed = speed * speedChanged;
@@ -227,17 +222,13 @@ public class EnemyEntity : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Get the attack value of the enemy.
-    /// </summary>
+    //Get the attack value of the enemy.
     public int GetAttackValue()
     {
         return attackValue;
     }
 
-    /// <summary>
-    /// Set the room reference to whatever room that created this is.
-    /// </summary>
+    //Set the room reference to whatever room that created this is.
     public void SetRoomReference(Room theRoomReference)
     {
         roomReference = theRoomReference;

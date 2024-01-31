@@ -199,9 +199,7 @@ public class PlayerEntity : MonoBehaviour
 
     }
 
-    /// <summary>
-    /// Change the health of the playerEntity. Use negative value to represent reducing health and positive to represent adding health.
-    /// </summary>
+    // Change the health of the playerEntity. Use negative value to represent reducing health and positive to represent adding health.
     public void ChangeHealth(int amtChanged, bool isPlayerDamage = false)
     {
         if (!isPlayerDamage && !isFlashing)
@@ -318,10 +316,6 @@ public class PlayerEntity : MonoBehaviour
         uiManager.UpdateManaPotionDisplay(currManaPotions);
     }
 
-    // this is an issue u need fix now. OnTriggerEnter dont trigger bcos both ur enemy and ur player has a boxcollider that is not isTrigger
-    // so both cant go into each other, hence not triggering OnTirggerENter. you need to like find a way to implement a dummy isTrigger hitbox.
-    // However, this is dumb cos like. Your hitbox would be bigger than what u look like. also, u need to do it not on the parent unless
-    // u have a sprite as a child, and u add that as the actual collider or something. ur parent have the isTrigger. btw this my method, ask randall first.
     //private void OnTriggerStay2D(Collider2D collision)
     //{
     //    if (collision.GetComponent<EnemyEntity>())

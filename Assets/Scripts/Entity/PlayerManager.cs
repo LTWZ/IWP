@@ -46,9 +46,7 @@ public class PlayerManager : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Set the player type that the player will run for the whole game
-    /// </summary>
+    // Set the player type that the player will run for the whole game
     public void SetPlayerType(PlayerType playerType)
     {
         chosenPlayerType = playerType;
@@ -60,9 +58,7 @@ public class PlayerManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// Create the player according to what playertype is chosen.
-    /// </summary>
+    //Create the player according to what playertype is chosen.
     public void CreatePlayer()
     {
         // remove the previous gameobject reference

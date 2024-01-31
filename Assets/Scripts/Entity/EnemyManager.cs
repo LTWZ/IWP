@@ -35,10 +35,7 @@ public class EnemyManager : MonoBehaviour
         playerReference = PlayerManager.GetInstance().GetCurrentPlayer();
     }
 
-    /// <summary>
-    /// Get the player reference for any enemy that spawn to refer to
-    /// </summary>
-    /// <returns></returns>
+    // Get the player reference for any enemy that spawn to refer to
     public GameObject GetPlayerReference()
     {
         return playerReference;

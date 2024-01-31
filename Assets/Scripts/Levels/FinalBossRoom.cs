@@ -92,9 +92,7 @@ public class FinalBossRoom : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Reduce the enemy count of the room by 1.
-    /// </summary>
+    //Reduce the enemy count of the room by 1.
     public void ReduceEnemy()
     {
         amountOfEnemy--;
@@ -114,10 +112,7 @@ public class FinalBossRoom : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Delay the duration at which the wave will spawn.
-    /// </summary>
-    /// <returns></returns>
+    // Delay the duration at which the wave will spawn.
     IEnumerator DelayWave()
     {
         yield return new WaitForSeconds(1);

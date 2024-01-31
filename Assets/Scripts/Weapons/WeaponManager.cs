@@ -150,9 +150,7 @@ public class WeaponManager : MonoBehaviour
         return null;
     }
 
-    /// <summary>
-    /// Change which mouseController is it refering to. Refers to the PlayerManager
-    /// </summary>
+    // Change which mouseController is it refering to. Refers to the PlayerManager
     void ChangeMouseControllerReference()
     {
         mouseController = PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<MouseController>();
