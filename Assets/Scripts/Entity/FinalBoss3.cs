@@ -401,6 +401,8 @@ public class FinalBoss3 : EnemyEntity
 
         // Instantiate the black hole at the random position
         GameObject blackHole = Instantiate(AOEFirePrefab, indicatorSpawnPosition, Quaternion.identity);
+
+        AudioManager.instance.PlaySFX("FireWall");
     }
 
     // Coroutine to destroy the indicator after a short delay

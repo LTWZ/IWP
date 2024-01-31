@@ -480,6 +480,32 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0ca345b700906ad4cae542923c49ebe9, type: 3}
   - audioname: MeteorBoss
     clip: {fileID: 8300000, guid: 2e198750771bfdb46b43acd1662dec38, type: 3}
+  - audioname: FireWall
+    clip: {fileID: 8300000, guid: b72b34eea9586e44c8f0def1aa7e15b2, type: 3}
+  - audioname: Necromancer
+    clip: {fileID: 8300000, guid: 2aaed209310d6a140bc63941620c033f, type: 3}
+  - audioname: Laser
+    clip: {fileID: 8300000, guid: 7ad337c561929144abb9562af188357b, type: 3}
+  - audioname: Charge
+    clip: {fileID: 8300000, guid: 5f98c96aa0a66594cafd5cba7fba566d, type: 3}
+  - audioname: KnifeThrow
+    clip: {fileID: 8300000, guid: 0249aef28f9363547a10d7afadf94989, type: 3}
+  - audioname: EnemyStar
+    clip: {fileID: 8300000, guid: cab690ea1c3bbb9499fdffd7455d1c2f, type: 3}
+  - audioname: EnemyFireAOE
+    clip: {fileID: 8300000, guid: 700e07a5890b82a4e956005321201e39, type: 3}
+  - audioname: Punch
+    clip: {fileID: 8300000, guid: a64275d640e9e4a4a9ff6613f73d1665, type: 3}
+  - audioname: AK47
+    clip: {fileID: 8300000, guid: b363fba56a4c4a240a42346d3a1e7d79, type: 3}
+  - audioname: AK74
+    clip: {fileID: 8300000, guid: da737f5a008df594c9dc4fdca06dfe8c, type: 3}
+  - audioname: RPG
+    clip: {fileID: 8300000, guid: 6711cb4bf5fccc04a8b93688cfb91333, type: 3}
+  - audioname: Medkit
+    clip: {fileID: 8300000, guid: 048a146a2ae173f44b4c059c2923b4bd, type: 3}
+  - audioname: Trap
+    clip: {fileID: 8300000, guid: 3d466ee1161674f4b9cb2aad71b86e6c, type: 3}
   musicSource: {fileID: 623521381}
   sfxSource: {fileID: 668125888}
 --- !u!4 &556804752

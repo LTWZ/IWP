@@ -26,6 +26,7 @@ public class AK : Weapons
         if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 3)
         {
             Rigidbody2D bullet = Instantiate(bullet_prefab, GetEmitterPivot().position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            AudioManager.instance.PlaySFX("AK47");
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
             PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeMana(-3);
         }

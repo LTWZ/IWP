@@ -200,7 +200,6 @@ public class Boss_3 : EnemyEntity
                 if (currentState == EnemyState.Phase1)
                 {
                     StartBlackHoleSequence();
-                    AudioManager.instance.PlaySFX("EnemyBH");
                     nextFireballTime = Time.time + fireballCooldown;
                 }
             }
@@ -250,6 +249,7 @@ public class Boss_3 : EnemyEntity
 
         // Instantiate the tempbeam at the calculated position
         GameObject tempbeam = Instantiate(beamtemp, posToSpawnIn, Quaternion.identity);
+        AudioManager.instance.PlaySFX("Charge");
         float widthOfBeam = tempbeam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
         float lengthofBeam = directionVector.magnitude * 110;
         float offSetScale = lengthofBeam / widthOfBeam;
@@ -270,6 +270,7 @@ public class Boss_3 : EnemyEntity
 
         // Instantiate beamPrefab2 at the stored position
         GameObject beam = Instantiate(beamPrefab2, tempBeamSpawnPosition, Quaternion.identity);
+        AudioManager.instance.PlaySFX("Laser");
         float widthOfBeam2 = beam.GetComponentInChildren<SpriteRenderer>().sprite.rect.width;
         float lengthofBeam2 = directionVector.magnitude * 110;
         float offSetScale2 = lengthofBeam2 / widthOfBeam2;
@@ -307,6 +308,8 @@ public class Boss_3 : EnemyEntity
 
         // Instantiate the black hole at the random position
         GameObject blackHole = Instantiate(BHPrefab, spawnPos, Quaternion.identity);
+
+        AudioManager.instance.PlaySFX("EnemyBH");
 
         // Add a script to control the black hole's behavior
         BlackHoleScript blackHoleScript = blackHole.GetComponent<BlackHoleScript>();

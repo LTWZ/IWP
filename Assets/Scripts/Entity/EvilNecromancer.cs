@@ -139,6 +139,8 @@ public class EvilNecromancer : EnemyEntity
         // Instantiate a fireball
         GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);
 
+        AudioManager.instance.PlaySFX("Necromancer");
+
         // Set isHoming to true so that the fireball starts homing in
         isHoming = true;
 

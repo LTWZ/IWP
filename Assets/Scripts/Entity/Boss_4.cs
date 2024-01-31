@@ -202,6 +202,7 @@ public class Boss_4 : EnemyEntity
                 if (currentState == EnemyState.Phase1)
                 {
                     FireKnifes();
+                    AudioManager.instance.PlaySFX("KnifeThrow");
                     nextFireballTime = Time.time + fireballCooldown;
                 }
             }
@@ -253,6 +254,8 @@ public class Boss_4 : EnemyEntity
 
         // Instantiate the ninja star at the player's position
         GameObject ninjaStar = Instantiate(ninjaStarPrefab, enemyPosition, Quaternion.identity);
+
+        AudioManager.instance.PlaySFX("EnemyStar");
 
         // Calculate the initial direction to the target position
         Vector2 direction = (targetPosition - enemyPosition).normalized;

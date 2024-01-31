@@ -26,6 +26,7 @@ public class MedGun : Weapons
         if (PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().GetCurrMana() >= 15)
         {
             Rigidbody2D bullet = Instantiate(bullet_prefab, GetEmitterPivot().position, Quaternion.identity).GetComponent<Rigidbody2D>();
+            AudioManager.instance.PlaySFX("Medkit");
             bullet.velocity = WeaponManager.GetInstance().GetDirection().normalized * BulletSpeed;
             PlayerManager.GetInstance().GetCurrentPlayer().GetComponent<PlayerEntity>().ChangeMana(-15);
         }

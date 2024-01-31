@@ -275,6 +275,8 @@ public class Boss_5 : EnemyEntity
     {
         GameObject fireAOE = Instantiate(aoefirePrefab, transform.position, Quaternion.identity);
 
+        AudioManager.instance.PlaySFX("EnemyFireAOE");
+
         // Set the flag to true to indicate that Fire AOE has been summoned
         hasSummonedFireAOE = true;
 

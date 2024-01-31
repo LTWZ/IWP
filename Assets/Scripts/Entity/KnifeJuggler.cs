@@ -146,6 +146,8 @@ public class KnifeJuggler : EnemyEntity
             // Instantiate the serrated blade at the player's position
             GameObject blade = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);
 
+            AudioManager.instance.PlaySFX("KnifeThrow");
+
             // Calculate the direction to the target position
             Vector2 direction = (targetPlayer.transform.position - fireballSpawnPoint.position).normalized;
 

@@ -138,6 +138,8 @@ public class Boxer : EnemyEntity
         // Instantiate a fireball
         GameObject fireball = Instantiate(fireballPrefab, fireballSpawnPoint.position, Quaternion.identity);
 
+        AudioManager.instance.PlaySFX("Punch");
+
         // Calculate the direction to the player
         Vector2 direction = (targetPlayer.transform.position - fireballSpawnPoint.position).normalized;
 
