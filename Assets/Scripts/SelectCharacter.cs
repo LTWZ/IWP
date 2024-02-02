@@ -68,6 +68,6 @@ public class SelectCharacter : MonoBehaviour
             }
             AudioManager.instance.PlaySFX("Button Click");
         }
-        /*SceneManager.LoadScene("TutorialLevel");*/ // Load the next scene (change "Gameplay" to your scene name).
+        /*SceneManager.LoadScene("TutorialLevel");*/
     }
 }
