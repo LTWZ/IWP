@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damageOverTime: 7
-  radius: 3
+  radius: 4
   lifetime: 3
   isbladestormdestroyed: 0
 --- !u!1 &8302868070171490219

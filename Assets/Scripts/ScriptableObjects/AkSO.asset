@@ -15,5 +15,5 @@ MonoBehaviour:
   WeaponName: AK
   WeaponImage: {fileID: 21300000, guid: e03695089b5d24f4c97eba7f85633242, type: 3}
   bulletcount: 90
-  firerate: 0.1
-  manacost: 3
+  firerate: 0.4
+  manacost: 4

@@ -73,8 +73,8 @@ public class EnemyEntity : MonoBehaviour
                 else
                 {
                     // Gain back a random amount of mana
-                    int manaGained = Random.Range(1,6);
-                    int coinget = Random.Range(1, 3);
+                    int manaGained = Random.Range(5,10);
+                    int coinget = Random.Range(1, 4);
                     player.ChangeCoins(coinget);
                     player.ChangeMana(manaGained);// Adjust the range as needed
                 }
